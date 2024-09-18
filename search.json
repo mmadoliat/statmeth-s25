@@ -1,431 +1,5 @@
 [
   {
-    "objectID": "slides/01/01-layers-I.html#announcements",
-    "href": "slides/01/01-layers-I.html#announcements",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Announcements",
-    "text": "Announcements\n\nOffice hours + locations finalized at vizdata.org/course-team.html\n\nMy office hours today only: 2-3 pm at Old Chem 213\n\nDon’t forget to complete the getting to know you survey by 8pm today at the latest – we need your GitHub names for tomorrow’s lab!\nA note on readings for this week: Some of it is review so feel free to skim those parts\nNo class recordings on Panopto – unfortunately the room isn’t set up for it 😥\nLecture participation today: Test run, not graded!"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#setup",
-    "href": "slides/01/01-layers-I.html#setup",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(openintro)\nlibrary(countdown)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7,        # 7\" width\n  fig.asp = 0.618,      # the golden ratio\n  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300             # higher dpi, sharper image\n)"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#data-sale-prices-of-houses-in-duke-forest",
-    "href": "slides/01/01-layers-I.html#data-sale-prices-of-houses-in-duke-forest",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Data: Sale prices of houses in Duke Forest",
-    "text": "Data: Sale prices of houses in Duke Forest\n\n\n\nData on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020\nScraped from Zillow\nSource: openintro::duke_forest"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#openintroduke_forest",
-    "href": "slides/01/01-layers-I.html#openintroduke_forest",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "openintro::duke_forest",
-    "text": "openintro::duke_forest\n\nlibrary(tidyverse)\nlibrary(openintro)\n\nglimpse(duke_forest)\n\nRows: 98\nColumns: 13\n$ address    &lt;chr&gt; \"1 Learned Pl, Durham, NC 27705\", \"1616 Pinecrest Rd, Durha…\n$ price      &lt;dbl&gt; 1520000, 1030000, 420000, 680000, 428500, 456000, 1270000, …\n$ bed        &lt;dbl&gt; 3, 5, 2, 4, 4, 3, 5, 4, 4, 3, 4, 4, 3, 5, 4, 5, 3, 4, 4, 3,…\n$ bath       &lt;dbl&gt; 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 3.0, 5.0, 2.0, 3.0, 3.0,…\n$ area       &lt;dbl&gt; 6040, 4475, 1745, 2091, 1772, 1950, 3909, 2841, 3924, 2173,…\n$ type       &lt;chr&gt; \"Single Family\", \"Single Family\", \"Single Family\", \"Single …\n$ year_built &lt;dbl&gt; 1972, 1969, 1959, 1961, 2020, 2014, 1968, 1973, 1972, 1964,…\n$ heating    &lt;chr&gt; \"Other, Gas\", \"Forced air, Gas\", \"Forced air, Gas\", \"Heat p…\n$ cooling    &lt;fct&gt; central, central, central, central, central, central, centr…\n$ parking    &lt;chr&gt; \"0 spaces\", \"Carport, Covered\", \"Garage - Attached, Covered…\n$ lot        &lt;dbl&gt; 0.97, 1.38, 0.51, 0.84, 0.16, 0.45, 0.94, 0.79, 0.53, 0.73,…\n$ hoa        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ url        &lt;chr&gt; \"https://www.zillow.com/homedetails/1-Learned-Pl-Durham-NC-…"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#a-simple-visualization",
-    "href": "slides/01/01-layers-I.html#a-simple-visualization",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "A simple visualization",
-    "text": "A simple visualization\n\nCodePlot\n\n\n\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(alpha = 0.7, size = 2) +\n  geom_smooth(method = \"lm\", se = FALSE, size = 0.7) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    title = \"Price and area of houses in Duke Forest\"\n  )\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#new-variable-decade_built",
-    "href": "slides/01/01-layers-I.html#new-variable-decade_built",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "New variable: decade_built",
-    "text": "New variable: decade_built\n\nduke_forest &lt;- duke_forest |&gt;\n  mutate(decade_built = (year_built %/% 10) * 10)\n\nduke_forest |&gt;\n  select(year_built, decade_built)\n\n# A tibble: 98 × 2\n   year_built decade_built\n        &lt;dbl&gt;        &lt;dbl&gt;\n 1       1972         1970\n 2       1969         1960\n 3       1959         1950\n 4       1961         1960\n 5       2020         2020\n 6       2014         2010\n 7       1968         1960\n 8       1973         1970\n 9       1972         1970\n10       1964         1960\n# ℹ 88 more rows"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#new-variable-decade_built_cat",
-    "href": "slides/01/01-layers-I.html#new-variable-decade_built_cat",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "New variable: decade_built_cat",
-    "text": "New variable: decade_built_cat\n\nduke_forest &lt;- duke_forest |&gt;\n  mutate(\n    decade_built_cat = case_when(\n      decade_built &lt;= 1940 ~ \"1940 or before\",\n      decade_built &gt;= 1990 ~ \"1990 or after\",\n      TRUE ~ as.character(decade_built)\n    )\n  )\n\nduke_forest |&gt;\n  count(decade_built_cat)\n\n# A tibble: 6 × 2\n  decade_built_cat     n\n  &lt;chr&gt;            &lt;int&gt;\n1 1940 or before       8\n2 1950                26\n3 1960                32\n4 1970                11\n5 1980                13\n6 1990 or after        8"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#a-slightly-more-complex-visualization",
-    "href": "slides/01/01-layers-I.html#a-slightly-more-complex-visualization",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "A slightly more complex visualization",
-    "text": "A slightly more complex visualization\n\nCodePlot\n\n\n\nggplot(\n  duke_forest,\n  aes(x = area, y = price, color = decade_built_cat)\n) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  geom_smooth(method = \"lm\", se = FALSE, size = 0.5, show.legend = FALSE) +\n  facet_wrap(~decade_built_cat) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    color = \"Decade built\",\n    title = \"Price and area of houses in Duke Forest\"\n  )\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#ab-testing-1",
-    "href": "slides/01/01-layers-I.html#ab-testing-1",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "A/B testing",
-    "text": "A/B testing\n\nIn the next two slides, the same plots are created with different “cosmetic” choices. Examine the plots two given (Plot A and Plot B), and indicate your preference by voting for one of them in the Vote tab."
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#test-1",
-    "href": "slides/01/01-layers-I.html#test-1",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Test 1",
-    "text": "Test 1\n\nPlot APlot BVote\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#test-2",
-    "href": "slides/01/01-layers-I.html#test-2",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Test 2",
-    "text": "Test 2\n\nPlot APlot BVote\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#bad-taste",
-    "href": "slides/01/01-layers-I.html#bad-taste",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Bad taste",
-    "text": "Bad taste\n\n\n`geom_smooth()` using formula = 'y ~ x'"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#data-to-ink-ratio",
-    "href": "slides/01/01-layers-I.html#data-to-ink-ratio",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Data-to-ink ratio",
-    "text": "Data-to-ink ratio\nTufte strongly recommends maximizing the data-to-ink ratio this in the Visual Display of Quantitative Information (Tufte, 1983).\n\n\n\nGraphical excellence is the well-designed presentation of interesting data—a matter of substance, of statistics, and of design … [It] consists of complex ideas communicated with clarity, precision, and efficiency. … [It] is that which gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space … [It] is nearly always multivariate … And graphical excellence requires telling the truth about the data. (Tufte, 1983, p. 51)."
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#section",
-    "href": "slides/01/01-layers-I.html#section",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "",
-    "text": "Which of the plots has a higher data-to-ink ratio?\n\n\nPlot APlot BVote"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#a-deeper-look",
-    "href": "slides/01/01-layers-I.html#a-deeper-look",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "A deeper look",
-    "text": "A deeper look\n\nat the plotting code"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#summary-statistics",
-    "href": "slides/01/01-layers-I.html#summary-statistics",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Summary statistics",
-    "text": "Summary statistics\n\nmean_area_decade &lt;- duke_forest |&gt;\n  group_by(decade_built_cat) |&gt;\n  summarize(mean_area = mean(area))\n\nmean_area_decade\n\n# A tibble: 6 × 2\n  decade_built_cat mean_area\n  &lt;chr&gt;                &lt;dbl&gt;\n1 1940 or before       2072.\n2 1950                 2545.\n3 1960                 2873.\n4 1970                 3413.\n5 1980                 2889.\n6 1990 or after        2822."
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#barplot",
-    "href": "slides/01/01-layers-I.html#barplot",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Barplot",
-    "text": "Barplot\n\nCodePlot\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_col() +\n  labs(\n    x = \"Mean area (square feet)\", y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#scaterplot",
-    "href": "slides/01/01-layers-I.html#scaterplot",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Scaterplot",
-    "text": "Scaterplot\n\nCodePlot\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  labs(\n    x = \"Mean area (square feet)\", y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#lollipop-chart-a-happy-medium",
-    "href": "slides/01/01-layers-I.html#lollipop-chart-a-happy-medium",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Lollipop chart – a happy medium?",
-    "text": "Lollipop chart – a happy medium?"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#application-exercise",
-    "href": "slides/01/01-layers-I.html#application-exercise",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Application exercise",
-    "text": "Application exercise\n\n\nGo to the course GitHub organization: https://github.com/vizdata-s24\nClone the repo called ae-01 and work on the exercise.\n\nNote: For today, this is not a personalized repo for you. The repo is public so everyone can clone it, but you won’t be able to push to it. Starting Thursday you’ll start getting your personalized repos you can push to.\n\nOnce you’re done, share your code on Slack in #general.\nLabel your chunk(s) and pay attention to code style and formatting!\n\n\n\n\n\n−+\n10:00"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#bad-data",
-    "href": "slides/01/01-layers-I.html#bad-data",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Bad data",
-    "text": "Bad data\n\nOriginalImproved\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHealy, Data Visualization: A practical introduction. Chapter 1. Figures 1.8 and 1.9."
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#bad-perception",
-    "href": "slides/01/01-layers-I.html#bad-perception",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Bad perception",
-    "text": "Bad perception\n\n\n\nHealy, Data Visualization: A practical introduction. Chapter 1. Figure 1.12."
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#a-second-look-lollipop-chart",
-    "href": "slides/01/01-layers-I.html#a-second-look-lollipop-chart",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "A second look: lollipop chart",
-    "text": "A second look: lollipop chart\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  geom_segment(aes(\n    x = 0, xend = mean_area,\n    y = decade_built_cat, yend = decade_built_cat\n  )) +\n  labs(\n    x = \"Mean area (square feet)\",\n    y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#activity-spot-the-differences-i",
-    "href": "slides/01/01-layers-I.html#activity-spot-the-differences-i",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Activity: Spot the differences I",
-    "text": "Activity: Spot the differences I\n\nPlotCodeDiscussion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  geom_segment(aes(\n    xend = 0,\n    yend = decade_built_cat\n  )) +\n  labs(\n    x = \"Mean area (square feet)\",\n    y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )\n\n\n\nCan you spot the differences between the code here and the one provided in the previous slide? Are there any differences in the resulting plot? Work in a pair (or group) to answer.\n\n\n\n\n\n\n\n−+\n03:00"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#global-vs.-layer-specific-aesthetics",
-    "href": "slides/01/01-layers-I.html#global-vs.-layer-specific-aesthetics",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Global vs. layer-specific aesthetics",
-    "text": "Global vs. layer-specific aesthetics\n\nAesthetic mappings can be supplied in the initial ggplot() call, in individual layers, or in some combination of both.\nWithin each layer, you can add, override, or remove mappings.\nIf you only have one layer in the plot, the way you specify aesthetics doesn’t make any difference. However, the distinction is important when you start adding additional layers."
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#activity-spot-the-differences-ii",
-    "href": "slides/01/01-layers-I.html#activity-spot-the-differences-ii",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Activity: Spot the differences II",
-    "text": "Activity: Spot the differences II\n\nDo you expect the following plots to be the same or different? If different, how? Discuss in a pair (or group) without running the code and sketch the resulting plots based on what you think the code will produce.\n\n\nPlotDiscussion\n\n\n\n# Plot A\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(aes(color = decade_built_cat))\n# Plot B\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(color = \"blue\")\n# Plot C\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(color = \"#a493ba\")\n\n\n\n\n\n\n\n\n\n\n−+\n03:00"
-  },
-  {
-    "objectID": "slides/01/01-layers-I.html#wrap-up",
-    "href": "slides/01/01-layers-I.html#wrap-up",
-    "title": "Deep dive into ggplot2 layers - I",
-    "section": "Wrap up",
-    "text": "Wrap up\n\nThink back to all the plots you saw in the lecture, without flipping back through the slides. Which plot first comes to mind? Describe it in words.\n\n\n\n\n\n\n🔗 vizdata.org"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#announcements",
-    "href": "slides/11/11-likert-I.html#announcements",
-    "title": "Visualizing Likert data I",
-    "section": "Announcements",
-    "text": "Announcements\n\nProject presentations tomorrow 👀\nBefore we analyze some Likert data, submit your own on the Campus Culture Survey – UG participation is very low, help lift it up!"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#from-quiz",
-    "href": "slides/11/11-likert-I.html#from-quiz",
-    "title": "Visualizing Likert data I",
-    "section": "From quiz",
-    "text": "From quiz\nSuppose you have the following plot of 5000 loans, with loans given to borrowers with high debt to income ratios highlighted in red.\n\np &lt;- ggplot(loans_5000, aes(x = annual_income, y = debt_to_income)) +\n  geom_point() +\n  geom_point(data = loans_5000 |&gt; filter(debt_to_income &gt; 150), color = \"red\") +\n  theme_minimal()\n\np"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#from-quiz-1",
-    "href": "slides/11/11-likert-I.html#from-quiz-1",
-    "title": "Visualizing Likert data I",
-    "section": "From quiz",
-    "text": "From quiz\nYou add some text annotation to the plot using two methods: geom_text() and annotate(). You also record how long it takes to run the code required to generate the annotated plots."
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#from-quiz-2",
-    "href": "slides/11/11-likert-I.html#from-quiz-2",
-    "title": "Visualizing Likert data I",
-    "section": "From quiz",
-    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.00441885 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.003641605 secs"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#from-quiz-3",
-    "href": "slides/11/11-likert-I.html#from-quiz-3",
-    "title": "Visualizing Likert data I",
-    "section": "From quiz",
-    "text": "From quiz\nThese two plots can be seen below:\n\n\nWarning in geom_text(aes(x = 25000, y = 300, label = \"High debt-to-income ratio\"), : All aesthetics have length 1, but the data has 5000 rows.\nℹ Did you mean to use `annotate()`?"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#setup",
-    "href": "slides/11/11-likert-I.html#setup",
-    "title": "Visualizing Likert data I",
-    "section": "Setup",
-    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(waffle)\nlibrary(ggthemes)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7, # 7\" width\n  fig.asp = 0.618, # the golden ratio\n  fig.retina = 3, # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300 # higher dpi, sharper image\n)"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#the-survey",
-    "href": "slides/11/11-likert-I.html#the-survey",
-    "title": "Visualizing Likert data I",
-    "section": "The survey",
-    "text": "The survey"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#sample-survey-questions-i",
-    "href": "slides/11/11-likert-I.html#sample-survey-questions-i",
-    "title": "Visualizing Likert data I",
-    "section": "Sample survey questions I",
-    "text": "Sample survey questions I"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#sample-survey-questions-ii",
-    "href": "slides/11/11-likert-I.html#sample-survey-questions-ii",
-    "title": "Visualizing Likert data I",
-    "section": "Sample survey questions II",
-    "text": "Sample survey questions II"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#sample-survey-questions-iii",
-    "href": "slides/11/11-likert-I.html#sample-survey-questions-iii",
-    "title": "Visualizing Likert data I",
-    "section": "Sample survey questions III",
-    "text": "Sample survey questions III"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#raw-data",
-    "href": "slides/11/11-likert-I.html#raw-data",
-    "title": "Visualizing Likert data I",
-    "section": "Raw data",
-    "text": "Raw data\n\ndurham_raw &lt;- read_csv(\"data/durham-2020-raw.csv\")\n\n\nglimpse(durham_raw)\n\nRows: 848\nColumns: 226\n$ id                                      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,…\n$ overall.quality.of.police.p.1.01        &lt;dbl&gt; 3, 4, 9, 3, 2, 5, 4, 1, 4, 5, …\n$ overall.quality.of.sheriff.1.02         &lt;dbl&gt; 3, 4, 9, 3, 2, 4, 4, 1, 9, 5, …\n$ overall.quality.of.fire.and.1.03        &lt;dbl&gt; 3, 4, 9, 4, 4, 4, 9, 4, 3, 5, …\n$ response.time.for.fire.serv.1.04        &lt;dbl&gt; 3, 5, 9, 4, 4, 4, 9, 4, 3, 9, …\n$ overall.quality.of.ems.serv.1.05        &lt;dbl&gt; 3, 5, 9, 4, 4, 4, 9, 4, 3, 4, …\n$ response.time.for.ems.servi.1.06        &lt;dbl&gt; 3, 5, 9, 4, 3, 4, 9, 4, 3, 3, …\n$ overall.maintenance.of.city.1.07        &lt;dbl&gt; 2, 3, 4, 4, 2, 3, 3, 1, 4, 2, …\n$ overall.ease.of.travel.with.1.08        &lt;dbl&gt; 3, 4, 4, 4, 4, 2, 4, 3, 3, 2, …\n$ overall.quality.of.the.publ.1.09        &lt;dbl&gt; 9, 3, 1, 9, 9, 2, 3, 1, 9, 9, …\n$ overall.quality.of.bicycle.1.10         &lt;dbl&gt; 9, 3, 3, 3, 4, 2, 3, 4, 3, 4, …\n$ overall.quality.of.pedestri.1.11        &lt;dbl&gt; 9, 3, 4, 3, 2, 2, 2, 4, 3, 4, …\n$ overall.quality.of.water.an.1.12        &lt;dbl&gt; 9, 5, 5, 4, 4, 3, 4, 4, 4, 4, …\n$ overall.enforcement.of.code.1.13        &lt;dbl&gt; 3, 3, 9, 4, 3, 5, 3, 2, 3, 4, …\n$ overall.quality.of.customer.1.14        &lt;dbl&gt; 4, 5, 9, 4, 4, 3, 4, 2, 3, 3, …\n$ overall.quality.of.customer.1.15        &lt;dbl&gt; 4, 5, 9, 9, 4, 3, 9, 2, 3, 3, …\n$ overall.effectiveness.of.co.1.16        &lt;dbl&gt; 3, 4, 4, 4, 3, 3, 3, 2, 3, 4, …\n$ overall.quality.of.parks.an.1.17        &lt;dbl&gt; 4, 4, 4, 4, 3, 2, 9, 2, 3, 4, …\n$ overall.quality.of.library.1.18         &lt;dbl&gt; 9, 4, 4, 4, 9, 4, 5, 4, 3, 4, …\n$ overall.quality.of.services.1.19        &lt;dbl&gt; 9, 3, 9, 9, 9, 9, 9, 3, 9, 2, …\n$ overall.quality.of.public.h.1.20        &lt;dbl&gt; 9, 4, 9, 3, 9, 9, 9, 3, 3, 2, …\n$ overall.quality.of.tax.admi.1.21        &lt;dbl&gt; 9, 4, 4, 3, 3, 3, 4, 3, 3, 2, …\n$ overall.quality.of.public.s.1.22        &lt;dbl&gt; 9, 3, 9, 3, 1, 1, 3, 1, 9, 3, …\n$ overall.quality.of.charter.1.23         &lt;dbl&gt; 9, 9, 9, 9, 3, 9, 9, 4, 9, 9, …\n$ overall.quality.of.private.1.24         &lt;dbl&gt; 9, 9, 9, 9, 4, 4, 4, 4, 9, 9, …\n$ st.2.01                                 &lt;dbl&gt; 7, 11, 9, 1, 7, 22, 8, 1, 1, 2…\n$ nd.2.02                                 &lt;dbl&gt; 13, 7, 10, 2, 1, 9, 11, 2, 7, …\n$ rd.2.03                                 &lt;dbl&gt; 16, 17, 22, 17, 22, 10, 1, 22,…\n$ overall.quality.of.services.3.01        &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 5, 2, 4, 3, …\n$ overall.quality.of.services.3.02        &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, …\n$ overall.appearance.of.durham.3.03       &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 4, 2, 3, 2, …\n$ overall.management.of.develo.3.04       &lt;dbl&gt; 2, 2, 4, 4, 3, 2, 3, 2, 3, 2, …\n$ overall.image.of.durham.3.05            &lt;dbl&gt; 2, 4, 4, 4, 2, 1, 4, 2, 3, 2, …\n$ overall.quality.of.life.in.d.3.06       &lt;dbl&gt; 2, 4, 4, 3, 4, 4, 4, 3, 3, 2, …\n$ overall.quality.of.life.in.y.3.07       &lt;dbl&gt; 5, 5, 4, 4, 5, 4, 3, 5, 4, 5, …\n$ overall.value.you.receive.fo.3.08       &lt;dbl&gt; 3, 5, 4, 4, 3, 3, 4, 4, 2, 4, …\n$ city.government.4.01                    &lt;dbl&gt; 3, 5, 3, 4, 4, 5, 5, 1, 3, 2, …\n$ county.government.4.02                  &lt;dbl&gt; 3, 5, 3, 4, 3, 4, 4, 1, 3, 2, …\n$ state.government.4.03                   &lt;dbl&gt; 2, 4, 3, 3, 4, 4, 4, 1, 2, 2, …\n$ federal.government.4.04                 &lt;dbl&gt; 3, 1, 1, 1, 3, 5, 1, 1, 2, 2, …\n$ durham.public.school.system.4.05        &lt;dbl&gt; 9, 5, 9, 3, 9, 9, 9, 1, 9, 2, …\n$ st.5.01                                 &lt;dbl&gt; 7, 1, 6, 2, 6, 6, 6, 9, 3, 12,…\n$ nd.5.02                                 &lt;dbl&gt; 6, 2, 11, 1, 5, 4, 7, 4, 2, 4,…\n$ rd.5.03                                 &lt;dbl&gt; 12, 10, 4, 11, 4, 12, 2, 10, 7…\n$ th.5.04                                 &lt;dbl&gt; 9, 7, 12, 6, 2, 7, 12, 3, 1, 7…\n$ th.5.05                                 &lt;dbl&gt; 1, 6, 9, 4, 1, 2, 9, 8, 4, 2, …\n$ public.indoor.gathering.6.01            &lt;dbl&gt; 5, 5, 9, 5, 5, 5, 9, 5, 5, 5, …\n$ private.indoor.gathering.wit.6.02       &lt;dbl&gt; 2, 5, 9, 5, 3, 5, 4, 5, 4, 5, …\n$ public.outdoor.gathering.6.03           &lt;dbl&gt; 5, 5, 2, 5, 4, 2, 9, 2, 4, 4, …\n$ private.outdoor.gathering.wi.6.04       &lt;dbl&gt; 3, 5, 2, 5, 4, 2, 4, 2, 5, 4, …\n$ workplace.6.05                          &lt;dbl&gt; 5, 5, 9, 5, 3, 5, 9, 5, 5, 5, …\n$ m1.children.are.enrolled.in.dur.7.01    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m2.children.are.enrolled.in.a.c.7.02    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 2,…\n$ m3.children.are.enrolled.in.a.p.7.03    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 3,…\n$ m4.children.go.to.school.outsid.7.04    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m5.children.went.to.or.graduate.7.05    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m6.children.went.to.or.graduate.7.06    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m7.children.went.to.or.graduate.7.07    &lt;dbl&gt; NA, NA, NA, NA, NA, 7, NA, NA,…\n$ m8.children.went.to.or.graduate.7.08    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m9.children.are.homeschooled.7.09       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ this.question.does.not.appl10.t.7.10    &lt;dbl&gt; 10, 10, 10, 10, 10, NA, 10, NA…\n$ manages.the.education.budget.8.01       &lt;dbl&gt; 9, 9, 9, 9, 3, 3, 9, 1, 3, 2, …\n$ attracts.high.quality.teacher.8.02      &lt;dbl&gt; 9, 9, 9, 9, 2, 3, 9, 1, 3, 4, …\n$ is.transparent.about.educatio.8.03      &lt;dbl&gt; 9, 9, 9, 9, 2, 9, 9, 1, 3, 1, …\n$ encourages.community.involvem.8.04      &lt;dbl&gt; 9, 9, 9, 9, 3, 9, 9, 4, 3, 1, …\n$ ensures.quality.education.for.8.05      &lt;dbl&gt; 9, 9, 9, 9, 2, 2, 9, 1, 3, 1, …\n$ has.effective.leadership.in.k.8.06      &lt;dbl&gt; 9, 9, 9, 9, 2, 2, 9, 1, 3, 1, …\n$ when.walking.alone.in.your.n.9.01       &lt;dbl&gt; 5, 5, 5, 4, 4, 5, 4, 5, 5, 5, …\n$ when.walking.alone.in.your.n.9.02       &lt;dbl&gt; 4, 4, 4, 2, 4, 5, 2, 4, 3, 4, …\n$ in.downtown.durham.9.03                 &lt;dbl&gt; 3, 4, 4, 4, 3, 3, 4, 4, 4, 2, …\n$ in.durham.overall.9.04                  &lt;dbl&gt; 3, 4, 4, 4, 2, 4, 4, 3, 2, 2, …\n$ when.using.city.recreation.c.9.05       &lt;dbl&gt; 4, 5, 9, 3, 3, 4, 9, 3, 9, 2, …\n$ when.visiting.city.parks.9.06           &lt;dbl&gt; 4, 5, 4, 4, 3, 4, 4, 3, 9, 2, …\n$ overall.police.relationship.10.01       &lt;dbl&gt; 3, 4, 9, 4, 3, 5, 4, 3, 4, 5, …\n$ `overall.sheriff's.office.re.10.02`     &lt;dbl&gt; 3, 4, 9, 3, 3, 5, 9, 3, 9, 5, …\n$ animal.control.services.10.03           &lt;dbl&gt; 3, 5, 9, 3, 3, 9, 9, 4, 3, 5, …\n$ enforcement.of.traffic.safe.10.04       &lt;dbl&gt; 2, 4, 9, 3, 3, 4, 3, 4, 3, 5, …\n$ local.court.system.10.05                &lt;dbl&gt; 3, 9, 9, 3, 3, 9, 9, 3, 2, 2, …\n$ how.satisfied.are.you.with.the.avail.11 &lt;dbl&gt; 9, 5, 9, 2, 4, 9, 3, 9, 9, 4, …\n$ do.your.monthly.housing.cost.12.01      &lt;dbl&gt; 2, 2, 2, 9, 2, 2, 2, 2, 9, 1, …\n$ are.you.able.to.find.housing.12.02      &lt;dbl&gt; 1, 9, 1, 1, 1, 1, 1, 1, 1, 2, …\n$ do.you.have.major.home.repai.12.03      &lt;dbl&gt; 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ greenways.and.trails.13.01              &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 4, 4, 9, 4, …\n$ outdoor.athletic.fields.and.13.02       &lt;dbl&gt; 3, 3, 4, 9, 3, 3, 9, 4, 9, 2, …\n$ customer.service.provided.b.13.03       &lt;dbl&gt; 9, 4, 4, 3, 3, 9, 9, 9, 9, 4, …\n$ public.art.13.04                        &lt;dbl&gt; 2, 4, 4, 4, 5, 9, 4, 3, 3, 4, …\n$ current.state.of.race.relat.14.01       &lt;dbl&gt; 1, 3, 4, 4, 2, 3, 3, 4, 1, 2, …\n$ progress.addressing.racial.14.02        &lt;dbl&gt; 1, 3, 3, 4, 2, 3, 3, 4, 2, 2, …\n$ condition.of.streets.in.yo.15.01        &lt;dbl&gt; 2, 2, 4, 4, 2, 4, 2, 4, 4, 3, …\n$ condition.of.sidewalks.in.15.02         &lt;dbl&gt; 9, 3, 4, 4, 3, 4, 2, 9, 9, 9, …\n$ condition.of.bicycle.facil.15.03        &lt;dbl&gt; 9, 3, 3, 4, 9, 3, 4, 2, 9, 4, …\n$ appearance.of.landscaping.15.04         &lt;dbl&gt; 3, 3, 4, 4, 3, 4, 4, 2, 3, 4, …\n$ condition.of.parks.and.ope.15.05        &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 4, 4, 9, 2, …\n$ condition.of.recreation.ce.15.06        &lt;dbl&gt; 3, 5, 9, 3, 3, 4, 9, 9, 9, 4, …\n$ overall.appearance.of.majo.15.07        &lt;dbl&gt; 3, 3, 9, 3, 4, 4, 4, 2, 3, 2, …\n$ condition.of.public.school.15.08        &lt;dbl&gt; 9, 2, 9, 9, 9, 4, 9, 9, 9, 1, …\n$ condition.of.trails.and.gr.15.09        &lt;dbl&gt; 9, 4, 4, 4, 4, 3, 4, 4, 9, 4, …\n$ condition.of.public.art.15.10           &lt;dbl&gt; 2, 3, 4, 4, 5, 9, 4, 4, 3, 4, …\n$ condition.of.aquatic.facil.15.11        &lt;dbl&gt; 9, 4, 9, 4, 9, 4, 9, 9, 3, 4, …\n$ condition.of.parking.15.12              &lt;dbl&gt; 2, 4, 9, 3, 3, 3, 3, 1, 1, 3, …\n$ st.16.01                                &lt;dbl&gt; 1, 8, 9, 1, 1, 12, 1, 7, 12, 8…\n$ nd.16.02                                &lt;dbl&gt; 12, 3, 3, 2, 12, 5, 2, 8, 10, …\n$ rd.16.03                                &lt;dbl&gt; 7, 1, 5, 9, 4, 9, 3, 4, 7, 7, …\n$ it.is.too.far.from.m1.home.to.17a.01    &lt;dbl&gt; NA, NA, 1, NA, 1, 1, NA, 1, NA…\n$ the.bus.does.not.serve.where.17a.02     &lt;dbl&gt; NA, NA, 2, NA, 2, 2, NA, NA, N…\n$ i.prefer.driving.m3.carneed.17a.03      &lt;dbl&gt; 3, NA, NA, 3, 3, 3, 3, 3, 3, 3…\n$ i.have.safet4.concerns.17a.04           &lt;dbl&gt; NA, NA, NA, 4, NA, NA, NA, 4, …\n$ the.bus.would.take.too.long.17a.05      &lt;dbl&gt; NA, NA, 5, NA, NA, NA, 5, NA, …\n$ other.17a.06                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ we.ride.public.transit.in.dur.17a.07    &lt;dbl&gt; NA, 7, NA, NA, NA, NA, NA, NA,…\n$ `i.don't.havecannot.use.a.car.17b.01`   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ the.bus.gets.me.where.i.need.17b.02     &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ i.ride.the.bus.for.environmen.17b.03    &lt;dbl&gt; NA, 3, NA, NA, NA, NA, NA, NA,…\n$ parking.at.m4.work.is.difficu.17b.04    &lt;dbl&gt; NA, 4, NA, NA, NA, NA, NA, NA,…\n$ taking.the.bus.is.cheaper.tha.17b.05    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ other.17b.06                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ `we.don't.ride.public.transit.17b.07`   &lt;dbl&gt; 7, NA, 7, 7, 7, 7, 7, 7, 7, 7,…\n$ please.define.other.17b.6               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ ease.of.travel.by.walking.18.01         &lt;dbl&gt; 9, 4, 2, 4, 4, 3, 2, 3, 3, 4, …\n$ ease.of.travel.by.biking.18.02          &lt;dbl&gt; 9, 3, 2, 3, 4, 2, 3, 2, 9, 4, …\n$ ease.of.travel.by.bus.godu.18.03        &lt;dbl&gt; 9, 3, 2, 3, 9, 3, 9, 9, 9, 3, …\n$ quality.of.downtown.parking.18.04       &lt;dbl&gt; 2, 3, 3, 3, 3, 3, 4, 3, 1, 4, …\n$ the.ability.in.your.neighbo.18.05       &lt;dbl&gt; 4, 5, 4, 4, 4, 4, 2, 5, 5, 5, …\n$ solid.waste.collection.serv.19.01       &lt;dbl&gt; 9, 5, 5, 4, 4, 9, 5, 9, 5, 4, …\n$ curbside.recycling.services.19.02       &lt;dbl&gt; 4, 5, 5, 4, 4, 9, 5, 4, 5, 4, …\n$ yard.waste.leavestree.lim.19.03         &lt;dbl&gt; 2, 5, 9, 9, 9, 9, 5, 9, 9, 9, …\n$ city.waste.disposal.and.rec.19.04       &lt;dbl&gt; 4, 3, 9, 4, 9, 3, 4, 9, 4, 9, …\n$ county.solid.waste.convenie.19.05       &lt;dbl&gt; 3, 9, 9, 4, 9, 4, 9, 9, 9, 4, …\n$ quality.of.drinking.water.19.06         &lt;dbl&gt; 9, 4, 4, 5, 4, 4, 5, 1, 5, 4, …\n$ sewer.services.19.07                    &lt;dbl&gt; 9, 4, 4, 4, 3, 4, 4, 4, 5, 4, …\n$ overall.management.of.publi.19.08       &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 2, 3, 4, …\n$ stream.and.lake.protection.19.09        &lt;dbl&gt; 3, 4, 9, 4, 9, 4, 9, 3, 3, 4, …\n$ durham.residents.learn.about.n.20.01    &lt;dbl&gt; 3, 2, 3, 1, 3, 1, 6, 3, 1, 2, …\n$ it.is.easy.for.residents.to.ha.20.02    &lt;dbl&gt; 2, 1, 4, 3, 2, 2, 5, 4, 2, 1, …\n$ `the.character.of.durham's.neig.20.03`  &lt;dbl&gt; 1, 5, 6, 4, 5, 3, 4, 2, 3, 5, …\n$ durham.should.have.more.racial.20.04    &lt;dbl&gt; 5, 3, 5, 2, 4, 6, 1, 5, 5, 3, …\n$ i.would.like.to.have.shopping.20.05     &lt;dbl&gt; 4, 6, 1, 5, 1, 5, 3, 1, 4, 4, …\n$ i.would.be.ok.with.a.greater.v.20.06    &lt;dbl&gt; 6, 4, 2, 6, 6, 4, 2, 6, 6, 6, …\n$ are.you.a.resident.of.durham.city.22    &lt;dbl&gt; 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, …\n$ availability.of.information.22a.01      &lt;dbl&gt; NA, 3, NA, 3, 4, NA, 3, NA, 3,…\n$ ease.of.locating.informatio.22a.02      &lt;dbl&gt; NA, 2, NA, 3, 4, NA, 4, NA, 4,…\n$ your.experience.engaging.wi.22a.03      &lt;dbl&gt; NA, 3, NA, 3, 3, NA, 4, NA, 3,…\n$ level.of.public.involvement.22a.04      &lt;dbl&gt; NA, 3, NA, 4, 3, NA, 9, NA, 3,…\n$ city.efforts.to.keep.you.in.22a.05      &lt;dbl&gt; NA, 4, NA, 4, 4, NA, 3, NA, 3,…\n$ city.of.durham.website.22b.01           &lt;dbl&gt; NA, 3, NA, 3, 3, NA, 3, NA, 2,…\n$ city.of.durham.twitter.feed.22b.02      &lt;dbl&gt; NA, 9, NA, 3, 1, NA, 4, NA, 1,…\n$ city.of.durham.facebook.pag.22b.03      &lt;dbl&gt; NA, 9, NA, 2, 1, NA, 2, NA, 1,…\n$ mailings.of..direct.contact.22b.04      &lt;dbl&gt; NA, 3, NA, 3, 3, NA, 2, NA, 2,…\n$ durham.television.network.22b.05        &lt;dbl&gt; NA, 3, NA, 1, 1, NA, 1, NA, 2,…\n$ traditional.media.tv..news.22b.06       &lt;dbl&gt; NA, 5, NA, 3, 4, NA, 4, NA, 1,…\n$ friendscolleaguesword.of.22b.07         &lt;dbl&gt; NA, 5, NA, 3, 1, NA, 2, NA, 3,…\n$ other.22b.08                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ during.the.past.year..have.you.cont.22c &lt;dbl&gt; NA, 1, NA, 1, 2, NA, 1, NA, 2,…\n$ how.easy.the.city.governme.22d.01       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 4, NA, N…\n$ courtesy.of.city.employee.22d.02        &lt;dbl&gt; NA, 4, NA, 3, NA, NA, 5, NA, N…\n$ accuracy.of.the.informatio.22d.03       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 4, NA, N…\n$ appropriateness.of.city.em.22d.04       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 4, NA, N…\n$ timeliness.of.city.employe.22d.05       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 5, NA, N…\n$ the.resolution.of.your.iss.22d.06       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 5, NA, N…\n$ availability.of.informatio.23a.01       &lt;dbl&gt; 9, 3, 3, 4, 4, 3, 9, 3, 3, 4, …\n$ ease.of.locating.informati.23a.02       &lt;dbl&gt; 3, 2, 4, 3, 4, 2, 9, 4, 3, 4, …\n$ your.experience.engaging.w.23a.03       &lt;dbl&gt; 3, 3, 9, 3, 3, 3, 9, 3, 3, 4, …\n$ level.of.public.involvemen.23a.04       &lt;dbl&gt; 2, 4, 9, 3, 9, 3, 9, 3, 3, 2, …\n$ county.efforts.to.keep.you.23a.05       &lt;dbl&gt; 3, 3, 3, 4, 3, 3, 9, 2, 3, 2, …\n$ your.ability.to.get.timely.23a.06       &lt;dbl&gt; 3, 5, 9, 4, 5, 3, 3, 4, 3, 4, …\n$ durham.county.website.23b.01            &lt;dbl&gt; 9, 3, 2, 3, 2, 2, 2, 3, 2, 5, …\n$ durham.county.twitter.feed.23b.02       &lt;dbl&gt; 9, 1, 1, 3, 1, 1, 3, 1, 1, 1, …\n$ durham.county.facebook.pag.23b.03       &lt;dbl&gt; 9, 1, 1, 2, 1, 1, 1, 5, 1, 5, …\n$ durham.county.nextdoor.23b.04           &lt;dbl&gt; 9, 1, 3, 1, 3, 1, 3, 3, 5, 5, …\n$ mailings.of..direct.contac.23b.05       &lt;dbl&gt; 9, 2, 2, 3, 3, 3, 2, 2, 3, 1, …\n$ durham.county.tv.show.23b.06            &lt;dbl&gt; 9, 1, 1, 1, 1, 1, 1, 1, 2, 1, …\n$ traditional.media.tv..new.23b.07        &lt;dbl&gt; 9, 5, 2, 3, 5, 5, 4, 5, 2, 5, …\n$ friendscolleaguesword.of.23b.08         &lt;dbl&gt; 3, 5, 2, 3, 2, 2, 1, 4, 3, 5, …\n$ other.23b.09                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ please.define.other.23b.9               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ during.the.past.year..have.you.cont.23c &lt;dbl&gt; 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, …\n$ how.easy.the.county.govern.23d.01       &lt;dbl&gt; 4, NA, NA, NA, NA, 3, NA, 2, N…\n$ courtesy.of.county.employe.23d.02       &lt;dbl&gt; 4, NA, NA, NA, NA, 9, NA, 2, N…\n$ accuracy.of.the.informatio.23d.03       &lt;dbl&gt; 4, NA, NA, NA, NA, 3, NA, 2, N…\n$ appropriateness.of.county.23d.04        &lt;dbl&gt; 4, NA, NA, NA, NA, 9, NA, 2, N…\n$ timeliness.of.county.emplo.23d.05       &lt;dbl&gt; 4, NA, NA, NA, NA, 9, NA, 2, N…\n$ the.resolution.of.your.iss.23d.06       &lt;dbl&gt; 4, NA, NA, NA, NA, 2, NA, 2, N…\n$ as.a.place.to.live.24.01                &lt;dbl&gt; 3, 5, 4, 4, 4, 4, 4, 3, 4, 3, …\n$ as.a.place.to.work.24.02                &lt;dbl&gt; 4, 4, 9, 4, 9, 5, 9, 3, 4, 3, …\n$ as.a.place.to.play.24.03                &lt;dbl&gt; 3, 4, 9, 4, 3, 3, 9, 4, 4, 3, …\n$ as.a.place.to.raise.childre.24.04       &lt;dbl&gt; 2, 4, 9, 9, 2, 4, 9, 3, 9, 2, …\n$ as.a.place.to.educate.child.24.05       &lt;dbl&gt; 2, 4, 9, 9, 1, 4, 9, 2, 9, 2, …\n$ as.a.place.to.retire.24.06              &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 9, 1, 4, 2, …\n$ as.a.place.to.visit.24.07               &lt;dbl&gt; 3, 4, 3, 3, 5, 4, 4, 2, 3, 2, …\n$ as.a.place.to.start.a.busin.24.08       &lt;dbl&gt; 3, 4, 9, 3, 9, 9, 9, 3, 3, 2, …\n$ as.a.community.that.is.movi.24.09       &lt;dbl&gt; 1, 5, 4, 4, 3, 3, 4, 3, 3, 2, …\n$ affordable.housing.25.01                &lt;dbl&gt; NA, 1, 1, NA, 1, NA, 1, NA, 1,…\n$ street.maintenance.25.02                &lt;dbl&gt; 2, NA, NA, 2, 2, NA, NA, NA, 2…\n$ sidewalk.construction.25.03             &lt;dbl&gt; NA, NA, NA, 3, 3, NA, 3, NA, N…\n$ universal.prek.25.04                    &lt;dbl&gt; NA, NA, 4, NA, NA, NA, 4, 4, N…\n$ social.services.25.05                   &lt;dbl&gt; NA, NA, 5, NA, NA, 5, NA, NA, …\n$ outh.programming.25.06                  &lt;dbl&gt; NA, NA, 6, NA, NA, NA, NA, 6, …\n$ job.creationtraining.25.07              &lt;dbl&gt; NA, 7, NA, NA, 7, NA, NA, 7, 7…\n$ communit8led.safet8.initiativ.25.08     &lt;dbl&gt; NA, 8, NA, 8, NA, 8, 8, 8, NA,…\n$ law.enforcementled.safet9.ini.25.09     &lt;dbl&gt; 9, NA, NA, NA, 9, 9, 9, NA, 9,…\n$ public.school.operations.teac.25.10     &lt;dbl&gt; 10, 10, 10, 10, NA, 10, NA, 10…\n$ court.services.25.11                    &lt;dbl&gt; NA, 11, NA, NA, NA, 11, NA, NA…\n$ i.would.not.increase.funding.f.25.12    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ have.you.or.someone.in.your.househol.26 &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ approximately.how.many.years.have.yo.28 &lt;dbl&gt; 29, 34, 15, 11, 4, 35, 3, 25, …\n$ what.is.your.age.29                     &lt;dbl&gt; 1, 3, 2, 1, 1, 4, 1, 1, 5, 1, …\n$ what.is.your.gender.30                  &lt;dbl&gt; 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, …\n$ do.you.own.or.rent.your.current.resi.31 &lt;dbl&gt; 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, …\n$ asianpacific.islander.32.01             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ white.32.02                             &lt;dbl&gt; NA, 2, 2, 2, NA, 2, 2, 2, 2, 2…\n$ native.americaninuit.32.03              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ blackafrican.american.32.04             &lt;dbl&gt; 4, NA, NA, NA, 4, NA, NA, NA, …\n$ other.32.05                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ please.define.other.32.5                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ are.you.of.hispanic..latino..or..spa.33 &lt;dbl&gt; 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, …\n$ what.is.the.primary.language.used.in.34 &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ please.define.other.34.3                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ how.might.we.better.provide.service.34a &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ would.you.say.your.total.annual.hous.35 &lt;dbl&gt; 1, 2, 9, 9, 3, 4, 3, 3, 9, 2, …\n$ city                                    &lt;chr&gt; \"Durham\", \"Durham\", \"Durham\", …\n$ state                                   &lt;chr&gt; \"NC\", \"NC\", \"NC\", \"NC\", \"NC\", …\n$ zip                                     &lt;dbl&gt; 27712, 27705, 27703, 27713, 27…\n$ pac.zone                                &lt;dbl&gt; NA, 2, NA, 4, 4, NA, 4, NA, 3,…\n$ inside.city.of.durham                   &lt;chr&gt; \"N\", \"Y\", \"N\", \"Y\", \"Y\", \"N\", …\n$ block.lon                               &lt;dbl&gt; -78877000, -78920000, -7875600…\n$ block.lat                               &lt;dbl&gt; 36087000, 36022000, 35927000, …"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#processed-data",
-    "href": "slides/11/11-likert-I.html#processed-data",
-    "title": "Visualizing Likert data I",
-    "section": "Processed data",
-    "text": "Processed data\n\ndurham &lt;- read_csv(\"data/durham-2020.csv\")\n\n\nglimpse(durham)\n\nRows: 848\nColumns: 49\n$ id                                      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, NA, 10…\n$ overall_quality_of_services_3_01        &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 5, 2, 4, 3, …\n$ overall_quality_of_services_3_02        &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, …\n$ overall_appearance_of_durham_3_03       &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 4, 2, 3, 2, …\n$ overall_management_of_develo_3_04       &lt;dbl&gt; 2, 2, 4, 4, 3, 2, 3, 2, 3, 2, …\n$ overall_image_of_durham_3_05            &lt;dbl&gt; 2, 4, 4, 4, 2, 1, 4, 2, 3, 2, …\n$ overall_quality_of_life_in_d_3_06       &lt;dbl&gt; 2, 4, 4, 3, 4, 4, 4, 3, 3, 2, …\n$ overall_quality_of_life_in_y_3_07       &lt;dbl&gt; 5, 5, 4, 4, 5, 4, 3, 5, 4, 5, …\n$ overall_value_you_receive_fo_3_08       &lt;dbl&gt; 3, 5, 4, 4, 3, 3, 4, 4, 2, 4, …\n$ do_your_monthly_housing_cost_12_01      &lt;dbl&gt; 2, 2, 2, NA, 2, 2, 2, 2, NA, 1…\n$ are_you_able_to_find_housing_12_02      &lt;dbl&gt; 1, NA, 1, 1, 1, 1, 1, 1, 1, 2,…\n$ do_you_have_major_home_repai_12_03      &lt;dbl&gt; 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ ease_of_travel_by_walking_18_01         &lt;dbl&gt; NA, 4, 2, 4, 4, 3, 2, 3, 3, 4,…\n$ ease_of_travel_by_biking_18_02          &lt;dbl&gt; NA, 3, 2, 3, 4, 2, 3, 2, NA, 4…\n$ ease_of_travel_by_bus_godu_18_03        &lt;dbl&gt; NA, 3, 2, 3, NA, 3, NA, NA, NA…\n$ quality_of_downtown_parking_18_04       &lt;dbl&gt; 2, 3, 3, 3, 3, 3, 4, 3, 1, 4, …\n$ the_ability_in_your_neighbo_18_05       &lt;dbl&gt; 4, 5, 4, 4, 4, 4, 2, 5, 5, 5, …\n$ as_a_place_to_live_24_01                &lt;dbl&gt; 3, 5, 4, 4, 4, 4, 4, 3, 4, 3, …\n$ as_a_place_to_work_24_02                &lt;dbl&gt; 4, 4, NA, 4, NA, 5, NA, 3, 4, …\n$ as_a_place_to_play_24_03                &lt;dbl&gt; 3, 4, NA, 4, 3, 3, NA, 4, 4, 3…\n$ as_a_place_to_raise_childre_24_04       &lt;dbl&gt; 2, 4, NA, NA, 2, 4, NA, 3, NA,…\n$ as_a_place_to_educate_child_24_05       &lt;dbl&gt; 2, 4, NA, NA, 1, 4, NA, 2, NA,…\n$ as_a_place_to_retire_24_06              &lt;dbl&gt; 2, 4, 4, 4, 4, 4, NA, 1, 4, 2,…\n$ as_a_place_to_visit_24_07               &lt;dbl&gt; 3, 4, 3, 3, 5, 4, 4, 2, 3, 2, …\n$ as_a_place_to_start_a_busin_24_08       &lt;dbl&gt; 3, 4, NA, 3, NA, NA, NA, 3, 3,…\n$ as_a_community_that_is_movi_24_09       &lt;dbl&gt; 1, 5, 4, 4, 3, 3, 4, 3, 3, 2, …\n$ have_you_or_someone_in_your_househol_26 &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ approximately_how_many_years_have_yo_28 &lt;dbl&gt; 29, 34, 15, 11, 4, 35, 3, 25, …\n$ what_is_your_age_29                     &lt;dbl&gt; 1, 3, 2, 1, 1, 4, 1, 1, 5, 1, …\n$ what_is_your_gender_30                  &lt;dbl&gt; 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, …\n$ do_you_own_or_rent_your_current_resi_31 &lt;dbl&gt; 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, …\n$ asianpacific_islander_32_01             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ white_32_02                             &lt;dbl&gt; NA, 2, 2, 2, NA, 2, 2, 2, 2, 2…\n$ native_americaninuit_32_03              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ blackafrican_american_32_04             &lt;dbl&gt; 4, NA, NA, NA, 4, NA, NA, NA, …\n$ other_32_05                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ please_define_other_32_5                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ are_you_of_hispanic_latino_or_spa_33    &lt;dbl&gt; 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, …\n$ primary_language                        &lt;chr&gt; \"English\", \"English\", \"English…\n$ please_define_other_34_3                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ how_might_we_better_provide_service_34a &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ would_you_say_your_total_annual_hous_35 &lt;dbl&gt; 1, 2, NA, NA, 3, 4, 3, 3, NA, …\n$ city                                    &lt;chr&gt; \"Durham\", \"Durham\", \"Durham\", …\n$ state                                   &lt;chr&gt; \"NC\", \"NC\", \"NC\", \"NC\", \"NC\", …\n$ zip                                     &lt;dbl&gt; 27712, 27705, 27703, 27713, 27…\n$ pac_zone                                &lt;dbl&gt; NA, 2, NA, 4, 4, NA, 4, NA, 3,…\n$ inside_city_of_durham                   &lt;chr&gt; \"N\", \"Y\", \"N\", \"Y\", \"Y\", \"N\", …\n$ block_lon                               &lt;dbl&gt; -78877000, -78920000, -7875600…\n$ block_lat                               &lt;dbl&gt; 36087000, 36022000, 35927000, …"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#strategies-for-cleaning-survey-data",
-    "href": "slides/11/11-likert-I.html#strategies-for-cleaning-survey-data",
-    "title": "Visualizing Likert data I",
-    "section": "Strategies for cleaning survey data",
-    "text": "Strategies for cleaning survey data\n\njanitor::clean_names()\nselect() with contains(), starts_with(), etc.\nmutate() with case_match(), e.g.,\n\n\ndurham_raw |&gt;\n  mutate(\n    primary_language = case_match(\n      primary_language,\n      1 ~ \"English\",\n      2 ~ \"Spanish\",\n      3 ~ \"Other\"\n    )\n  )\n\n\nUpdate variable names by writing variable names to a file, opening that file in a spreadsheet or plain text editor to write updated names, and then reading back in and updating the names."
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#language",
-    "href": "slides/11/11-likert-I.html#language",
-    "title": "Visualizing Likert data I",
-    "section": "Language",
-    "text": "Language\n\n\n\nWhat is the primary language used in your household?\n\n\n\n\ndurham |&gt; distinct(primary_language)\n\n# A tibble: 4 × 1\n  primary_language\n  &lt;chr&gt;           \n1 English         \n2 Spanish         \n3 &lt;NA&gt;            \n4 Other           \n\n\n\n\ndurham &lt;- durham |&gt;\n  mutate(\n    primary_language = fct_relevel(primary_language, \"English\", \"Spanish\", \"Other\")\n  )"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#bar-chart",
-    "href": "slides/11/11-likert-I.html#bar-chart",
-    "title": "Visualizing Likert data I",
-    "section": "Bar chart",
-    "text": "Bar chart\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  ggplot(aes(x = primary_language)) +\n  geom_bar()"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#pie-chart",
-    "href": "slides/11/11-likert-I.html#pie-chart",
-    "title": "Visualizing Likert data I",
-    "section": "Pie chart",
-    "text": "Pie chart\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  ggplot(aes(x = 1, y = n, fill = primary_language)) +\n  geom_col(linewidth = 0.5, color = \"white\") +\n  coord_polar(\"y\") +\n  scale_fill_tableau() +\n  labs(fill = \"Primary language\") +\n  theme_void(base_size = 16) +\n  theme(legend.position = \"top\")"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#pie-chart-output",
-    "href": "slides/11/11-likert-I.html#pie-chart-output",
-    "title": "Visualizing Likert data I",
-    "section": "Pie chart",
-    "text": "Pie chart"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#waffle-chart",
-    "href": "slides/11/11-likert-I.html#waffle-chart",
-    "title": "Visualizing Likert data I",
-    "section": "Waffle chart",
-    "text": "Waffle chart\nUsing waffle:\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  ggplot(aes(fill = primary_language, values = n)) +\n  geom_waffle(n_rows = 20, size = 0.33, color = \"white\") +\n  scale_fill_tableau() +\n  labs(fill = \"Primary language\") +\n  theme_enhance_waffle() +\n  theme(legend.position = \"top\")"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#waffle-chart-output",
-    "href": "slides/11/11-likert-I.html#waffle-chart-output",
-    "title": "Visualizing Likert data I",
-    "section": "Waffle chart",
-    "text": "Waffle chart"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart",
-    "href": "slides/11/11-likert-I.html#proportional-waffle-chart",
-    "title": "Visualizing Likert data I",
-    "section": "Proportional waffle chart",
-    "text": "Proportional waffle chart\n\n\nWaffles work best when they are square – makes it easier to compare parts to whole which is the purpose of the chart\n\nBut what happened to “Other”?"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart-1",
-    "href": "slides/11/11-likert-I.html#proportional-waffle-chart-1",
-    "title": "Visualizing Likert data I",
-    "section": "Proportional waffle chart",
-    "text": "Proportional waffle chart\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  ggplot(aes(fill = primary_language, values = n)) +\n  geom_waffle(\n    n_rows = 10, size = 0.33, \n    color = \"white\", flip = TRUE, make_proportional = TRUE\n  ) +\n  labs(fill = str_wrap(\"What is the primary language used in your household?\", 30)) +\n  scale_fill_tableau() +\n  coord_equal() +\n  theme_void() + \n  theme_enhance_waffle()"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2",
-    "href": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2",
-    "title": "Visualizing Likert data I",
-    "section": "Proportional waffle chart, take 2",
-    "text": "Proportional waffle chart, take 2\nWith a bit of fudging…"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2-1",
-    "href": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2-1",
-    "title": "Visualizing Likert data I",
-    "section": "Proportional waffle chart, take 2",
-    "text": "Proportional waffle chart, take 2\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  mutate(\n    prop = n / sum(n),\n    n_norm = 100 * prop,\n    n_norm = ceiling(n_norm),\n    n_norm = if_else(primary_language == \"English\", 96, n_norm)\n  ) |&gt;\n  ggplot(aes(fill = primary_language, values = n_norm)) +\n  geom_waffle(\n    n_rows = 10, size = 1,\n    color = \"white\", flip = TRUE, make_proportional = TRUE\n  ) +\n  labs(fill = str_wrap(\"What is the primary language used in your household?\", 30)) +\n  scale_fill_tableau() +\n  coord_equal() +\n  theme_void() +\n  theme_enhance_waffle()"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#quality",
-    "href": "slides/11/11-likert-I.html#quality",
-    "title": "Visualizing Likert data I",
-    "section": "Quality",
-    "text": "Quality\n\ndurham |&gt;\n  select(contains(\"_3_\")) |&gt;\n  glimpse()\n\nRows: 848\nColumns: 8\n$ overall_quality_of_services_3_01  &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 5, 2, 4, 3, 4, 4, …\n$ overall_quality_of_services_3_02  &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, …\n$ overall_appearance_of_durham_3_03 &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 4, 2, 3, 2, 4, 4, …\n$ overall_management_of_develo_3_04 &lt;dbl&gt; 2, 2, 4, 4, 3, 2, 3, 2, 3, 2, 4, 3, …\n$ overall_image_of_durham_3_05      &lt;dbl&gt; 2, 4, 4, 4, 2, 1, 4, 2, 3, 2, 4, 3, …\n$ overall_quality_of_life_in_d_3_06 &lt;dbl&gt; 2, 4, 4, 3, 4, 4, 4, 3, 3, 2, 4, 4, …\n$ overall_quality_of_life_in_y_3_07 &lt;dbl&gt; 5, 5, 4, 4, 5, 4, 3, 5, 4, 5, 4, 5, …\n$ overall_value_you_receive_fo_3_08 &lt;dbl&gt; 3, 5, 4, 4, 3, 3, 4, 4, 2, 4, 3, 4, …"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#overall-quality-of-services",
-    "href": "slides/11/11-likert-I.html#overall-quality-of-services",
-    "title": "Visualizing Likert data I",
-    "section": "Overall quality of services",
-    "text": "Overall quality of services\nA very rough starting point:"
-  },
-  {
-    "objectID": "slides/11/11-likert-I.html#lets-improve",
-    "href": "slides/11/11-likert-I.html#lets-improve",
-    "title": "Visualizing Likert data I",
-    "section": "Let’s improve!",
-    "text": "Let’s improve!\n\nGo to ae-08 to pick up where we left off and continue improving.\n\n\n\nStep 1:\n\n\nStep 2:\n\n\n\n\n\n\n\n🔗 vizdata.org"
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "Course overview",
-    "section": "",
-    "text": "This is the homepage for STA 313 - Advanced Data Visualization taught by Dr. Mine Çetinkaya-Rundel in Spring 2024 at Duke University. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#class-meetings",
-    "href": "course-overview.html#class-meetings",
-    "title": "Course overview",
-    "section": "Class meetings",
-    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nLSRC D106\nTue & Thur 10:05 - 11:20 pm\n\n\nLab 1\nLink Classroom 5\nWed 1:25 - 2:40 pm\n\n\nLab 2\nLink Classroom 5\nWed 3:05 - 4:20 pm",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#license",
-    "href": "course-overview.html#license",
-    "title": "Course overview",
-    "section": "License",
-    "text": "License\n\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license.",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "computing/computing-cheatsheets.html",
-    "href": "computing/computing-cheatsheets.html",
-    "title": "R cheatsheets",
-    "section": "",
-    "text": "The following cheatsheets come from https://posit.co/resources/cheatsheets. We haven’t covered every function and functionality listed on them, but you might still find them useful as references.",
-    "crumbs": [
-      "Computing",
-      "Cheatsheets"
-    ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MATH 4720: Statistical Methods",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nThu, Jan 11\n\n\nWelcome + Grammar of graphics\nslides-00\n\n\n\n\n2\nTue, Jan 16\n📚 ggplot2-book - grammar  📚 socviz\nDeep dive into ggplot2 layers I\nslides-01  ae-01\n📝 HW 1 at 5 pm\n\n\n3\nSun, Jan 21\n📚 fdv - Chp 10  📚 fdv - Chp 11\nVisualizing Likert data I\nslides-11\n✅ RQ 3 at 10 am\n\n\n\n\nMon, Jan 22\n📃 gganimate vignette\nAnimation\nslides-21  ae-16",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
-  },
-  {
     "objectID": "course-links.html",
     "href": "course-links.html",
     "title": "Useful links",
@@ -434,17 +8,6 @@
     "crumbs": [
       "Course information",
       "Useful links"
-    ]
-  },
-  {
-    "objectID": "student-work/ugly-plot.html",
-    "href": "student-work/ugly-plot.html",
-    "title": "Ugly plots",
-    "section": "",
-    "text": "To be posted.",
-    "crumbs": [
-      "Student work",
-      "Ugly plots"
     ]
   },
   {
@@ -478,6 +41,17 @@
     "crumbs": [
       "Course information",
       "Teaching team"
+    ]
+  },
+  {
+    "objectID": "student-work/ugly-plot.html",
+    "href": "student-work/ugly-plot.html",
+    "title": "Ugly plots",
+    "section": "",
+    "text": "To be posted.",
+    "crumbs": [
+      "Student work",
+      "Ugly plots"
     ]
   },
   {
@@ -622,46 +196,6 @@
       "Course information",
       "Syllabus"
     ]
-  },
-  {
-    "objectID": "hw/hw-1.html",
-    "href": "hw/hw-1.html",
-    "title": "HW 1",
-    "section": "",
-    "text": "For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you’ve pushed all of your changes.",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "hw/hw-1.html#question-1",
-    "href": "hw/hw-1.html#question-1",
-    "title": "HW 1",
-    "section": "Question 1",
-    "text": "Question 1\nNYC marathon winners.\nThe New York City Marathon is an annual marathon (26.2 miles / 42.195 kilometers) that courses through the five boroughs of New York City. Marathon times of runners in the Men and Women divisions of the New York City Marathon between 1970 and 2020 can be found in the nyc_marathon dataset in the openintro package (which is already installed for you). You can find out more about the dataset by inspecting its documentation with ?nyc_marathon and you can also find this information here.\na. Create a histogram and a box plot of the distribution of marathon times of all runners in the dataset. What features of the distribution are apparent in the histogram and not the box plot? What features are apparent in the box plot but not in the histogram?\nb. Create a side-by-side box plots of marathon times for men and women. Use different colors for the each of the box plots – do not use the default colors, but instead manually define them (you can choose any two colors you want). Based on the plots you made, compare the distribution of marathon times for men and women.\nc. What information in the above plot is redundant? Redo the plot avoiding this redundancy. How does this update change the data-to-ink ratio?\nd. Visualize the marathon times of men and women over the years. As is usual with time series plot, year should go on the x-axis. Use different colors and shapes to represent the times for men and women. Make sure your colors match those in the previous part. Once you have your plot, describe what is visible in this plot but not in the others.",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "hw/hw-1.html#question-2",
-    "href": "hw/hw-1.html#question-2",
-    "title": "HW 1",
-    "section": "Question 2",
-    "text": "Question 2\nUS counties.\nThe following questions use the county dataset in the openintro package. You can find out more about the dataset by inspecting its documentation with ?county and you can also find this information here.\na. What does the following code do? Does it work? Does it make sense? Why/why not?\n\nggplot(county) +\n  geom_point(aes(x = median_edu, y = median_hh_income)) +\n  geom_boxplot(aes(x = smoking_ban, y = pop2017))\n\nb. Which of the following two plots makes it easier to compare poverty levels (poverty) across people from different median education levels (median_edu)? What does this say about when to place a faceting variable across rows or columns?\n\nggplot(county |&gt; filter(!is.na(median_edu))) + \n  geom_point(aes(x = homeownership, y = poverty)) + \n  facet_grid(median_edu ~ .)\n\n\n\n\n\n\n\n\n\nggplot(county |&gt; filter(!is.na(median_edu))) + \n  geom_point(aes(x = homeownership, y = poverty)) + \n  facet_grid(. ~ median_edu)\n\n\n\n\n\n\n\n\nc. Recreate the R code necessary to generate the following graphs. Note that wherever a categorical variable is used in the plot, it’s metro.",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
   },
   {
     "objectID": "slides/21/21-animation.html#setup",
@@ -872,6 +406,399 @@
     "title": "Animation",
     "section": "Acknowledgements",
     "text": "Acknowledgements\n\nGetting your plots to talk back by Di Cook\ngganimate workshop by Mitchell O’Hara-Wild\n\n\n\n\n\n🔗 vizdata.org"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#announcements",
+    "href": "slides/01/01-layers-I.html#announcements",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Announcements",
+    "text": "Announcements\n\nOffice hours + locations finalized at vizdata.org/course-team.html\n\nMy office hours today only: 2-3 pm at Old Chem 213\n\nDon’t forget to complete the getting to know you survey by 8pm today at the latest – we need your GitHub names for tomorrow’s lab!\nA note on readings for this week: Some of it is review so feel free to skim those parts\nNo class recordings on Panopto – unfortunately the room isn’t set up for it 😥\nLecture participation today: Test run, not graded!"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#setup",
+    "href": "slides/01/01-layers-I.html#setup",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Setup",
+    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(openintro)\nlibrary(countdown)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 14))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7,        # 7\" width\n  fig.asp = 0.618,      # the golden ratio\n  fig.retina = 3,       # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300             # higher dpi, sharper image\n)"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#data-sale-prices-of-houses-in-duke-forest",
+    "href": "slides/01/01-layers-I.html#data-sale-prices-of-houses-in-duke-forest",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Data: Sale prices of houses in Duke Forest",
+    "text": "Data: Sale prices of houses in Duke Forest\n\n\n\nData on houses that were sold in the Duke Forest neighborhood of Durham, NC around November 2020\nScraped from Zillow\nSource: openintro::duke_forest"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#openintroduke_forest",
+    "href": "slides/01/01-layers-I.html#openintroduke_forest",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "openintro::duke_forest",
+    "text": "openintro::duke_forest\n\nlibrary(tidyverse)\nlibrary(openintro)\n\nglimpse(duke_forest)\n\nRows: 98\nColumns: 13\n$ address    &lt;chr&gt; \"1 Learned Pl, Durham, NC 27705\", \"1616 Pinecrest Rd, Durha…\n$ price      &lt;dbl&gt; 1520000, 1030000, 420000, 680000, 428500, 456000, 1270000, …\n$ bed        &lt;dbl&gt; 3, 5, 2, 4, 4, 3, 5, 4, 4, 3, 4, 4, 3, 5, 4, 5, 3, 4, 4, 3,…\n$ bath       &lt;dbl&gt; 4.0, 4.0, 3.0, 3.0, 3.0, 3.0, 5.0, 3.0, 5.0, 2.0, 3.0, 3.0,…\n$ area       &lt;dbl&gt; 6040, 4475, 1745, 2091, 1772, 1950, 3909, 2841, 3924, 2173,…\n$ type       &lt;chr&gt; \"Single Family\", \"Single Family\", \"Single Family\", \"Single …\n$ year_built &lt;dbl&gt; 1972, 1969, 1959, 1961, 2020, 2014, 1968, 1973, 1972, 1964,…\n$ heating    &lt;chr&gt; \"Other, Gas\", \"Forced air, Gas\", \"Forced air, Gas\", \"Heat p…\n$ cooling    &lt;fct&gt; central, central, central, central, central, central, centr…\n$ parking    &lt;chr&gt; \"0 spaces\", \"Carport, Covered\", \"Garage - Attached, Covered…\n$ lot        &lt;dbl&gt; 0.97, 1.38, 0.51, 0.84, 0.16, 0.45, 0.94, 0.79, 0.53, 0.73,…\n$ hoa        &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA,…\n$ url        &lt;chr&gt; \"https://www.zillow.com/homedetails/1-Learned-Pl-Durham-NC-…"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#a-simple-visualization",
+    "href": "slides/01/01-layers-I.html#a-simple-visualization",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A simple visualization",
+    "text": "A simple visualization\n\nCodePlot\n\n\n\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(alpha = 0.7, size = 2) +\n  geom_smooth(method = \"lm\", se = FALSE, size = 0.7) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    title = \"Price and area of houses in Duke Forest\"\n  )\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#new-variable-decade_built",
+    "href": "slides/01/01-layers-I.html#new-variable-decade_built",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "New variable: decade_built",
+    "text": "New variable: decade_built\n\nduke_forest &lt;- duke_forest |&gt;\n  mutate(decade_built = (year_built %/% 10) * 10)\n\nduke_forest |&gt;\n  select(year_built, decade_built)\n\n# A tibble: 98 × 2\n   year_built decade_built\n        &lt;dbl&gt;        &lt;dbl&gt;\n 1       1972         1970\n 2       1969         1960\n 3       1959         1950\n 4       1961         1960\n 5       2020         2020\n 6       2014         2010\n 7       1968         1960\n 8       1973         1970\n 9       1972         1970\n10       1964         1960\n# ℹ 88 more rows"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#new-variable-decade_built_cat",
+    "href": "slides/01/01-layers-I.html#new-variable-decade_built_cat",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "New variable: decade_built_cat",
+    "text": "New variable: decade_built_cat\n\nduke_forest &lt;- duke_forest |&gt;\n  mutate(\n    decade_built_cat = case_when(\n      decade_built &lt;= 1940 ~ \"1940 or before\",\n      decade_built &gt;= 1990 ~ \"1990 or after\",\n      TRUE ~ as.character(decade_built)\n    )\n  )\n\nduke_forest |&gt;\n  count(decade_built_cat)\n\n# A tibble: 6 × 2\n  decade_built_cat     n\n  &lt;chr&gt;            &lt;int&gt;\n1 1940 or before       8\n2 1950                26\n3 1960                32\n4 1970                11\n5 1980                13\n6 1990 or after        8"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#a-slightly-more-complex-visualization",
+    "href": "slides/01/01-layers-I.html#a-slightly-more-complex-visualization",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A slightly more complex visualization",
+    "text": "A slightly more complex visualization\n\nCodePlot\n\n\n\nggplot(\n  duke_forest,\n  aes(x = area, y = price, color = decade_built_cat)\n) +\n  geom_point(alpha = 0.7, show.legend = FALSE) +\n  geom_smooth(method = \"lm\", se = FALSE, size = 0.5, show.legend = FALSE) +\n  facet_wrap(~decade_built_cat) +\n  labs(\n    x = \"Area (square feet)\",\n    y = \"Sale price (USD)\",\n    color = \"Decade built\",\n    title = \"Price and area of houses in Duke Forest\"\n  )\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#ab-testing-1",
+    "href": "slides/01/01-layers-I.html#ab-testing-1",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A/B testing",
+    "text": "A/B testing\n\nIn the next two slides, the same plots are created with different “cosmetic” choices. Examine the plots two given (Plot A and Plot B), and indicate your preference by voting for one of them in the Vote tab."
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#test-1",
+    "href": "slides/01/01-layers-I.html#test-1",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Test 1",
+    "text": "Test 1\n\nPlot APlot BVote\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#test-2",
+    "href": "slides/01/01-layers-I.html#test-2",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Test 2",
+    "text": "Test 2\n\nPlot APlot BVote\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#bad-taste",
+    "href": "slides/01/01-layers-I.html#bad-taste",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Bad taste",
+    "text": "Bad taste\n\n\n`geom_smooth()` using formula = 'y ~ x'"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#data-to-ink-ratio",
+    "href": "slides/01/01-layers-I.html#data-to-ink-ratio",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Data-to-ink ratio",
+    "text": "Data-to-ink ratio\nTufte strongly recommends maximizing the data-to-ink ratio this in the Visual Display of Quantitative Information (Tufte, 1983).\n\n\n\nGraphical excellence is the well-designed presentation of interesting data—a matter of substance, of statistics, and of design … [It] consists of complex ideas communicated with clarity, precision, and efficiency. … [It] is that which gives to the viewer the greatest number of ideas in the shortest time with the least ink in the smallest space … [It] is nearly always multivariate … And graphical excellence requires telling the truth about the data. (Tufte, 1983, p. 51)."
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#section",
+    "href": "slides/01/01-layers-I.html#section",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "",
+    "text": "Which of the plots has a higher data-to-ink ratio?\n\n\nPlot APlot BVote"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#a-deeper-look",
+    "href": "slides/01/01-layers-I.html#a-deeper-look",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A deeper look",
+    "text": "A deeper look\n\nat the plotting code"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#summary-statistics",
+    "href": "slides/01/01-layers-I.html#summary-statistics",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Summary statistics",
+    "text": "Summary statistics\n\nmean_area_decade &lt;- duke_forest |&gt;\n  group_by(decade_built_cat) |&gt;\n  summarize(mean_area = mean(area))\n\nmean_area_decade\n\n# A tibble: 6 × 2\n  decade_built_cat mean_area\n  &lt;chr&gt;                &lt;dbl&gt;\n1 1940 or before       2072.\n2 1950                 2545.\n3 1960                 2873.\n4 1970                 3413.\n5 1980                 2889.\n6 1990 or after        2822."
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#barplot",
+    "href": "slides/01/01-layers-I.html#barplot",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Barplot",
+    "text": "Barplot\n\nCodePlot\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_col() +\n  labs(\n    x = \"Mean area (square feet)\", y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#scaterplot",
+    "href": "slides/01/01-layers-I.html#scaterplot",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Scaterplot",
+    "text": "Scaterplot\n\nCodePlot\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  labs(\n    x = \"Mean area (square feet)\", y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#lollipop-chart-a-happy-medium",
+    "href": "slides/01/01-layers-I.html#lollipop-chart-a-happy-medium",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Lollipop chart – a happy medium?",
+    "text": "Lollipop chart – a happy medium?"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#application-exercise",
+    "href": "slides/01/01-layers-I.html#application-exercise",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Application exercise",
+    "text": "Application exercise\n\n\nGo to the course GitHub organization: https://github.com/vizdata-s24\nClone the repo called ae-01 and work on the exercise.\n\nNote: For today, this is not a personalized repo for you. The repo is public so everyone can clone it, but you won’t be able to push to it. Starting Thursday you’ll start getting your personalized repos you can push to.\n\nOnce you’re done, share your code on Slack in #general.\nLabel your chunk(s) and pay attention to code style and formatting!\n\n\n\n\n\n−+\n10:00"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#bad-data",
+    "href": "slides/01/01-layers-I.html#bad-data",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Bad data",
+    "text": "Bad data\n\nOriginalImproved\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nHealy, Data Visualization: A practical introduction. Chapter 1. Figures 1.8 and 1.9."
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#bad-perception",
+    "href": "slides/01/01-layers-I.html#bad-perception",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Bad perception",
+    "text": "Bad perception\n\n\n\nHealy, Data Visualization: A practical introduction. Chapter 1. Figure 1.12."
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#a-second-look-lollipop-chart",
+    "href": "slides/01/01-layers-I.html#a-second-look-lollipop-chart",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "A second look: lollipop chart",
+    "text": "A second look: lollipop chart\n\nPlotCode\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  geom_segment(aes(\n    x = 0, xend = mean_area,\n    y = decade_built_cat, yend = decade_built_cat\n  )) +\n  labs(\n    x = \"Mean area (square feet)\",\n    y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#activity-spot-the-differences-i",
+    "href": "slides/01/01-layers-I.html#activity-spot-the-differences-i",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Activity: Spot the differences I",
+    "text": "Activity: Spot the differences I\n\nPlotCodeDiscussion\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nggplot(\n  mean_area_decade,\n  aes(y = decade_built_cat, x = mean_area)\n) +\n  geom_point(size = 4) +\n  geom_segment(aes(\n    xend = 0,\n    yend = decade_built_cat\n  )) +\n  labs(\n    x = \"Mean area (square feet)\",\n    y = \"Decade built\",\n    title = \"Mean area of houses in Duke Forest, by decade built\"\n  )\n\n\n\nCan you spot the differences between the code here and the one provided in the previous slide? Are there any differences in the resulting plot? Work in a pair (or group) to answer.\n\n\n\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#global-vs.-layer-specific-aesthetics",
+    "href": "slides/01/01-layers-I.html#global-vs.-layer-specific-aesthetics",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Global vs. layer-specific aesthetics",
+    "text": "Global vs. layer-specific aesthetics\n\nAesthetic mappings can be supplied in the initial ggplot() call, in individual layers, or in some combination of both.\nWithin each layer, you can add, override, or remove mappings.\nIf you only have one layer in the plot, the way you specify aesthetics doesn’t make any difference. However, the distinction is important when you start adding additional layers."
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#activity-spot-the-differences-ii",
+    "href": "slides/01/01-layers-I.html#activity-spot-the-differences-ii",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Activity: Spot the differences II",
+    "text": "Activity: Spot the differences II\n\nDo you expect the following plots to be the same or different? If different, how? Discuss in a pair (or group) without running the code and sketch the resulting plots based on what you think the code will produce.\n\n\nPlotDiscussion\n\n\n\n# Plot A\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(aes(color = decade_built_cat))\n# Plot B\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(color = \"blue\")\n# Plot C\nggplot(duke_forest, aes(x = area, y = price)) +\n  geom_point(color = \"#a493ba\")\n\n\n\n\n\n\n\n\n\n\n−+\n03:00"
+  },
+  {
+    "objectID": "slides/01/01-layers-I.html#wrap-up",
+    "href": "slides/01/01-layers-I.html#wrap-up",
+    "title": "Deep dive into ggplot2 layers - I",
+    "section": "Wrap up",
+    "text": "Wrap up\n\nThink back to all the plots you saw in the lecture, without flipping back through the slides. Which plot first comes to mind? Describe it in words.\n\n\n\n\n\n\n🔗 vizdata.org"
+  },
+  {
+    "objectID": "computing/computing-cheatsheets.html",
+    "href": "computing/computing-cheatsheets.html",
+    "title": "R cheatsheets",
+    "section": "",
+    "text": "The following cheatsheets come from https://posit.co/resources/cheatsheets. We haven’t covered every function and functionality listed on them, but you might still find them useful as references.",
+    "crumbs": [
+      "Computing",
+      "Cheatsheets"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MATH 4720: Statistical Methods",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nThu, Jan 11\n\n\nWelcome + Grammar of graphics\nslides-00\n\n\n\n\n2\nTue, Jan 16\n📚 ggplot2-book - grammar  📚 socviz\nDeep dive into ggplot2 layers I\nslides-01  ae-01\n📝 HW 1 at 5 pm\n\n\n3\nSun, Jan 21\n📚 fdv - Chp 10  📚 fdv - Chp 11\nVisualizing Likert data I\nslides-11\n✅ RQ 3 at 10 am\n\n\n\n\nMon, Jan 22\n📃 gganimate vignette\nAnimation\nslides-21  ae-16",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#announcements",
+    "href": "slides/11/11-likert-I.html#announcements",
+    "title": "Visualizing Likert data I",
+    "section": "Announcements",
+    "text": "Announcements\n\nProject presentations tomorrow 👀\nBefore we analyze some Likert data, submit your own on the Campus Culture Survey – UG participation is very low, help lift it up!"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#from-quiz",
+    "href": "slides/11/11-likert-I.html#from-quiz",
+    "title": "Visualizing Likert data I",
+    "section": "From quiz",
+    "text": "From quiz\nSuppose you have the following plot of 5000 loans, with loans given to borrowers with high debt to income ratios highlighted in red.\n\np &lt;- ggplot(loans_5000, aes(x = annual_income, y = debt_to_income)) +\n  geom_point() +\n  geom_point(data = loans_5000 |&gt; filter(debt_to_income &gt; 150), color = \"red\") +\n  theme_minimal()\n\np"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#from-quiz-1",
+    "href": "slides/11/11-likert-I.html#from-quiz-1",
+    "title": "Visualizing Likert data I",
+    "section": "From quiz",
+    "text": "From quiz\nYou add some text annotation to the plot using two methods: geom_text() and annotate(). You also record how long it takes to run the code required to generate the annotated plots."
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#from-quiz-2",
+    "href": "slides/11/11-likert-I.html#from-quiz-2",
+    "title": "Visualizing Likert data I",
+    "section": "From quiz",
+    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.004393816 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.003580809 secs"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#from-quiz-3",
+    "href": "slides/11/11-likert-I.html#from-quiz-3",
+    "title": "Visualizing Likert data I",
+    "section": "From quiz",
+    "text": "From quiz\nThese two plots can be seen below:\n\n\nWarning in geom_text(aes(x = 25000, y = 300, label = \"High debt-to-income ratio\"), : All aesthetics have length 1, but the data has 5000 rows.\nℹ Did you mean to use `annotate()`?"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#setup",
+    "href": "slides/11/11-likert-I.html#setup",
+    "title": "Visualizing Likert data I",
+    "section": "Setup",
+    "text": "Setup\n\n# load packages\nlibrary(tidyverse)\nlibrary(waffle)\nlibrary(ggthemes)\n\n# set theme for ggplot2\nggplot2::theme_set(ggplot2::theme_minimal(base_size = 16))\n\n# set figure parameters for knitr\nknitr::opts_chunk$set(\n  fig.width = 7, # 7\" width\n  fig.asp = 0.618, # the golden ratio\n  fig.retina = 3, # dpi multiplier for displaying HTML output on retina\n  fig.align = \"center\", # center align figures\n  dpi = 300 # higher dpi, sharper image\n)"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#the-survey",
+    "href": "slides/11/11-likert-I.html#the-survey",
+    "title": "Visualizing Likert data I",
+    "section": "The survey",
+    "text": "The survey"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#sample-survey-questions-i",
+    "href": "slides/11/11-likert-I.html#sample-survey-questions-i",
+    "title": "Visualizing Likert data I",
+    "section": "Sample survey questions I",
+    "text": "Sample survey questions I"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#sample-survey-questions-ii",
+    "href": "slides/11/11-likert-I.html#sample-survey-questions-ii",
+    "title": "Visualizing Likert data I",
+    "section": "Sample survey questions II",
+    "text": "Sample survey questions II"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#sample-survey-questions-iii",
+    "href": "slides/11/11-likert-I.html#sample-survey-questions-iii",
+    "title": "Visualizing Likert data I",
+    "section": "Sample survey questions III",
+    "text": "Sample survey questions III"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#raw-data",
+    "href": "slides/11/11-likert-I.html#raw-data",
+    "title": "Visualizing Likert data I",
+    "section": "Raw data",
+    "text": "Raw data\n\ndurham_raw &lt;- read_csv(\"data/durham-2020-raw.csv\")\n\n\nglimpse(durham_raw)\n\nRows: 848\nColumns: 226\n$ id                                      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10,…\n$ overall.quality.of.police.p.1.01        &lt;dbl&gt; 3, 4, 9, 3, 2, 5, 4, 1, 4, 5, …\n$ overall.quality.of.sheriff.1.02         &lt;dbl&gt; 3, 4, 9, 3, 2, 4, 4, 1, 9, 5, …\n$ overall.quality.of.fire.and.1.03        &lt;dbl&gt; 3, 4, 9, 4, 4, 4, 9, 4, 3, 5, …\n$ response.time.for.fire.serv.1.04        &lt;dbl&gt; 3, 5, 9, 4, 4, 4, 9, 4, 3, 9, …\n$ overall.quality.of.ems.serv.1.05        &lt;dbl&gt; 3, 5, 9, 4, 4, 4, 9, 4, 3, 4, …\n$ response.time.for.ems.servi.1.06        &lt;dbl&gt; 3, 5, 9, 4, 3, 4, 9, 4, 3, 3, …\n$ overall.maintenance.of.city.1.07        &lt;dbl&gt; 2, 3, 4, 4, 2, 3, 3, 1, 4, 2, …\n$ overall.ease.of.travel.with.1.08        &lt;dbl&gt; 3, 4, 4, 4, 4, 2, 4, 3, 3, 2, …\n$ overall.quality.of.the.publ.1.09        &lt;dbl&gt; 9, 3, 1, 9, 9, 2, 3, 1, 9, 9, …\n$ overall.quality.of.bicycle.1.10         &lt;dbl&gt; 9, 3, 3, 3, 4, 2, 3, 4, 3, 4, …\n$ overall.quality.of.pedestri.1.11        &lt;dbl&gt; 9, 3, 4, 3, 2, 2, 2, 4, 3, 4, …\n$ overall.quality.of.water.an.1.12        &lt;dbl&gt; 9, 5, 5, 4, 4, 3, 4, 4, 4, 4, …\n$ overall.enforcement.of.code.1.13        &lt;dbl&gt; 3, 3, 9, 4, 3, 5, 3, 2, 3, 4, …\n$ overall.quality.of.customer.1.14        &lt;dbl&gt; 4, 5, 9, 4, 4, 3, 4, 2, 3, 3, …\n$ overall.quality.of.customer.1.15        &lt;dbl&gt; 4, 5, 9, 9, 4, 3, 9, 2, 3, 3, …\n$ overall.effectiveness.of.co.1.16        &lt;dbl&gt; 3, 4, 4, 4, 3, 3, 3, 2, 3, 4, …\n$ overall.quality.of.parks.an.1.17        &lt;dbl&gt; 4, 4, 4, 4, 3, 2, 9, 2, 3, 4, …\n$ overall.quality.of.library.1.18         &lt;dbl&gt; 9, 4, 4, 4, 9, 4, 5, 4, 3, 4, …\n$ overall.quality.of.services.1.19        &lt;dbl&gt; 9, 3, 9, 9, 9, 9, 9, 3, 9, 2, …\n$ overall.quality.of.public.h.1.20        &lt;dbl&gt; 9, 4, 9, 3, 9, 9, 9, 3, 3, 2, …\n$ overall.quality.of.tax.admi.1.21        &lt;dbl&gt; 9, 4, 4, 3, 3, 3, 4, 3, 3, 2, …\n$ overall.quality.of.public.s.1.22        &lt;dbl&gt; 9, 3, 9, 3, 1, 1, 3, 1, 9, 3, …\n$ overall.quality.of.charter.1.23         &lt;dbl&gt; 9, 9, 9, 9, 3, 9, 9, 4, 9, 9, …\n$ overall.quality.of.private.1.24         &lt;dbl&gt; 9, 9, 9, 9, 4, 4, 4, 4, 9, 9, …\n$ st.2.01                                 &lt;dbl&gt; 7, 11, 9, 1, 7, 22, 8, 1, 1, 2…\n$ nd.2.02                                 &lt;dbl&gt; 13, 7, 10, 2, 1, 9, 11, 2, 7, …\n$ rd.2.03                                 &lt;dbl&gt; 16, 17, 22, 17, 22, 10, 1, 22,…\n$ overall.quality.of.services.3.01        &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 5, 2, 4, 3, …\n$ overall.quality.of.services.3.02        &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, …\n$ overall.appearance.of.durham.3.03       &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 4, 2, 3, 2, …\n$ overall.management.of.develo.3.04       &lt;dbl&gt; 2, 2, 4, 4, 3, 2, 3, 2, 3, 2, …\n$ overall.image.of.durham.3.05            &lt;dbl&gt; 2, 4, 4, 4, 2, 1, 4, 2, 3, 2, …\n$ overall.quality.of.life.in.d.3.06       &lt;dbl&gt; 2, 4, 4, 3, 4, 4, 4, 3, 3, 2, …\n$ overall.quality.of.life.in.y.3.07       &lt;dbl&gt; 5, 5, 4, 4, 5, 4, 3, 5, 4, 5, …\n$ overall.value.you.receive.fo.3.08       &lt;dbl&gt; 3, 5, 4, 4, 3, 3, 4, 4, 2, 4, …\n$ city.government.4.01                    &lt;dbl&gt; 3, 5, 3, 4, 4, 5, 5, 1, 3, 2, …\n$ county.government.4.02                  &lt;dbl&gt; 3, 5, 3, 4, 3, 4, 4, 1, 3, 2, …\n$ state.government.4.03                   &lt;dbl&gt; 2, 4, 3, 3, 4, 4, 4, 1, 2, 2, …\n$ federal.government.4.04                 &lt;dbl&gt; 3, 1, 1, 1, 3, 5, 1, 1, 2, 2, …\n$ durham.public.school.system.4.05        &lt;dbl&gt; 9, 5, 9, 3, 9, 9, 9, 1, 9, 2, …\n$ st.5.01                                 &lt;dbl&gt; 7, 1, 6, 2, 6, 6, 6, 9, 3, 12,…\n$ nd.5.02                                 &lt;dbl&gt; 6, 2, 11, 1, 5, 4, 7, 4, 2, 4,…\n$ rd.5.03                                 &lt;dbl&gt; 12, 10, 4, 11, 4, 12, 2, 10, 7…\n$ th.5.04                                 &lt;dbl&gt; 9, 7, 12, 6, 2, 7, 12, 3, 1, 7…\n$ th.5.05                                 &lt;dbl&gt; 1, 6, 9, 4, 1, 2, 9, 8, 4, 2, …\n$ public.indoor.gathering.6.01            &lt;dbl&gt; 5, 5, 9, 5, 5, 5, 9, 5, 5, 5, …\n$ private.indoor.gathering.wit.6.02       &lt;dbl&gt; 2, 5, 9, 5, 3, 5, 4, 5, 4, 5, …\n$ public.outdoor.gathering.6.03           &lt;dbl&gt; 5, 5, 2, 5, 4, 2, 9, 2, 4, 4, …\n$ private.outdoor.gathering.wi.6.04       &lt;dbl&gt; 3, 5, 2, 5, 4, 2, 4, 2, 5, 4, …\n$ workplace.6.05                          &lt;dbl&gt; 5, 5, 9, 5, 3, 5, 9, 5, 5, 5, …\n$ m1.children.are.enrolled.in.dur.7.01    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m2.children.are.enrolled.in.a.c.7.02    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 2,…\n$ m3.children.are.enrolled.in.a.p.7.03    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, 3,…\n$ m4.children.go.to.school.outsid.7.04    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m5.children.went.to.or.graduate.7.05    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m6.children.went.to.or.graduate.7.06    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m7.children.went.to.or.graduate.7.07    &lt;dbl&gt; NA, NA, NA, NA, NA, 7, NA, NA,…\n$ m8.children.went.to.or.graduate.7.08    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ m9.children.are.homeschooled.7.09       &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ this.question.does.not.appl10.t.7.10    &lt;dbl&gt; 10, 10, 10, 10, 10, NA, 10, NA…\n$ manages.the.education.budget.8.01       &lt;dbl&gt; 9, 9, 9, 9, 3, 3, 9, 1, 3, 2, …\n$ attracts.high.quality.teacher.8.02      &lt;dbl&gt; 9, 9, 9, 9, 2, 3, 9, 1, 3, 4, …\n$ is.transparent.about.educatio.8.03      &lt;dbl&gt; 9, 9, 9, 9, 2, 9, 9, 1, 3, 1, …\n$ encourages.community.involvem.8.04      &lt;dbl&gt; 9, 9, 9, 9, 3, 9, 9, 4, 3, 1, …\n$ ensures.quality.education.for.8.05      &lt;dbl&gt; 9, 9, 9, 9, 2, 2, 9, 1, 3, 1, …\n$ has.effective.leadership.in.k.8.06      &lt;dbl&gt; 9, 9, 9, 9, 2, 2, 9, 1, 3, 1, …\n$ when.walking.alone.in.your.n.9.01       &lt;dbl&gt; 5, 5, 5, 4, 4, 5, 4, 5, 5, 5, …\n$ when.walking.alone.in.your.n.9.02       &lt;dbl&gt; 4, 4, 4, 2, 4, 5, 2, 4, 3, 4, …\n$ in.downtown.durham.9.03                 &lt;dbl&gt; 3, 4, 4, 4, 3, 3, 4, 4, 4, 2, …\n$ in.durham.overall.9.04                  &lt;dbl&gt; 3, 4, 4, 4, 2, 4, 4, 3, 2, 2, …\n$ when.using.city.recreation.c.9.05       &lt;dbl&gt; 4, 5, 9, 3, 3, 4, 9, 3, 9, 2, …\n$ when.visiting.city.parks.9.06           &lt;dbl&gt; 4, 5, 4, 4, 3, 4, 4, 3, 9, 2, …\n$ overall.police.relationship.10.01       &lt;dbl&gt; 3, 4, 9, 4, 3, 5, 4, 3, 4, 5, …\n$ `overall.sheriff's.office.re.10.02`     &lt;dbl&gt; 3, 4, 9, 3, 3, 5, 9, 3, 9, 5, …\n$ animal.control.services.10.03           &lt;dbl&gt; 3, 5, 9, 3, 3, 9, 9, 4, 3, 5, …\n$ enforcement.of.traffic.safe.10.04       &lt;dbl&gt; 2, 4, 9, 3, 3, 4, 3, 4, 3, 5, …\n$ local.court.system.10.05                &lt;dbl&gt; 3, 9, 9, 3, 3, 9, 9, 3, 2, 2, …\n$ how.satisfied.are.you.with.the.avail.11 &lt;dbl&gt; 9, 5, 9, 2, 4, 9, 3, 9, 9, 4, …\n$ do.your.monthly.housing.cost.12.01      &lt;dbl&gt; 2, 2, 2, 9, 2, 2, 2, 2, 9, 1, …\n$ are.you.able.to.find.housing.12.02      &lt;dbl&gt; 1, 9, 1, 1, 1, 1, 1, 1, 1, 2, …\n$ do.you.have.major.home.repai.12.03      &lt;dbl&gt; 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ greenways.and.trails.13.01              &lt;dbl&gt; 4, 4, 4, 4, 4, 3, 4, 4, 9, 4, …\n$ outdoor.athletic.fields.and.13.02       &lt;dbl&gt; 3, 3, 4, 9, 3, 3, 9, 4, 9, 2, …\n$ customer.service.provided.b.13.03       &lt;dbl&gt; 9, 4, 4, 3, 3, 9, 9, 9, 9, 4, …\n$ public.art.13.04                        &lt;dbl&gt; 2, 4, 4, 4, 5, 9, 4, 3, 3, 4, …\n$ current.state.of.race.relat.14.01       &lt;dbl&gt; 1, 3, 4, 4, 2, 3, 3, 4, 1, 2, …\n$ progress.addressing.racial.14.02        &lt;dbl&gt; 1, 3, 3, 4, 2, 3, 3, 4, 2, 2, …\n$ condition.of.streets.in.yo.15.01        &lt;dbl&gt; 2, 2, 4, 4, 2, 4, 2, 4, 4, 3, …\n$ condition.of.sidewalks.in.15.02         &lt;dbl&gt; 9, 3, 4, 4, 3, 4, 2, 9, 9, 9, …\n$ condition.of.bicycle.facil.15.03        &lt;dbl&gt; 9, 3, 3, 4, 9, 3, 4, 2, 9, 4, …\n$ appearance.of.landscaping.15.04         &lt;dbl&gt; 3, 3, 4, 4, 3, 4, 4, 2, 3, 4, …\n$ condition.of.parks.and.ope.15.05        &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 4, 4, 9, 2, …\n$ condition.of.recreation.ce.15.06        &lt;dbl&gt; 3, 5, 9, 3, 3, 4, 9, 9, 9, 4, …\n$ overall.appearance.of.majo.15.07        &lt;dbl&gt; 3, 3, 9, 3, 4, 4, 4, 2, 3, 2, …\n$ condition.of.public.school.15.08        &lt;dbl&gt; 9, 2, 9, 9, 9, 4, 9, 9, 9, 1, …\n$ condition.of.trails.and.gr.15.09        &lt;dbl&gt; 9, 4, 4, 4, 4, 3, 4, 4, 9, 4, …\n$ condition.of.public.art.15.10           &lt;dbl&gt; 2, 3, 4, 4, 5, 9, 4, 4, 3, 4, …\n$ condition.of.aquatic.facil.15.11        &lt;dbl&gt; 9, 4, 9, 4, 9, 4, 9, 9, 3, 4, …\n$ condition.of.parking.15.12              &lt;dbl&gt; 2, 4, 9, 3, 3, 3, 3, 1, 1, 3, …\n$ st.16.01                                &lt;dbl&gt; 1, 8, 9, 1, 1, 12, 1, 7, 12, 8…\n$ nd.16.02                                &lt;dbl&gt; 12, 3, 3, 2, 12, 5, 2, 8, 10, …\n$ rd.16.03                                &lt;dbl&gt; 7, 1, 5, 9, 4, 9, 3, 4, 7, 7, …\n$ it.is.too.far.from.m1.home.to.17a.01    &lt;dbl&gt; NA, NA, 1, NA, 1, 1, NA, 1, NA…\n$ the.bus.does.not.serve.where.17a.02     &lt;dbl&gt; NA, NA, 2, NA, 2, 2, NA, NA, N…\n$ i.prefer.driving.m3.carneed.17a.03      &lt;dbl&gt; 3, NA, NA, 3, 3, 3, 3, 3, 3, 3…\n$ i.have.safet4.concerns.17a.04           &lt;dbl&gt; NA, NA, NA, 4, NA, NA, NA, 4, …\n$ the.bus.would.take.too.long.17a.05      &lt;dbl&gt; NA, NA, 5, NA, NA, NA, 5, NA, …\n$ other.17a.06                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ we.ride.public.transit.in.dur.17a.07    &lt;dbl&gt; NA, 7, NA, NA, NA, NA, NA, NA,…\n$ `i.don't.havecannot.use.a.car.17b.01`   &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ the.bus.gets.me.where.i.need.17b.02     &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ i.ride.the.bus.for.environmen.17b.03    &lt;dbl&gt; NA, 3, NA, NA, NA, NA, NA, NA,…\n$ parking.at.m4.work.is.difficu.17b.04    &lt;dbl&gt; NA, 4, NA, NA, NA, NA, NA, NA,…\n$ taking.the.bus.is.cheaper.tha.17b.05    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ other.17b.06                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ `we.don't.ride.public.transit.17b.07`   &lt;dbl&gt; 7, NA, 7, 7, 7, 7, 7, 7, 7, 7,…\n$ please.define.other.17b.6               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ ease.of.travel.by.walking.18.01         &lt;dbl&gt; 9, 4, 2, 4, 4, 3, 2, 3, 3, 4, …\n$ ease.of.travel.by.biking.18.02          &lt;dbl&gt; 9, 3, 2, 3, 4, 2, 3, 2, 9, 4, …\n$ ease.of.travel.by.bus.godu.18.03        &lt;dbl&gt; 9, 3, 2, 3, 9, 3, 9, 9, 9, 3, …\n$ quality.of.downtown.parking.18.04       &lt;dbl&gt; 2, 3, 3, 3, 3, 3, 4, 3, 1, 4, …\n$ the.ability.in.your.neighbo.18.05       &lt;dbl&gt; 4, 5, 4, 4, 4, 4, 2, 5, 5, 5, …\n$ solid.waste.collection.serv.19.01       &lt;dbl&gt; 9, 5, 5, 4, 4, 9, 5, 9, 5, 4, …\n$ curbside.recycling.services.19.02       &lt;dbl&gt; 4, 5, 5, 4, 4, 9, 5, 4, 5, 4, …\n$ yard.waste.leavestree.lim.19.03         &lt;dbl&gt; 2, 5, 9, 9, 9, 9, 5, 9, 9, 9, …\n$ city.waste.disposal.and.rec.19.04       &lt;dbl&gt; 4, 3, 9, 4, 9, 3, 4, 9, 4, 9, …\n$ county.solid.waste.convenie.19.05       &lt;dbl&gt; 3, 9, 9, 4, 9, 4, 9, 9, 9, 4, …\n$ quality.of.drinking.water.19.06         &lt;dbl&gt; 9, 4, 4, 5, 4, 4, 5, 1, 5, 4, …\n$ sewer.services.19.07                    &lt;dbl&gt; 9, 4, 4, 4, 3, 4, 4, 4, 5, 4, …\n$ overall.management.of.publi.19.08       &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 2, 3, 4, …\n$ stream.and.lake.protection.19.09        &lt;dbl&gt; 3, 4, 9, 4, 9, 4, 9, 3, 3, 4, …\n$ durham.residents.learn.about.n.20.01    &lt;dbl&gt; 3, 2, 3, 1, 3, 1, 6, 3, 1, 2, …\n$ it.is.easy.for.residents.to.ha.20.02    &lt;dbl&gt; 2, 1, 4, 3, 2, 2, 5, 4, 2, 1, …\n$ `the.character.of.durham's.neig.20.03`  &lt;dbl&gt; 1, 5, 6, 4, 5, 3, 4, 2, 3, 5, …\n$ durham.should.have.more.racial.20.04    &lt;dbl&gt; 5, 3, 5, 2, 4, 6, 1, 5, 5, 3, …\n$ i.would.like.to.have.shopping.20.05     &lt;dbl&gt; 4, 6, 1, 5, 1, 5, 3, 1, 4, 4, …\n$ i.would.be.ok.with.a.greater.v.20.06    &lt;dbl&gt; 6, 4, 2, 6, 6, 4, 2, 6, 6, 6, …\n$ are.you.a.resident.of.durham.city.22    &lt;dbl&gt; 2, 1, 2, 1, 1, 2, 1, 2, 1, 2, …\n$ availability.of.information.22a.01      &lt;dbl&gt; NA, 3, NA, 3, 4, NA, 3, NA, 3,…\n$ ease.of.locating.informatio.22a.02      &lt;dbl&gt; NA, 2, NA, 3, 4, NA, 4, NA, 4,…\n$ your.experience.engaging.wi.22a.03      &lt;dbl&gt; NA, 3, NA, 3, 3, NA, 4, NA, 3,…\n$ level.of.public.involvement.22a.04      &lt;dbl&gt; NA, 3, NA, 4, 3, NA, 9, NA, 3,…\n$ city.efforts.to.keep.you.in.22a.05      &lt;dbl&gt; NA, 4, NA, 4, 4, NA, 3, NA, 3,…\n$ city.of.durham.website.22b.01           &lt;dbl&gt; NA, 3, NA, 3, 3, NA, 3, NA, 2,…\n$ city.of.durham.twitter.feed.22b.02      &lt;dbl&gt; NA, 9, NA, 3, 1, NA, 4, NA, 1,…\n$ city.of.durham.facebook.pag.22b.03      &lt;dbl&gt; NA, 9, NA, 2, 1, NA, 2, NA, 1,…\n$ mailings.of..direct.contact.22b.04      &lt;dbl&gt; NA, 3, NA, 3, 3, NA, 2, NA, 2,…\n$ durham.television.network.22b.05        &lt;dbl&gt; NA, 3, NA, 1, 1, NA, 1, NA, 2,…\n$ traditional.media.tv..news.22b.06       &lt;dbl&gt; NA, 5, NA, 3, 4, NA, 4, NA, 1,…\n$ friendscolleaguesword.of.22b.07         &lt;dbl&gt; NA, 5, NA, 3, 1, NA, 2, NA, 3,…\n$ other.22b.08                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ during.the.past.year..have.you.cont.22c &lt;dbl&gt; NA, 1, NA, 1, 2, NA, 1, NA, 2,…\n$ how.easy.the.city.governme.22d.01       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 4, NA, N…\n$ courtesy.of.city.employee.22d.02        &lt;dbl&gt; NA, 4, NA, 3, NA, NA, 5, NA, N…\n$ accuracy.of.the.informatio.22d.03       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 4, NA, N…\n$ appropriateness.of.city.em.22d.04       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 4, NA, N…\n$ timeliness.of.city.employe.22d.05       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 5, NA, N…\n$ the.resolution.of.your.iss.22d.06       &lt;dbl&gt; NA, 4, NA, 4, NA, NA, 5, NA, N…\n$ availability.of.informatio.23a.01       &lt;dbl&gt; 9, 3, 3, 4, 4, 3, 9, 3, 3, 4, …\n$ ease.of.locating.informati.23a.02       &lt;dbl&gt; 3, 2, 4, 3, 4, 2, 9, 4, 3, 4, …\n$ your.experience.engaging.w.23a.03       &lt;dbl&gt; 3, 3, 9, 3, 3, 3, 9, 3, 3, 4, …\n$ level.of.public.involvemen.23a.04       &lt;dbl&gt; 2, 4, 9, 3, 9, 3, 9, 3, 3, 2, …\n$ county.efforts.to.keep.you.23a.05       &lt;dbl&gt; 3, 3, 3, 4, 3, 3, 9, 2, 3, 2, …\n$ your.ability.to.get.timely.23a.06       &lt;dbl&gt; 3, 5, 9, 4, 5, 3, 3, 4, 3, 4, …\n$ durham.county.website.23b.01            &lt;dbl&gt; 9, 3, 2, 3, 2, 2, 2, 3, 2, 5, …\n$ durham.county.twitter.feed.23b.02       &lt;dbl&gt; 9, 1, 1, 3, 1, 1, 3, 1, 1, 1, …\n$ durham.county.facebook.pag.23b.03       &lt;dbl&gt; 9, 1, 1, 2, 1, 1, 1, 5, 1, 5, …\n$ durham.county.nextdoor.23b.04           &lt;dbl&gt; 9, 1, 3, 1, 3, 1, 3, 3, 5, 5, …\n$ mailings.of..direct.contac.23b.05       &lt;dbl&gt; 9, 2, 2, 3, 3, 3, 2, 2, 3, 1, …\n$ durham.county.tv.show.23b.06            &lt;dbl&gt; 9, 1, 1, 1, 1, 1, 1, 1, 2, 1, …\n$ traditional.media.tv..new.23b.07        &lt;dbl&gt; 9, 5, 2, 3, 5, 5, 4, 5, 2, 5, …\n$ friendscolleaguesword.of.23b.08         &lt;dbl&gt; 3, 5, 2, 3, 2, 2, 1, 4, 3, 5, …\n$ other.23b.09                            &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ please.define.other.23b.9               &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ during.the.past.year..have.you.cont.23c &lt;dbl&gt; 1, 2, 2, 2, 2, 1, 2, 1, 2, 1, …\n$ how.easy.the.county.govern.23d.01       &lt;dbl&gt; 4, NA, NA, NA, NA, 3, NA, 2, N…\n$ courtesy.of.county.employe.23d.02       &lt;dbl&gt; 4, NA, NA, NA, NA, 9, NA, 2, N…\n$ accuracy.of.the.informatio.23d.03       &lt;dbl&gt; 4, NA, NA, NA, NA, 3, NA, 2, N…\n$ appropriateness.of.county.23d.04        &lt;dbl&gt; 4, NA, NA, NA, NA, 9, NA, 2, N…\n$ timeliness.of.county.emplo.23d.05       &lt;dbl&gt; 4, NA, NA, NA, NA, 9, NA, 2, N…\n$ the.resolution.of.your.iss.23d.06       &lt;dbl&gt; 4, NA, NA, NA, NA, 2, NA, 2, N…\n$ as.a.place.to.live.24.01                &lt;dbl&gt; 3, 5, 4, 4, 4, 4, 4, 3, 4, 3, …\n$ as.a.place.to.work.24.02                &lt;dbl&gt; 4, 4, 9, 4, 9, 5, 9, 3, 4, 3, …\n$ as.a.place.to.play.24.03                &lt;dbl&gt; 3, 4, 9, 4, 3, 3, 9, 4, 4, 3, …\n$ as.a.place.to.raise.childre.24.04       &lt;dbl&gt; 2, 4, 9, 9, 2, 4, 9, 3, 9, 2, …\n$ as.a.place.to.educate.child.24.05       &lt;dbl&gt; 2, 4, 9, 9, 1, 4, 9, 2, 9, 2, …\n$ as.a.place.to.retire.24.06              &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 9, 1, 4, 2, …\n$ as.a.place.to.visit.24.07               &lt;dbl&gt; 3, 4, 3, 3, 5, 4, 4, 2, 3, 2, …\n$ as.a.place.to.start.a.busin.24.08       &lt;dbl&gt; 3, 4, 9, 3, 9, 9, 9, 3, 3, 2, …\n$ as.a.community.that.is.movi.24.09       &lt;dbl&gt; 1, 5, 4, 4, 3, 3, 4, 3, 3, 2, …\n$ affordable.housing.25.01                &lt;dbl&gt; NA, 1, 1, NA, 1, NA, 1, NA, 1,…\n$ street.maintenance.25.02                &lt;dbl&gt; 2, NA, NA, 2, 2, NA, NA, NA, 2…\n$ sidewalk.construction.25.03             &lt;dbl&gt; NA, NA, NA, 3, 3, NA, 3, NA, N…\n$ universal.prek.25.04                    &lt;dbl&gt; NA, NA, 4, NA, NA, NA, 4, 4, N…\n$ social.services.25.05                   &lt;dbl&gt; NA, NA, 5, NA, NA, 5, NA, NA, …\n$ outh.programming.25.06                  &lt;dbl&gt; NA, NA, 6, NA, NA, NA, NA, 6, …\n$ job.creationtraining.25.07              &lt;dbl&gt; NA, 7, NA, NA, 7, NA, NA, 7, 7…\n$ communit8led.safet8.initiativ.25.08     &lt;dbl&gt; NA, 8, NA, 8, NA, 8, 8, 8, NA,…\n$ law.enforcementled.safet9.ini.25.09     &lt;dbl&gt; 9, NA, NA, NA, 9, 9, 9, NA, 9,…\n$ public.school.operations.teac.25.10     &lt;dbl&gt; 10, 10, 10, 10, NA, 10, NA, 10…\n$ court.services.25.11                    &lt;dbl&gt; NA, 11, NA, NA, NA, 11, NA, NA…\n$ i.would.not.increase.funding.f.25.12    &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ have.you.or.someone.in.your.househol.26 &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ approximately.how.many.years.have.yo.28 &lt;dbl&gt; 29, 34, 15, 11, 4, 35, 3, 25, …\n$ what.is.your.age.29                     &lt;dbl&gt; 1, 3, 2, 1, 1, 4, 1, 1, 5, 1, …\n$ what.is.your.gender.30                  &lt;dbl&gt; 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, …\n$ do.you.own.or.rent.your.current.resi.31 &lt;dbl&gt; 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, …\n$ asianpacific.islander.32.01             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ white.32.02                             &lt;dbl&gt; NA, 2, 2, 2, NA, 2, 2, 2, 2, 2…\n$ native.americaninuit.32.03              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ blackafrican.american.32.04             &lt;dbl&gt; 4, NA, NA, NA, 4, NA, NA, NA, …\n$ other.32.05                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ please.define.other.32.5                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ are.you.of.hispanic..latino..or..spa.33 &lt;dbl&gt; 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, …\n$ what.is.the.primary.language.used.in.34 &lt;dbl&gt; 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, …\n$ please.define.other.34.3                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ how.might.we.better.provide.service.34a &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ would.you.say.your.total.annual.hous.35 &lt;dbl&gt; 1, 2, 9, 9, 3, 4, 3, 3, 9, 2, …\n$ city                                    &lt;chr&gt; \"Durham\", \"Durham\", \"Durham\", …\n$ state                                   &lt;chr&gt; \"NC\", \"NC\", \"NC\", \"NC\", \"NC\", …\n$ zip                                     &lt;dbl&gt; 27712, 27705, 27703, 27713, 27…\n$ pac.zone                                &lt;dbl&gt; NA, 2, NA, 4, 4, NA, 4, NA, 3,…\n$ inside.city.of.durham                   &lt;chr&gt; \"N\", \"Y\", \"N\", \"Y\", \"Y\", \"N\", …\n$ block.lon                               &lt;dbl&gt; -78877000, -78920000, -7875600…\n$ block.lat                               &lt;dbl&gt; 36087000, 36022000, 35927000, …"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#processed-data",
+    "href": "slides/11/11-likert-I.html#processed-data",
+    "title": "Visualizing Likert data I",
+    "section": "Processed data",
+    "text": "Processed data\n\ndurham &lt;- read_csv(\"data/durham-2020.csv\")\n\n\nglimpse(durham)\n\nRows: 848\nColumns: 49\n$ id                                      &lt;dbl&gt; 1, 2, 3, 4, 5, 6, 7, 8, NA, 10…\n$ overall_quality_of_services_3_01        &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 5, 2, 4, 3, …\n$ overall_quality_of_services_3_02        &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, …\n$ overall_appearance_of_durham_3_03       &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 4, 2, 3, 2, …\n$ overall_management_of_develo_3_04       &lt;dbl&gt; 2, 2, 4, 4, 3, 2, 3, 2, 3, 2, …\n$ overall_image_of_durham_3_05            &lt;dbl&gt; 2, 4, 4, 4, 2, 1, 4, 2, 3, 2, …\n$ overall_quality_of_life_in_d_3_06       &lt;dbl&gt; 2, 4, 4, 3, 4, 4, 4, 3, 3, 2, …\n$ overall_quality_of_life_in_y_3_07       &lt;dbl&gt; 5, 5, 4, 4, 5, 4, 3, 5, 4, 5, …\n$ overall_value_you_receive_fo_3_08       &lt;dbl&gt; 3, 5, 4, 4, 3, 3, 4, 4, 2, 4, …\n$ do_your_monthly_housing_cost_12_01      &lt;dbl&gt; 2, 2, 2, NA, 2, 2, 2, 2, NA, 1…\n$ are_you_able_to_find_housing_12_02      &lt;dbl&gt; 1, NA, 1, 1, 1, 1, 1, 1, 1, 2,…\n$ do_you_have_major_home_repai_12_03      &lt;dbl&gt; 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ ease_of_travel_by_walking_18_01         &lt;dbl&gt; NA, 4, 2, 4, 4, 3, 2, 3, 3, 4,…\n$ ease_of_travel_by_biking_18_02          &lt;dbl&gt; NA, 3, 2, 3, 4, 2, 3, 2, NA, 4…\n$ ease_of_travel_by_bus_godu_18_03        &lt;dbl&gt; NA, 3, 2, 3, NA, 3, NA, NA, NA…\n$ quality_of_downtown_parking_18_04       &lt;dbl&gt; 2, 3, 3, 3, 3, 3, 4, 3, 1, 4, …\n$ the_ability_in_your_neighbo_18_05       &lt;dbl&gt; 4, 5, 4, 4, 4, 4, 2, 5, 5, 5, …\n$ as_a_place_to_live_24_01                &lt;dbl&gt; 3, 5, 4, 4, 4, 4, 4, 3, 4, 3, …\n$ as_a_place_to_work_24_02                &lt;dbl&gt; 4, 4, NA, 4, NA, 5, NA, 3, 4, …\n$ as_a_place_to_play_24_03                &lt;dbl&gt; 3, 4, NA, 4, 3, 3, NA, 4, 4, 3…\n$ as_a_place_to_raise_childre_24_04       &lt;dbl&gt; 2, 4, NA, NA, 2, 4, NA, 3, NA,…\n$ as_a_place_to_educate_child_24_05       &lt;dbl&gt; 2, 4, NA, NA, 1, 4, NA, 2, NA,…\n$ as_a_place_to_retire_24_06              &lt;dbl&gt; 2, 4, 4, 4, 4, 4, NA, 1, 4, 2,…\n$ as_a_place_to_visit_24_07               &lt;dbl&gt; 3, 4, 3, 3, 5, 4, 4, 2, 3, 2, …\n$ as_a_place_to_start_a_busin_24_08       &lt;dbl&gt; 3, 4, NA, 3, NA, NA, NA, 3, 3,…\n$ as_a_community_that_is_movi_24_09       &lt;dbl&gt; 1, 5, 4, 4, 3, 3, 4, 3, 3, 2, …\n$ have_you_or_someone_in_your_househol_26 &lt;dbl&gt; 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, …\n$ approximately_how_many_years_have_yo_28 &lt;dbl&gt; 29, 34, 15, 11, 4, 35, 3, 25, …\n$ what_is_your_age_29                     &lt;dbl&gt; 1, 3, 2, 1, 1, 4, 1, 1, 5, 1, …\n$ what_is_your_gender_30                  &lt;dbl&gt; 1, 2, 1, 2, 1, 1, 1, 2, 2, 2, …\n$ do_you_own_or_rent_your_current_resi_31 &lt;dbl&gt; 1, 2, 1, 1, 1, 1, 1, 2, 1, 1, …\n$ asianpacific_islander_32_01             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ white_32_02                             &lt;dbl&gt; NA, 2, 2, 2, NA, 2, 2, 2, 2, 2…\n$ native_americaninuit_32_03              &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ blackafrican_american_32_04             &lt;dbl&gt; 4, NA, NA, NA, 4, NA, NA, NA, …\n$ other_32_05                             &lt;dbl&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ please_define_other_32_5                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ are_you_of_hispanic_latino_or_spa_33    &lt;dbl&gt; 2, 2, 1, 2, 2, 2, 2, 2, 2, 2, …\n$ primary_language                        &lt;chr&gt; \"English\", \"English\", \"English…\n$ please_define_other_34_3                &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ how_might_we_better_provide_service_34a &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA…\n$ would_you_say_your_total_annual_hous_35 &lt;dbl&gt; 1, 2, NA, NA, 3, 4, 3, 3, NA, …\n$ city                                    &lt;chr&gt; \"Durham\", \"Durham\", \"Durham\", …\n$ state                                   &lt;chr&gt; \"NC\", \"NC\", \"NC\", \"NC\", \"NC\", …\n$ zip                                     &lt;dbl&gt; 27712, 27705, 27703, 27713, 27…\n$ pac_zone                                &lt;dbl&gt; NA, 2, NA, 4, 4, NA, 4, NA, 3,…\n$ inside_city_of_durham                   &lt;chr&gt; \"N\", \"Y\", \"N\", \"Y\", \"Y\", \"N\", …\n$ block_lon                               &lt;dbl&gt; -78877000, -78920000, -7875600…\n$ block_lat                               &lt;dbl&gt; 36087000, 36022000, 35927000, …"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#strategies-for-cleaning-survey-data",
+    "href": "slides/11/11-likert-I.html#strategies-for-cleaning-survey-data",
+    "title": "Visualizing Likert data I",
+    "section": "Strategies for cleaning survey data",
+    "text": "Strategies for cleaning survey data\n\njanitor::clean_names()\nselect() with contains(), starts_with(), etc.\nmutate() with case_match(), e.g.,\n\n\ndurham_raw |&gt;\n  mutate(\n    primary_language = case_match(\n      primary_language,\n      1 ~ \"English\",\n      2 ~ \"Spanish\",\n      3 ~ \"Other\"\n    )\n  )\n\n\nUpdate variable names by writing variable names to a file, opening that file in a spreadsheet or plain text editor to write updated names, and then reading back in and updating the names."
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#language",
+    "href": "slides/11/11-likert-I.html#language",
+    "title": "Visualizing Likert data I",
+    "section": "Language",
+    "text": "Language\n\n\n\nWhat is the primary language used in your household?\n\n\n\n\ndurham |&gt; distinct(primary_language)\n\n# A tibble: 4 × 1\n  primary_language\n  &lt;chr&gt;           \n1 English         \n2 Spanish         \n3 &lt;NA&gt;            \n4 Other           \n\n\n\n\ndurham &lt;- durham |&gt;\n  mutate(\n    primary_language = fct_relevel(primary_language, \"English\", \"Spanish\", \"Other\")\n  )"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#bar-chart",
+    "href": "slides/11/11-likert-I.html#bar-chart",
+    "title": "Visualizing Likert data I",
+    "section": "Bar chart",
+    "text": "Bar chart\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  ggplot(aes(x = primary_language)) +\n  geom_bar()"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#pie-chart",
+    "href": "slides/11/11-likert-I.html#pie-chart",
+    "title": "Visualizing Likert data I",
+    "section": "Pie chart",
+    "text": "Pie chart\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  ggplot(aes(x = 1, y = n, fill = primary_language)) +\n  geom_col(linewidth = 0.5, color = \"white\") +\n  coord_polar(\"y\") +\n  scale_fill_tableau() +\n  labs(fill = \"Primary language\") +\n  theme_void(base_size = 16) +\n  theme(legend.position = \"top\")"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#pie-chart-output",
+    "href": "slides/11/11-likert-I.html#pie-chart-output",
+    "title": "Visualizing Likert data I",
+    "section": "Pie chart",
+    "text": "Pie chart"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#waffle-chart",
+    "href": "slides/11/11-likert-I.html#waffle-chart",
+    "title": "Visualizing Likert data I",
+    "section": "Waffle chart",
+    "text": "Waffle chart\nUsing waffle:\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  ggplot(aes(fill = primary_language, values = n)) +\n  geom_waffle(n_rows = 20, size = 0.33, color = \"white\") +\n  scale_fill_tableau() +\n  labs(fill = \"Primary language\") +\n  theme_enhance_waffle() +\n  theme(legend.position = \"top\")"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#waffle-chart-output",
+    "href": "slides/11/11-likert-I.html#waffle-chart-output",
+    "title": "Visualizing Likert data I",
+    "section": "Waffle chart",
+    "text": "Waffle chart"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart",
+    "href": "slides/11/11-likert-I.html#proportional-waffle-chart",
+    "title": "Visualizing Likert data I",
+    "section": "Proportional waffle chart",
+    "text": "Proportional waffle chart\n\n\nWaffles work best when they are square – makes it easier to compare parts to whole which is the purpose of the chart\n\nBut what happened to “Other”?"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart-1",
+    "href": "slides/11/11-likert-I.html#proportional-waffle-chart-1",
+    "title": "Visualizing Likert data I",
+    "section": "Proportional waffle chart",
+    "text": "Proportional waffle chart\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  ggplot(aes(fill = primary_language, values = n)) +\n  geom_waffle(\n    n_rows = 10, size = 0.33, \n    color = \"white\", flip = TRUE, make_proportional = TRUE\n  ) +\n  labs(fill = str_wrap(\"What is the primary language used in your household?\", 30)) +\n  scale_fill_tableau() +\n  coord_equal() +\n  theme_void() + \n  theme_enhance_waffle()"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2",
+    "href": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2",
+    "title": "Visualizing Likert data I",
+    "section": "Proportional waffle chart, take 2",
+    "text": "Proportional waffle chart, take 2\nWith a bit of fudging…"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2-1",
+    "href": "slides/11/11-likert-I.html#proportional-waffle-chart-take-2-1",
+    "title": "Visualizing Likert data I",
+    "section": "Proportional waffle chart, take 2",
+    "text": "Proportional waffle chart, take 2\n\ndurham |&gt;\n  filter(!is.na(primary_language)) |&gt;\n  count(primary_language) |&gt;\n  mutate(\n    prop = n / sum(n),\n    n_norm = 100 * prop,\n    n_norm = ceiling(n_norm),\n    n_norm = if_else(primary_language == \"English\", 96, n_norm)\n  ) |&gt;\n  ggplot(aes(fill = primary_language, values = n_norm)) +\n  geom_waffle(\n    n_rows = 10, size = 1,\n    color = \"white\", flip = TRUE, make_proportional = TRUE\n  ) +\n  labs(fill = str_wrap(\"What is the primary language used in your household?\", 30)) +\n  scale_fill_tableau() +\n  coord_equal() +\n  theme_void() +\n  theme_enhance_waffle()"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#quality",
+    "href": "slides/11/11-likert-I.html#quality",
+    "title": "Visualizing Likert data I",
+    "section": "Quality",
+    "text": "Quality\n\ndurham |&gt;\n  select(contains(\"_3_\")) |&gt;\n  glimpse()\n\nRows: 848\nColumns: 8\n$ overall_quality_of_services_3_01  &lt;dbl&gt; 3, 4, 4, 4, 4, 3, 5, 2, 4, 3, 4, 4, …\n$ overall_quality_of_services_3_02  &lt;dbl&gt; 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, …\n$ overall_appearance_of_durham_3_03 &lt;dbl&gt; 2, 4, 4, 4, 4, 4, 4, 2, 3, 2, 4, 4, …\n$ overall_management_of_develo_3_04 &lt;dbl&gt; 2, 2, 4, 4, 3, 2, 3, 2, 3, 2, 4, 3, …\n$ overall_image_of_durham_3_05      &lt;dbl&gt; 2, 4, 4, 4, 2, 1, 4, 2, 3, 2, 4, 3, …\n$ overall_quality_of_life_in_d_3_06 &lt;dbl&gt; 2, 4, 4, 3, 4, 4, 4, 3, 3, 2, 4, 4, …\n$ overall_quality_of_life_in_y_3_07 &lt;dbl&gt; 5, 5, 4, 4, 5, 4, 3, 5, 4, 5, 4, 5, …\n$ overall_value_you_receive_fo_3_08 &lt;dbl&gt; 3, 5, 4, 4, 3, 3, 4, 4, 2, 4, 3, 4, …"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#overall-quality-of-services",
+    "href": "slides/11/11-likert-I.html#overall-quality-of-services",
+    "title": "Visualizing Likert data I",
+    "section": "Overall quality of services",
+    "text": "Overall quality of services\nA very rough starting point:"
+  },
+  {
+    "objectID": "slides/11/11-likert-I.html#lets-improve",
+    "href": "slides/11/11-likert-I.html#lets-improve",
+    "title": "Visualizing Likert data I",
+    "section": "Let’s improve!",
+    "text": "Let’s improve!\n\nGo to ae-08 to pick up where we left off and continue improving.\n\n\n\nStep 1:\n\n\nStep 2:\n\n\n\n\n\n\n\n🔗 vizdata.org"
   },
   {
     "objectID": "slides/00/00-welcome-grammar.html#teaching-team",
@@ -1152,5 +1079,78 @@
     "title": "Welcome to STA 313",
     "section": "This week’s tasks",
     "text": "This week’s tasks\n\nCreate a GitHub account if you don’t have one\nRead the syllabus\nMake sure you can login in to RStudio and reserve a container for STA 313: cmgr.oit.duke.edu/containers\nComplete the Getting to know you survey on Canvas – to be posted\nComplete the readings\n\n\n\n\n\n🔗 vizdata.org"
+  },
+  {
+    "objectID": "hw/hw-1.html",
+    "href": "hw/hw-1.html",
+    "title": "HW 1",
+    "section": "",
+    "text": "For any exercise where you’re writing code, insert a code chunk and make sure to label the chunk. Use a short and informative label. For any exercise where you’re creating a plot, make sure to label all axes, legends, etc. and give it an informative title. For any exercise where you’re including a description and/or interpretation, use full sentences. Make a commit at least after finishing each exercise, or better yet, more frequently. Push your work regularly to GitHub. Once you’re done, inspect your GitHub repo to make sure you’ve pushed all of your changes.",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "hw/hw-1.html#question-1",
+    "href": "hw/hw-1.html#question-1",
+    "title": "HW 1",
+    "section": "Question 1",
+    "text": "Question 1\nNYC marathon winners.\nThe New York City Marathon is an annual marathon (26.2 miles / 42.195 kilometers) that courses through the five boroughs of New York City. Marathon times of runners in the Men and Women divisions of the New York City Marathon between 1970 and 2020 can be found in the nyc_marathon dataset in the openintro package (which is already installed for you). You can find out more about the dataset by inspecting its documentation with ?nyc_marathon and you can also find this information here.\na. Create a histogram and a box plot of the distribution of marathon times of all runners in the dataset. What features of the distribution are apparent in the histogram and not the box plot? What features are apparent in the box plot but not in the histogram?\nb. Create a side-by-side box plots of marathon times for men and women. Use different colors for the each of the box plots – do not use the default colors, but instead manually define them (you can choose any two colors you want). Based on the plots you made, compare the distribution of marathon times for men and women.\nc. What information in the above plot is redundant? Redo the plot avoiding this redundancy. How does this update change the data-to-ink ratio?\nd. Visualize the marathon times of men and women over the years. As is usual with time series plot, year should go on the x-axis. Use different colors and shapes to represent the times for men and women. Make sure your colors match those in the previous part. Once you have your plot, describe what is visible in this plot but not in the others.",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "hw/hw-1.html#question-2",
+    "href": "hw/hw-1.html#question-2",
+    "title": "HW 1",
+    "section": "Question 2",
+    "text": "Question 2\nUS counties.\nThe following questions use the county dataset in the openintro package. You can find out more about the dataset by inspecting its documentation with ?county and you can also find this information here.\na. What does the following code do? Does it work? Does it make sense? Why/why not?\n\nggplot(county) +\n  geom_point(aes(x = median_edu, y = median_hh_income)) +\n  geom_boxplot(aes(x = smoking_ban, y = pop2017))\n\nb. Which of the following two plots makes it easier to compare poverty levels (poverty) across people from different median education levels (median_edu)? What does this say about when to place a faceting variable across rows or columns?\n\nggplot(county |&gt; filter(!is.na(median_edu))) + \n  geom_point(aes(x = homeownership, y = poverty)) + \n  facet_grid(median_edu ~ .)\n\n\n\n\n\n\n\n\n\nggplot(county |&gt; filter(!is.na(median_edu))) + \n  geom_point(aes(x = homeownership, y = poverty)) + \n  facet_grid(. ~ median_edu)\n\n\n\n\n\n\n\n\nc. Recreate the R code necessary to generate the following graphs. Note that wherever a categorical variable is used in the plot, it’s metro.",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "Course overview",
+    "section": "",
+    "text": "This is the homepage for STA 313 - Advanced Data Visualization taught by Dr. Mine Çetinkaya-Rundel in Spring 2024 at Duke University. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#class-meetings",
+    "href": "course-overview.html#class-meetings",
+    "title": "Course overview",
+    "section": "Class meetings",
+    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nLSRC D106\nTue & Thur 10:05 - 11:20 pm\n\n\nLab 1\nLink Classroom 5\nWed 1:25 - 2:40 pm\n\n\nLab 2\nLink Classroom 5\nWed 3:05 - 4:20 pm",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#license",
+    "href": "course-overview.html#license",
+    "title": "Course overview",
+    "section": "License",
+    "text": "License\n\nThis online work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International. Visit here for more information about the license.",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   }
 ]
