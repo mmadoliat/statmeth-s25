@@ -480,8 +480,7 @@ Plot axis follows the range of the data.
 
 ## Shadows
 
-How the history of the animation is shown.
-Useful to indicate speed of changes.
+How the history of the animation is shown. Useful to indicate speed of changes.
 
 ```{r}
 #| label: shadows-tbl
@@ -794,9 +793,7 @@ Sometimes you need more frames, sometimes fewer
 ## Racing bar chart, the making of
 
 ::: task
-Go to `ae-16`.
-We'll live-code tasks 1 and 2.
-You'll work on Task 3.
+Go to `ae-16`. We'll live-code tasks 1 and 2. You'll work on Task 3.
 :::
 
 ## Acknowledgements
