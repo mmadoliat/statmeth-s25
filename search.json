@@ -214,7 +214,7 @@
     "href": "slides/11/11-likert-I.html#from-quiz-2",
     "title": "Visualizing Likert data I",
     "section": "From quiz",
-    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.004090786 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.00338006 secs"
+    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.00441885 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.003641605 secs"
   },
   {
     "objectID": "slides/11/11-likert-I.html#from-quiz-3",
@@ -417,7 +417,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "STA 313: Advanced Data Visualization",
+    "title": "MATH 4720: Statistical Methods",
     "section": "",
     "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nPREPARE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nThu, Jan 11\n\n\nWelcome + Grammar of graphics\nslides-00\n\n\n\n\n2\nTue, Jan 16\n📚 ggplot2-book - grammar  📚 socviz\nDeep dive into ggplot2 layers I\nslides-01  ae-01\n📝 HW 1 at 5 pm\n\n\n3\nSun, Jan 21\n📚 fdv - Chp 10  📚 fdv - Chp 11\nVisualizing Likert data I\nslides-11\n✅ RQ 3 at 10 am\n\n\n\n\nMon, Jan 22\n📃 gganimate vignette\nAnimation\nslides-21  ae-16",
     "crumbs": [
