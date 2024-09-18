@@ -422,29 +422,35 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="co"># load packages</span></span>
 <span id="cb1-2"><a></a><span class="fu">library</span>(countdown)</span>
 <span id="cb1-3"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-4"><a></a><span class="fu">library</span>(gt)</span>
-<span id="cb1-5"><a></a><span class="fu">library</span>(gganimate)</span>
-<span id="cb1-6"><a></a><span class="fu">library</span>(gifski)</span>
-<span id="cb1-7"><a></a><span class="fu">library</span>(knitr)</span>
-<span id="cb1-8"><a></a><span class="fu">library</span>(kableExtra)</span>
-<span id="cb1-9"><a></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-10"><a></a><span class="fu">library</span>(transformr)</span>
-<span id="cb1-11"><a></a><span class="fu">library</span>(datasauRus)</span>
-<span id="cb1-12"><a></a></span>
-<span id="cb1-13"><a></a><span class="co"># set theme for ggplot2</span></span>
-<span id="cb1-14"><a></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>))</span>
-<span id="cb1-15"><a></a></span>
-<span id="cb1-16"><a></a><span class="co"># set width of code output</span></span>
-<span id="cb1-17"><a></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">65</span>)</span>
-<span id="cb1-18"><a></a></span>
-<span id="cb1-19"><a></a><span class="co"># set figure parameters for knitr</span></span>
-<span id="cb1-20"><a></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
-<span id="cb1-21"><a></a>  <span class="at">fig.width =</span> <span class="dv">7</span>, <span class="co"># 7" width</span></span>
-<span id="cb1-22"><a></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>, <span class="co"># the golden ratio</span></span>
-<span id="cb1-23"><a></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>, <span class="co"># dpi multiplier for displaying HTML output on retina</span></span>
-<span id="cb1-24"><a></a>  <span class="at">fig.align =</span> <span class="st">"center"</span>, <span class="co"># center align figures</span></span>
-<span id="cb1-25"><a></a>  <span class="at">dpi =</span> <span class="dv">300</span> <span class="co"># higher dpi, sharper image</span></span>
-<span id="cb1-26"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-4"><a></a><span class="fu">library</span>(gt)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gt' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a><span class="fu">library</span>(gganimate)</span>
+<span id="cb3-2"><a></a><span class="fu">library</span>(gifski)</span>
+<span id="cb3-3"><a></a><span class="fu">library</span>(knitr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'knitr' was built under R version 4.3.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb5-2"><a></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb5-3"><a></a><span class="fu">library</span>(transformr)</span>
+<span id="cb5-4"><a></a><span class="fu">library</span>(datasauRus)</span>
+<span id="cb5-5"><a></a></span>
+<span id="cb5-6"><a></a><span class="co"># set theme for ggplot2</span></span>
+<span id="cb5-7"><a></a>ggplot2<span class="sc">::</span><span class="fu">theme_set</span>(ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>))</span>
+<span id="cb5-8"><a></a></span>
+<span id="cb5-9"><a></a><span class="co"># set width of code output</span></span>
+<span id="cb5-10"><a></a><span class="fu">options</span>(<span class="at">width =</span> <span class="dv">65</span>)</span>
+<span id="cb5-11"><a></a></span>
+<span id="cb5-12"><a></a><span class="co"># set figure parameters for knitr</span></span>
+<span id="cb5-13"><a></a>knitr<span class="sc">::</span>opts_chunk<span class="sc">$</span><span class="fu">set</span>(</span>
+<span id="cb5-14"><a></a>  <span class="at">fig.width =</span> <span class="dv">7</span>, <span class="co"># 7" width</span></span>
+<span id="cb5-15"><a></a>  <span class="at">fig.asp =</span> <span class="fl">0.618</span>, <span class="co"># the golden ratio</span></span>
+<span id="cb5-16"><a></a>  <span class="at">fig.retina =</span> <span class="dv">3</span>, <span class="co"># dpi multiplier for displaying HTML output on retina</span></span>
+<span id="cb5-17"><a></a>  <span class="at">fig.align =</span> <span class="st">"center"</span>, <span class="co"># center align figures</span></span>
+<span id="cb5-18"><a></a>  <span class="at">dpi =</span> <span class="dv">300</span> <span class="co"># higher dpi, sharper image</span></span>
+<span id="cb5-19"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section>
@@ -494,9 +500,9 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>A simple example</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb2" data-code-line-numbers="|1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
-<span id="cb2-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb2-3"><a></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="|1-2|3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -512,14 +518,14 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>A simple example</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb3" data-code-line-numbers="4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
-<span id="cb3-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb3-3"><a></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb3-4"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb3-5"><a></a>      <span class="at">x =</span> year, </span>
-<span id="cb3-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
-<span id="cb3-7"><a></a>    )</span>
-<span id="cb3-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7" data-code-line-numbers="4-7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb7-3"><a></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb7-4"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb7-5"><a></a>      <span class="at">x =</span> year, </span>
+<span id="cb7-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
+<span id="cb7-7"><a></a>    )</span>
+<span id="cb7-8"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -535,15 +541,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>A simple example</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb4" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
-<span id="cb4-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb4-3"><a></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb4-4"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb4-5"><a></a>      <span class="at">x =</span> year, </span>
-<span id="cb4-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
-<span id="cb4-7"><a></a>    )</span>
-<span id="cb4-8"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb4-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8" data-code-line-numbers="9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
+<span id="cb8-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb8-4"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb8-5"><a></a>      <span class="at">x =</span> year, </span>
+<span id="cb8-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
+<span id="cb8-7"><a></a>    )</span>
+<span id="cb8-8"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb8-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -559,20 +565,20 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <h2>A simple example</h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb5" data-code-line-numbers="10-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb5-4"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb5-5"><a></a>      <span class="at">x =</span> year, </span>
-<span id="cb5-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
-<span id="cb5-7"><a></a>    )</span>
-<span id="cb5-8"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb5-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb5-10"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-11"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb5-12"><a></a>    <span class="at">y =</span> <span class="st">"Civil liberty score"</span>,</span>
-<span id="cb5-13"><a></a>    <span class="at">title =</span> <span class="st">"Turkey's civil liberty score"</span></span>
-<span id="cb5-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="10-14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>freedom_ranked <span class="sc">|&gt;</span></span>
+<span id="cb9-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb9-3"><a></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb9-4"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb9-5"><a></a>      <span class="at">x =</span> year, </span>
+<span id="cb9-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
+<span id="cb9-7"><a></a>    )</span>
+<span id="cb9-8"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb9-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb9-11"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb9-12"><a></a>    <span class="at">y =</span> <span class="st">"Civil liberty score"</span>,</span>
+<span id="cb9-13"><a></a>    <span class="at">title =</span> <span class="st">"Turkey's civil liberty score"</span></span>
+<span id="cb9-14"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -589,21 +595,21 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell" data-layout-align="center">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>turkey_cl <span class="ot">&lt;-</span> freedom_ranked <span class="sc">|&gt;</span></span>
-<span id="cb6-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(</span>
-<span id="cb6-4"><a></a>    <span class="fu">aes</span>(</span>
-<span id="cb6-5"><a></a>      <span class="at">x =</span> year, </span>
-<span id="cb6-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
-<span id="cb6-7"><a></a>    )</span>
-<span id="cb6-8"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb6-10"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb6-11"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
-<span id="cb6-12"><a></a>    <span class="at">y =</span> <span class="st">"Civil liberty score"</span>,</span>
-<span id="cb6-13"><a></a>    <span class="at">title =</span> <span class="st">"Turkey's civil liberty score"</span></span>
-<span id="cb6-14"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb6-15"><a></a>  <span class="fu">transition_reveal</span>(year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a>turkey_cl <span class="ot">&lt;-</span> freedom_ranked <span class="sc">|&gt;</span></span>
+<span id="cb10-2"><a></a>  <span class="fu">filter</span>(country <span class="sc">==</span> <span class="st">"Turkey"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb10-3"><a></a>  <span class="fu">ggplot</span>(</span>
+<span id="cb10-4"><a></a>    <span class="fu">aes</span>(</span>
+<span id="cb10-5"><a></a>      <span class="at">x =</span> year, </span>
+<span id="cb10-6"><a></a>      <span class="at">y =</span> civil_liberty</span>
+<span id="cb10-7"><a></a>    )</span>
+<span id="cb10-8"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-9"><a></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb10-10"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-11"><a></a>    <span class="at">x =</span> <span class="st">"Year"</span>, </span>
+<span id="cb10-12"><a></a>    <span class="at">y =</span> <span class="st">"Civil liberty score"</span>,</span>
+<span id="cb10-13"><a></a>    <span class="at">title =</span> <span class="st">"Turkey's civil liberty score"</span></span>
+<span id="cb10-14"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb10-15"><a></a>  <span class="fu">transition_reveal</span>(year)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div><div class="column" style="width:50%;">
 <p><img data-src="gifs/turkey_cl.gif"></p>
@@ -633,23 +639,23 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
-<div id="czhvmodgdz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#czhvmodgdz table {
+<div id="jlsyfvnetj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jlsyfvnetj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#czhvmodgdz thead, #czhvmodgdz tbody, #czhvmodgdz tfoot, #czhvmodgdz tr, #czhvmodgdz td, #czhvmodgdz th {
+#jlsyfvnetj thead, #jlsyfvnetj tbody, #jlsyfvnetj tfoot, #jlsyfvnetj tr, #jlsyfvnetj td, #jlsyfvnetj th {
   border-style: none;
 }
 
-#czhvmodgdz p {
+#jlsyfvnetj p {
   margin: 0;
   padding: 0;
 }
 
-#czhvmodgdz .gt_table {
+#jlsyfvnetj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -675,12 +681,12 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-left-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_caption {
+#jlsyfvnetj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#czhvmodgdz .gt_title {
+#jlsyfvnetj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -692,7 +698,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-width: 0;
 }
 
-#czhvmodgdz .gt_subtitle {
+#jlsyfvnetj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -704,7 +710,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-width: 0;
 }
 
-#czhvmodgdz .gt_heading {
+#jlsyfvnetj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -716,13 +722,13 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_bottom_border {
+#jlsyfvnetj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_col_headings {
+#jlsyfvnetj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -737,7 +743,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_col_heading {
+#jlsyfvnetj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -757,7 +763,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#czhvmodgdz .gt_column_spanner_outer {
+#jlsyfvnetj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -769,15 +775,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 4px;
 }
 
-#czhvmodgdz .gt_column_spanner_outer:first-child {
+#jlsyfvnetj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#czhvmodgdz .gt_column_spanner_outer:last-child {
+#jlsyfvnetj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#czhvmodgdz .gt_column_spanner {
+#jlsyfvnetj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -789,11 +795,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   width: 100%;
 }
 
-#czhvmodgdz .gt_spanner_row {
+#jlsyfvnetj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#czhvmodgdz .gt_group_heading {
+#jlsyfvnetj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -819,7 +825,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   text-align: left;
 }
 
-#czhvmodgdz .gt_empty_group_heading {
+#jlsyfvnetj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -834,15 +840,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: middle;
 }
 
-#czhvmodgdz .gt_from_md > :first-child {
+#jlsyfvnetj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#czhvmodgdz .gt_from_md > :last-child {
+#jlsyfvnetj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#czhvmodgdz .gt_row {
+#jlsyfvnetj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -861,7 +867,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#czhvmodgdz .gt_stub {
+#jlsyfvnetj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -874,7 +880,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#czhvmodgdz .gt_stub_row_group {
+#jlsyfvnetj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -888,15 +894,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: top;
 }
 
-#czhvmodgdz .gt_row_group_first td {
+#jlsyfvnetj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#czhvmodgdz .gt_row_group_first th {
+#jlsyfvnetj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#czhvmodgdz .gt_summary_row {
+#jlsyfvnetj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -906,16 +912,16 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#czhvmodgdz .gt_first_summary_row {
+#jlsyfvnetj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_first_summary_row.thick {
+#jlsyfvnetj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#czhvmodgdz .gt_last_summary_row {
+#jlsyfvnetj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -925,7 +931,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_grand_summary_row {
+#jlsyfvnetj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -935,7 +941,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#czhvmodgdz .gt_first_grand_summary_row {
+#jlsyfvnetj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -945,7 +951,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_last_grand_summary_row_top {
+#jlsyfvnetj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -955,11 +961,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_striped {
+#jlsyfvnetj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#czhvmodgdz .gt_table_body {
+#jlsyfvnetj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -968,7 +974,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_footnotes {
+#jlsyfvnetj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -982,7 +988,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_footnote {
+#jlsyfvnetj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -991,7 +997,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#czhvmodgdz .gt_sourcenotes {
+#jlsyfvnetj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1005,7 +1011,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#czhvmodgdz .gt_sourcenote {
+#jlsyfvnetj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1013,64 +1019,73 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#czhvmodgdz .gt_left {
+#jlsyfvnetj .gt_left {
   text-align: left;
 }
 
-#czhvmodgdz .gt_center {
+#jlsyfvnetj .gt_center {
   text-align: center;
 }
 
-#czhvmodgdz .gt_right {
+#jlsyfvnetj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#czhvmodgdz .gt_font_normal {
+#jlsyfvnetj .gt_font_normal {
   font-weight: normal;
 }
 
-#czhvmodgdz .gt_font_bold {
+#jlsyfvnetj .gt_font_bold {
   font-weight: bold;
 }
 
-#czhvmodgdz .gt_font_italic {
+#jlsyfvnetj .gt_font_italic {
   font-style: italic;
 }
 
-#czhvmodgdz .gt_super {
+#jlsyfvnetj .gt_super {
   font-size: 65%;
 }
 
-#czhvmodgdz .gt_footnote_marks {
+#jlsyfvnetj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#czhvmodgdz .gt_asterisk {
+#jlsyfvnetj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#czhvmodgdz .gt_indent_1 {
+#jlsyfvnetj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#czhvmodgdz .gt_indent_2 {
+#jlsyfvnetj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#czhvmodgdz .gt_indent_3 {
+#jlsyfvnetj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#czhvmodgdz .gt_indent_4 {
+#jlsyfvnetj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#czhvmodgdz .gt_indent_5 {
+#jlsyfvnetj .gt_indent_5 {
   text-indent: 25px;
+}
+
+#jlsyfvnetj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jlsyfvnetj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -1144,23 +1159,23 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
-<div id="kzfwpyheyo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kzfwpyheyo table {
+<div id="buemdyeuyq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#buemdyeuyq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kzfwpyheyo thead, #kzfwpyheyo tbody, #kzfwpyheyo tfoot, #kzfwpyheyo tr, #kzfwpyheyo td, #kzfwpyheyo th {
+#buemdyeuyq thead, #buemdyeuyq tbody, #buemdyeuyq tfoot, #buemdyeuyq tr, #buemdyeuyq td, #buemdyeuyq th {
   border-style: none;
 }
 
-#kzfwpyheyo p {
+#buemdyeuyq p {
   margin: 0;
   padding: 0;
 }
 
-#kzfwpyheyo .gt_table {
+#buemdyeuyq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1186,12 +1201,12 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-left-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_caption {
+#buemdyeuyq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kzfwpyheyo .gt_title {
+#buemdyeuyq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1203,7 +1218,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-width: 0;
 }
 
-#kzfwpyheyo .gt_subtitle {
+#buemdyeuyq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1215,7 +1230,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-width: 0;
 }
 
-#kzfwpyheyo .gt_heading {
+#buemdyeuyq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1227,13 +1242,13 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_bottom_border {
+#buemdyeuyq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_col_headings {
+#buemdyeuyq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1248,7 +1263,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_col_heading {
+#buemdyeuyq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1268,7 +1283,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#kzfwpyheyo .gt_column_spanner_outer {
+#buemdyeuyq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1280,15 +1295,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 4px;
 }
 
-#kzfwpyheyo .gt_column_spanner_outer:first-child {
+#buemdyeuyq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kzfwpyheyo .gt_column_spanner_outer:last-child {
+#buemdyeuyq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kzfwpyheyo .gt_column_spanner {
+#buemdyeuyq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1300,11 +1315,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   width: 100%;
 }
 
-#kzfwpyheyo .gt_spanner_row {
+#buemdyeuyq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kzfwpyheyo .gt_group_heading {
+#buemdyeuyq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1330,7 +1345,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   text-align: left;
 }
 
-#kzfwpyheyo .gt_empty_group_heading {
+#buemdyeuyq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1345,15 +1360,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: middle;
 }
 
-#kzfwpyheyo .gt_from_md > :first-child {
+#buemdyeuyq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kzfwpyheyo .gt_from_md > :last-child {
+#buemdyeuyq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kzfwpyheyo .gt_row {
+#buemdyeuyq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1372,7 +1387,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#kzfwpyheyo .gt_stub {
+#buemdyeuyq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1385,7 +1400,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#kzfwpyheyo .gt_stub_row_group {
+#buemdyeuyq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1399,15 +1414,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: top;
 }
 
-#kzfwpyheyo .gt_row_group_first td {
+#buemdyeuyq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kzfwpyheyo .gt_row_group_first th {
+#buemdyeuyq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kzfwpyheyo .gt_summary_row {
+#buemdyeuyq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1417,16 +1432,16 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#kzfwpyheyo .gt_first_summary_row {
+#buemdyeuyq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_first_summary_row.thick {
+#buemdyeuyq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kzfwpyheyo .gt_last_summary_row {
+#buemdyeuyq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1436,7 +1451,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_grand_summary_row {
+#buemdyeuyq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1446,7 +1461,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#kzfwpyheyo .gt_first_grand_summary_row {
+#buemdyeuyq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1456,7 +1471,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_last_grand_summary_row_top {
+#buemdyeuyq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1466,11 +1481,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_striped {
+#buemdyeuyq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kzfwpyheyo .gt_table_body {
+#buemdyeuyq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1479,7 +1494,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_footnotes {
+#buemdyeuyq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1493,7 +1508,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_footnote {
+#buemdyeuyq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1502,7 +1517,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#kzfwpyheyo .gt_sourcenotes {
+#buemdyeuyq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1516,7 +1531,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#kzfwpyheyo .gt_sourcenote {
+#buemdyeuyq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1524,64 +1539,73 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#kzfwpyheyo .gt_left {
+#buemdyeuyq .gt_left {
   text-align: left;
 }
 
-#kzfwpyheyo .gt_center {
+#buemdyeuyq .gt_center {
   text-align: center;
 }
 
-#kzfwpyheyo .gt_right {
+#buemdyeuyq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kzfwpyheyo .gt_font_normal {
+#buemdyeuyq .gt_font_normal {
   font-weight: normal;
 }
 
-#kzfwpyheyo .gt_font_bold {
+#buemdyeuyq .gt_font_bold {
   font-weight: bold;
 }
 
-#kzfwpyheyo .gt_font_italic {
+#buemdyeuyq .gt_font_italic {
   font-style: italic;
 }
 
-#kzfwpyheyo .gt_super {
+#buemdyeuyq .gt_super {
   font-size: 65%;
 }
 
-#kzfwpyheyo .gt_footnote_marks {
+#buemdyeuyq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kzfwpyheyo .gt_asterisk {
+#buemdyeuyq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kzfwpyheyo .gt_indent_1 {
+#buemdyeuyq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kzfwpyheyo .gt_indent_2 {
+#buemdyeuyq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kzfwpyheyo .gt_indent_3 {
+#buemdyeuyq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kzfwpyheyo .gt_indent_4 {
+#buemdyeuyq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kzfwpyheyo .gt_indent_5 {
+#buemdyeuyq .gt_indent_5 {
   text-indent: 25px;
+}
+
+#buemdyeuyq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#buemdyeuyq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -1643,23 +1667,23 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
-<div id="bxqytqvjnj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bxqytqvjnj table {
+<div id="ohfclwlhnm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ohfclwlhnm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bxqytqvjnj thead, #bxqytqvjnj tbody, #bxqytqvjnj tfoot, #bxqytqvjnj tr, #bxqytqvjnj td, #bxqytqvjnj th {
+#ohfclwlhnm thead, #ohfclwlhnm tbody, #ohfclwlhnm tfoot, #ohfclwlhnm tr, #ohfclwlhnm td, #ohfclwlhnm th {
   border-style: none;
 }
 
-#bxqytqvjnj p {
+#ohfclwlhnm p {
   margin: 0;
   padding: 0;
 }
 
-#bxqytqvjnj .gt_table {
+#ohfclwlhnm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1685,12 +1709,12 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-left-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_caption {
+#ohfclwlhnm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bxqytqvjnj .gt_title {
+#ohfclwlhnm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1702,7 +1726,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-width: 0;
 }
 
-#bxqytqvjnj .gt_subtitle {
+#ohfclwlhnm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1714,7 +1738,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-width: 0;
 }
 
-#bxqytqvjnj .gt_heading {
+#ohfclwlhnm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1726,13 +1750,13 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_bottom_border {
+#ohfclwlhnm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_col_headings {
+#ohfclwlhnm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1747,7 +1771,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_col_heading {
+#ohfclwlhnm .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1767,7 +1791,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#bxqytqvjnj .gt_column_spanner_outer {
+#ohfclwlhnm .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1779,15 +1803,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 4px;
 }
 
-#bxqytqvjnj .gt_column_spanner_outer:first-child {
+#ohfclwlhnm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bxqytqvjnj .gt_column_spanner_outer:last-child {
+#ohfclwlhnm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bxqytqvjnj .gt_column_spanner {
+#ohfclwlhnm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1799,11 +1823,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   width: 100%;
 }
 
-#bxqytqvjnj .gt_spanner_row {
+#ohfclwlhnm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bxqytqvjnj .gt_group_heading {
+#ohfclwlhnm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1829,7 +1853,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   text-align: left;
 }
 
-#bxqytqvjnj .gt_empty_group_heading {
+#ohfclwlhnm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1844,15 +1868,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: middle;
 }
 
-#bxqytqvjnj .gt_from_md > :first-child {
+#ohfclwlhnm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bxqytqvjnj .gt_from_md > :last-child {
+#ohfclwlhnm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bxqytqvjnj .gt_row {
+#ohfclwlhnm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1871,7 +1895,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#bxqytqvjnj .gt_stub {
+#ohfclwlhnm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1884,7 +1908,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#bxqytqvjnj .gt_stub_row_group {
+#ohfclwlhnm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1898,15 +1922,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: top;
 }
 
-#bxqytqvjnj .gt_row_group_first td {
+#ohfclwlhnm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bxqytqvjnj .gt_row_group_first th {
+#ohfclwlhnm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bxqytqvjnj .gt_summary_row {
+#ohfclwlhnm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1916,16 +1940,16 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#bxqytqvjnj .gt_first_summary_row {
+#ohfclwlhnm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_first_summary_row.thick {
+#ohfclwlhnm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bxqytqvjnj .gt_last_summary_row {
+#ohfclwlhnm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1935,7 +1959,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_grand_summary_row {
+#ohfclwlhnm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1945,7 +1969,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#bxqytqvjnj .gt_first_grand_summary_row {
+#ohfclwlhnm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1955,7 +1979,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_last_grand_summary_row_top {
+#ohfclwlhnm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1965,11 +1989,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_striped {
+#ohfclwlhnm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bxqytqvjnj .gt_table_body {
+#ohfclwlhnm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1978,7 +2002,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_footnotes {
+#ohfclwlhnm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1992,7 +2016,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_footnote {
+#ohfclwlhnm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2001,7 +2025,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#bxqytqvjnj .gt_sourcenotes {
+#ohfclwlhnm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2015,7 +2039,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#bxqytqvjnj .gt_sourcenote {
+#ohfclwlhnm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2023,64 +2047,73 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#bxqytqvjnj .gt_left {
+#ohfclwlhnm .gt_left {
   text-align: left;
 }
 
-#bxqytqvjnj .gt_center {
+#ohfclwlhnm .gt_center {
   text-align: center;
 }
 
-#bxqytqvjnj .gt_right {
+#ohfclwlhnm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bxqytqvjnj .gt_font_normal {
+#ohfclwlhnm .gt_font_normal {
   font-weight: normal;
 }
 
-#bxqytqvjnj .gt_font_bold {
+#ohfclwlhnm .gt_font_bold {
   font-weight: bold;
 }
 
-#bxqytqvjnj .gt_font_italic {
+#ohfclwlhnm .gt_font_italic {
   font-style: italic;
 }
 
-#bxqytqvjnj .gt_super {
+#ohfclwlhnm .gt_super {
   font-size: 65%;
 }
 
-#bxqytqvjnj .gt_footnote_marks {
+#ohfclwlhnm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bxqytqvjnj .gt_asterisk {
+#ohfclwlhnm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bxqytqvjnj .gt_indent_1 {
+#ohfclwlhnm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bxqytqvjnj .gt_indent_2 {
+#ohfclwlhnm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bxqytqvjnj .gt_indent_3 {
+#ohfclwlhnm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bxqytqvjnj .gt_indent_4 {
+#ohfclwlhnm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bxqytqvjnj .gt_indent_5 {
+#ohfclwlhnm .gt_indent_5 {
   text-indent: 25px;
+}
+
+#ohfclwlhnm .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ohfclwlhnm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -2150,23 +2183,23 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div>
-<div id="eijbmdkbxj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#eijbmdkbxj table {
+<div id="ygvnfqgcpf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ygvnfqgcpf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#eijbmdkbxj thead, #eijbmdkbxj tbody, #eijbmdkbxj tfoot, #eijbmdkbxj tr, #eijbmdkbxj td, #eijbmdkbxj th {
+#ygvnfqgcpf thead, #ygvnfqgcpf tbody, #ygvnfqgcpf tfoot, #ygvnfqgcpf tr, #ygvnfqgcpf td, #ygvnfqgcpf th {
   border-style: none;
 }
 
-#eijbmdkbxj p {
+#ygvnfqgcpf p {
   margin: 0;
   padding: 0;
 }
 
-#eijbmdkbxj .gt_table {
+#ygvnfqgcpf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2192,12 +2225,12 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-left-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_caption {
+#ygvnfqgcpf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#eijbmdkbxj .gt_title {
+#ygvnfqgcpf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2209,7 +2242,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-width: 0;
 }
 
-#eijbmdkbxj .gt_subtitle {
+#ygvnfqgcpf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2221,7 +2254,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-width: 0;
 }
 
-#eijbmdkbxj .gt_heading {
+#ygvnfqgcpf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2233,13 +2266,13 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_bottom_border {
+#ygvnfqgcpf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_col_headings {
+#ygvnfqgcpf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2254,7 +2287,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_col_heading {
+#ygvnfqgcpf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2274,7 +2307,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#eijbmdkbxj .gt_column_spanner_outer {
+#ygvnfqgcpf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2286,15 +2319,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 4px;
 }
 
-#eijbmdkbxj .gt_column_spanner_outer:first-child {
+#ygvnfqgcpf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#eijbmdkbxj .gt_column_spanner_outer:last-child {
+#ygvnfqgcpf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#eijbmdkbxj .gt_column_spanner {
+#ygvnfqgcpf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2306,11 +2339,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   width: 100%;
 }
 
-#eijbmdkbxj .gt_spanner_row {
+#ygvnfqgcpf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#eijbmdkbxj .gt_group_heading {
+#ygvnfqgcpf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2336,7 +2369,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   text-align: left;
 }
 
-#eijbmdkbxj .gt_empty_group_heading {
+#ygvnfqgcpf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2351,15 +2384,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: middle;
 }
 
-#eijbmdkbxj .gt_from_md > :first-child {
+#ygvnfqgcpf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#eijbmdkbxj .gt_from_md > :last-child {
+#ygvnfqgcpf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#eijbmdkbxj .gt_row {
+#ygvnfqgcpf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2378,7 +2411,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   overflow-x: hidden;
 }
 
-#eijbmdkbxj .gt_stub {
+#ygvnfqgcpf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2391,7 +2424,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#eijbmdkbxj .gt_stub_row_group {
+#ygvnfqgcpf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2405,15 +2438,15 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   vertical-align: top;
 }
 
-#eijbmdkbxj .gt_row_group_first td {
+#ygvnfqgcpf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#eijbmdkbxj .gt_row_group_first th {
+#ygvnfqgcpf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#eijbmdkbxj .gt_summary_row {
+#ygvnfqgcpf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2423,16 +2456,16 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#eijbmdkbxj .gt_first_summary_row {
+#ygvnfqgcpf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_first_summary_row.thick {
+#ygvnfqgcpf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#eijbmdkbxj .gt_last_summary_row {
+#ygvnfqgcpf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2442,7 +2475,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_grand_summary_row {
+#ygvnfqgcpf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2452,7 +2485,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#eijbmdkbxj .gt_first_grand_summary_row {
+#ygvnfqgcpf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2462,7 +2495,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-top-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_last_grand_summary_row_top {
+#ygvnfqgcpf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2472,11 +2505,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_striped {
+#ygvnfqgcpf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#eijbmdkbxj .gt_table_body {
+#ygvnfqgcpf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2485,7 +2518,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-bottom-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_footnotes {
+#ygvnfqgcpf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2499,7 +2532,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_footnote {
+#ygvnfqgcpf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2508,7 +2541,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#eijbmdkbxj .gt_sourcenotes {
+#ygvnfqgcpf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2522,7 +2555,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   border-right-color: #D3D3D3;
 }
 
-#eijbmdkbxj .gt_sourcenote {
+#ygvnfqgcpf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2530,64 +2563,73 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
   padding-right: 5px;
 }
 
-#eijbmdkbxj .gt_left {
+#ygvnfqgcpf .gt_left {
   text-align: left;
 }
 
-#eijbmdkbxj .gt_center {
+#ygvnfqgcpf .gt_center {
   text-align: center;
 }
 
-#eijbmdkbxj .gt_right {
+#ygvnfqgcpf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#eijbmdkbxj .gt_font_normal {
+#ygvnfqgcpf .gt_font_normal {
   font-weight: normal;
 }
 
-#eijbmdkbxj .gt_font_bold {
+#ygvnfqgcpf .gt_font_bold {
   font-weight: bold;
 }
 
-#eijbmdkbxj .gt_font_italic {
+#ygvnfqgcpf .gt_font_italic {
   font-style: italic;
 }
 
-#eijbmdkbxj .gt_super {
+#ygvnfqgcpf .gt_super {
   font-size: 65%;
 }
 
-#eijbmdkbxj .gt_footnote_marks {
+#ygvnfqgcpf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#eijbmdkbxj .gt_asterisk {
+#ygvnfqgcpf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#eijbmdkbxj .gt_indent_1 {
+#ygvnfqgcpf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#eijbmdkbxj .gt_indent_2 {
+#ygvnfqgcpf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#eijbmdkbxj .gt_indent_3 {
+#ygvnfqgcpf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#eijbmdkbxj .gt_indent_4 {
+#ygvnfqgcpf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#eijbmdkbxj .gt_indent_5 {
+#ygvnfqgcpf .gt_indent_5 {
   text-indent: 25px;
+}
+
+#ygvnfqgcpf .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ygvnfqgcpf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
 }
 </style>
 
@@ -2638,8 +2680,8 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="animation-controls" class="slide level2">
 <h2>Animation controls</h2>
 <p>How data moves from one position to another.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>p <span class="sc">+</span> <span class="fu">ease_aes</span>({aesthetic} <span class="ot">=</span> {ease})</span>
-<span id="cb7-2"><a></a>p <span class="sc">+</span> <span class="fu">ease_aes</span>(<span class="at">x =</span> <span class="st">"cubic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>p <span class="sc">+</span> <span class="fu">ease_aes</span>({aesthetic} <span class="ot">=</span> {ease})</span>
+<span id="cb11-2"><a></a>p <span class="sc">+</span> <span class="fu">ease_aes</span>(<span class="at">x =</span> <span class="st">"cubic"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><a href="https://easings.net/"><img data-src="images/ease.png" alt="ease examples"></a></p>
@@ -2660,7 +2702,7 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <p>Pass in the dataset to ggplot</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a><span class="fu">ggplot</span>(datasaurus_dozen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a><span class="fu">ggplot</span>(datasaurus_dozen)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2677,10 +2719,10 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <p>For each dataset we have x and y values, in addition we can map dataset to color</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb9" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb9-2"><a></a>  datasaurus_dozen,</span>
-<span id="cb9-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
-<span id="cb9-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13" data-code-line-numbers="3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb13-2"><a></a>  datasaurus_dozen,</span>
+<span id="cb13-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
+<span id="cb13-4"><a></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2697,11 +2739,11 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <p>Trying a simple scatter plot first, but there is too much information</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb10" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb10-2"><a></a>  datasaurus_dozen,</span>
-<span id="cb10-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
-<span id="cb10-4"><a></a>) <span class="sc">+</span></span>
-<span id="cb10-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb14-2"><a></a>  datasaurus_dozen,</span>
+<span id="cb14-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
+<span id="cb14-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb14-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2718,12 +2760,12 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <p>We can use facets to split up by dataset, revealing the different distributions</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
-<div class="sourceCode cell-code" id="cb11" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a><span class="fu">ggplot</span>(</span>
-<span id="cb11-2"><a></a>  datasaurus_dozen,</span>
-<span id="cb11-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
-<span id="cb11-4"><a></a>) <span class="sc">+</span></span>
-<span id="cb11-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb11-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a><span class="fu">ggplot</span>(</span>
+<span id="cb15-2"><a></a>  datasaurus_dozen,</span>
+<span id="cb15-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
+<span id="cb15-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb15-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb15-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>dataset)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -2738,21 +2780,21 @@ Dr.&nbsp;Mine Çetinkaya-Rundel
 <section id="a-not-so-simple-example-4" class="slide level2 smaller">
 <h2>A not-so-simple example</h2>
 <p>We can just as easily turn it into an animation, transitioning between dataset states!</p>
-<div class="cell columns column-output-location" data-layout-align="center">
+<div class="cell columns column-output-location" data-layout-align="center" data-hash="21-animation_cache/revealjs/dino-5_73a13c3960f9cfadcacfb28c92ff5e55">
 <div class="column">
-<div class="sourceCode cell-code" id="cb12" data-code-line-numbers="6-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>datasaurus_dozen <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
-<span id="cb12-2"><a></a>  datasaurus_dozen,</span>
-<span id="cb12-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
-<span id="cb12-4"><a></a>) <span class="sc">+</span></span>
-<span id="cb12-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb12-6"><a></a>  <span class="fu">transition_states</span>(</span>
-<span id="cb12-7"><a></a>    dataset, </span>
-<span id="cb12-8"><a></a>    <span class="at">transition_length =</span> <span class="dv">3</span>, </span>
-<span id="cb12-9"><a></a>    <span class="at">state_length =</span> <span class="dv">1</span></span>
-<span id="cb12-10"><a></a>  ) <span class="sc">+</span></span>
-<span id="cb12-11"><a></a>  <span class="fu">labs</span>(</span>
-<span id="cb12-12"><a></a>    <span class="at">title =</span> <span class="st">"Dataset: {closest_state}"</span></span>
-<span id="cb12-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16" data-code-line-numbers="6-13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>datasaurus_dozen <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(</span>
+<span id="cb16-2"><a></a>  datasaurus_dozen,</span>
+<span id="cb16-3"><a></a>  <span class="fu">aes</span>(x, y, <span class="at">color =</span> dataset)</span>
+<span id="cb16-4"><a></a>) <span class="sc">+</span></span>
+<span id="cb16-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>, <span class="at">show.legend =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb16-6"><a></a>  <span class="fu">transition_states</span>(</span>
+<span id="cb16-7"><a></a>    dataset, </span>
+<span id="cb16-8"><a></a>    <span class="at">transition_length =</span> <span class="dv">3</span>, </span>
+<span id="cb16-9"><a></a>    <span class="at">state_length =</span> <span class="dv">1</span></span>
+<span id="cb16-10"><a></a>  ) <span class="sc">+</span></span>
+<span id="cb16-11"><a></a>  <span class="fu">labs</span>(</span>
+<span id="cb16-12"><a></a>    <span class="at">title =</span> <span class="st">"Dataset: {closest_state}"</span></span>
+<span id="cb16-13"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div><div class="column">
 
 </div>
