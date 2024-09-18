@@ -3,33 +3,33 @@ project:
 
 website:
   page-navigation: true
-  title: "STA 313"
-  description: "Homepage for STA 313 - Advanced Data Visualization at Duke University, Spring 2024."
-  site-url: "https://vizdata.org/"
+  title: "MATH 4720"
+  description: "Homepage for MATH 4720 - Statistical Methods at Marquette University, Spring 2025."
+  site-url: "https://mmadoliat.github.io/vizdata-s24"
 
-  repo-url: https://github.com/vizdata-s24/vizdata-s24/
+  repo-url: https://github.com/mmadoliat/vizdata-s24/
   repo-actions: [edit, issue]
 
   open-graph: true
   twitter-card:
-    creator: "@minebocek"
+    creator: "@mmadoliat"
     image: "images/twitter-card.png"
 
   sidebar:
-    background: "#f1de67" # Arylide Yellow
+    background: "#FFCC00" # Arylide Yellow
     logo: "images/logo.png"
     pinned: true
     align: center
     tools:
       - icon: github
-        href: https://github.com/vizdata-s24
+        href: https://github.com/mmadoliat/vizdata-s24/
         text: "GitHub organization"
       - icon: code-square
         href: https://cmgr.oit.duke.edu/containers
         text: "RStudio Containers"
       - icon: person-fill
-        href: https://canvas.duke.edu/courses/27066
-        text: "Canvas"
+        href: https://d2l.mu.edu/
+        text: "D2L"
 
     style: docked
     search: true
@@ -41,68 +41,36 @@ website:
             text: Overview
           - href: course-syllabus.qmd
             text: Syllabus
-          - href: course-support.qmd
-            text: Support
           - href: course-team.qmd
             text: Teaching team
           - href: index.qmd
             text: Schedule
           - href: course-links.qmd
             text: Useful links
-          - href: course-faq.qmd
-            text: FAQ
       - section: "Computing"
         contents:
-          - href: computing/computing-access.qmd
-            text: Access
-          - href: computing/computing-troubleshooting.qmd
-            text: Troubleshooting
           - href: computing/computing-cheatsheets.qmd
             text: Cheatsheets
-      - section: "Projects"
-        contents:
-          - href: project/project-1.qmd
-          - href: project/project-2.qmd
-          - href: project/project-tips-resources.qmd
-            text: Tips + resources
       - section: "HW"
         contents:
-          - href: hw/hw-0.qmd
-            text: HW 0
           - href: hw/hw-1.qmd
             text: HW 1
-          - href: hw/hw-2.qmd
-            text: HW 2
-          - href: hw/hw-3.qmd
-            text: HW 3            
-          - href: hw/hw-4.qmd
-            text: HW 4
-          - href: hw/hw-5.qmd
-            text: HW 5 
-          - href: hw/hw-6.qmd
-            text: HW 6 
       - section: "Student work"
         contents:
-          - href: student-work/thank-you.qmd
-            text: Thank you cards
           - href: student-work/ugly-plot.qmd
             text: Ugly plots
-          - href: student-work/project-1.qmd
-            text: Project 1
-          - href: student-work/project-2.qmd
-            text: Project 2
-          
+
   page-footer:
     right: "This page is built with 💛 and [Quarto](https://quarto.org/)."
-    left: "&copy; Copyright 2024, Mine Çetinkaya-Rundel"
-    background: "#f1de67" # Arylide Yellow
+    left: "&copy; Copyright 2025, Mehdi Maadooliat"
+    background: "#FFCC00" # Arylide Yellow
     
 format:
   html:
     theme:
       light: [cosmo, style/sta313.scss]
       dark: [cosmo, style/sta313.scss, style/dark.scss]
-    linkcolor: "#866fa3" # Glossy Grape
+    linkcolor: "#003366" # Glossy Grape
     toc: true
     code-copy: true
     code-overflow: wrap
