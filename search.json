@@ -644,7 +644,7 @@
     "href": "slides/11/11-likert-I.html#from-quiz-2",
     "title": "Visualizing Likert data I",
     "section": "From quiz",
-    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.004393816 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.003580809 secs"
+    "text": "From quiz\n\n\ngeom_text():\n\nstart_time &lt;- Sys.time()\np_geom_text &lt;- p +\n  geom_text(\n    aes(\n      x = 25000, y = 300, \n      label = \"High debt-to-income ratio\"\n    ), \n    size = 8, hjust = 0, color = \"red\"\n  ) +\n  labs(title = \"geom_text()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.004323483 secs\n\n\n\nannotate():\n\nstart_time &lt;- Sys.time()\np_annotate &lt;- p +\n  annotate(\n    geom = \"text\", x = 25000, y = 300, \n    label = \"High debt-to-income ratio\", \n    size = 8, hjust = 0,  color = \"red\"\n  ) +\n  labs(title = \"annotate()\")\nend_time &lt;- Sys.time()\nend_time - start_time\n\nTime difference of 0.003629923 secs"
   },
   {
     "objectID": "slides/11/11-likert-I.html#from-quiz-3",
