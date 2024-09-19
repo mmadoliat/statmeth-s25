@@ -5,9 +5,9 @@ website:
   page-navigation: true
   title: "MATH 4720"
   description: "Homepage for MATH 4720 - Statistical Methods at Marquette University, Spring 2025."
-  site-url: "https://mmadoliat.github.io/vizdata-s24"
+  site-url: "https://tinyurl.com/Stat-Meth"
 
-  repo-url: https://github.com/mmadoliat/vizdata-s24/
+  repo-url: https://github.com/mmadoliat/statmeth-s25/
   repo-actions: [edit, issue]
 
   open-graph: true
@@ -22,11 +22,11 @@ website:
     align: center
     tools:
       - icon: github
-        href: https://github.com/mmadoliat/vizdata-s24/
+        href: https://github.com/mmadoliat/statmeth-s25/
         text: "GitHub organization"
       - icon: code-square
-        href: https://cmgr.oit.duke.edu/containers
-        text: "RStudio Containers"
+        href: https://tinyurl.com/Stat-Meth
+        text: "TinyURL"
       - icon: person-fill
         href: https://d2l.mu.edu/
         text: "D2L"
