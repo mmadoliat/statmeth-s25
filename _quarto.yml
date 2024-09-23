@@ -37,20 +37,22 @@ website:
     contents:
       - section: "Course information"
         contents:
+          - href: course-overview.qmd
+            text: Overview
           - href: course-syllabus.qmd
             text: Syllabus
           - href: index.qmd
             text: Schedule
           - href: course-links.qmd
             text: Useful links
+      - section: "HW"
+        contents:
+          - href: hw/HW 1.qmd
+            text: HW 1
       - section: "Computing"
         contents:
           - href: computing/computing-cheatsheets.qmd
             text: Cheatsheets
-      - section: "HW"
-        contents:
-          - href: hw/hw-1.qmd
-            text: HW 1
 
   page-footer:
     right: "This page is built with 💛 and [Quarto](https://quarto.org/)."
