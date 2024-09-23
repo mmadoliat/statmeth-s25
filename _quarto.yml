@@ -37,12 +37,8 @@ website:
     contents:
       - section: "Course information"
         contents:
-          - href: course-overview.qmd
-            text: Overview
           - href: course-syllabus.qmd
             text: Syllabus
-          - href: course-team.qmd
-            text: Teaching team
           - href: index.qmd
             text: Schedule
           - href: course-links.qmd
@@ -55,10 +51,6 @@ website:
         contents:
           - href: hw/hw-1.qmd
             text: HW 1
-      - section: "Student work"
-        contents:
-          - href: student-work/ugly-plot.qmd
-            text: Ugly plots
 
   page-footer:
     right: "This page is built with 💛 and [Quarto](https://quarto.org/)."
@@ -68,8 +60,8 @@ website:
 format:
   html:
     theme:
-      light: [cosmo, style/sta313.scss]
-      dark: [cosmo, style/sta313.scss, style/dark.scss]
+      light: [cosmo, style/mu.scss]
+      dark: [cosmo, style/mu.scss, style/dark.scss]
     linkcolor: "#003366" # Glossy Grape
     toc: true
     code-copy: true
