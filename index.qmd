@@ -20,7 +20,7 @@ d <- read_sheet("https://docs.google.com/spreadsheets/d/1_FBrQxZGL4vgLjAlAlXueWs
 ```{r}
 #| echo: false
 
-d |>
+d[d$date<"2025-02-04",] |>
   #filter(!is.na(session)) |>
   select(-dow, -session, -prepare) |>
   mutate(date = as.Date(date)) |>
