@@ -3,8 +3,8 @@ project:
 
 website:
   page-navigation: true
-  title: "MATH 4720"
-  description: "Homepage for MATH 4720 - Statistical Methods at Marquette University, Spring 2025."
+  title: "MATH 4720 (MSSC 5720)"
+  description: "Homepage for 'Statistical Methods' at Marquette University, Spring 2025."
   site-url: "https://tinyurl.com/Stat-Meth"
 
   repo-url: https://github.com/mmadoliat/statmeth-s25/
@@ -16,7 +16,7 @@ website:
     image: "images/twitter-card.png"
 
   sidebar:
-    background: "#FFCC00" # Arylide Yellow
+    background: "#FFCC00" # MU Yellow
     logo: "images/logo.png"
     pinned: true
     align: center

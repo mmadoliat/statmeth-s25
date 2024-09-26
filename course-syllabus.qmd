@@ -1,5 +1,5 @@
 ---
-title: "Syllabus - MATH 4720/MSSC 5720: Statistical Methods"
+title: "Syllabus - Statistical Methods"
 format: 
   html: default
   pdf: default
