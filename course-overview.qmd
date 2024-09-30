@@ -12,3 +12,5 @@ You can find the course syllabus [here](/syllabus) and the course schedule [here
 |--------------|----------|--------------------------------|
 | Lecture      | CU 351   | Tue & Thur 11:00 am - 12:15 pm |
 | Office Hours | CU 351   | Tue & Thur 12:25 - 1:55 pm     |
+
+![](images/twitter-card.png)
