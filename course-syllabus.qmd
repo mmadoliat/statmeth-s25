@@ -43,7 +43,7 @@ Probability, discrete and continuous distributions. Treatment of data, point and
 -   **Homework**: 15%
 -   **Examinations**: 25% each (2 exams)
 -   **Final Exam**: 30%
--   **Best Exam**: 5% (for
+-   **Best Exam**: 5%
 
 For students in MSSC 5720, there will be extra questions in Homework and/or Exam
 
