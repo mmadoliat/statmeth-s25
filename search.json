@@ -1,5 +1,56 @@
 [
   {
+    "objectID": "hw/HW 1.html",
+    "href": "hw/HW 1.html",
+    "title": "HW 1",
+    "section": "",
+    "text": "Questions 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, and 1.8\n\n7 out of 8 Question (for Undergraduates)\nAll Questions (for Graduates)",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "hw/HW 1.html#from-the-textbook",
+    "href": "hw/HW 1.html#from-the-textbook",
+    "title": "HW 1",
+    "section": "",
+    "text": "Questions 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, and 1.8\n\n7 out of 8 Question (for Undergraduates)\nAll Questions (for Graduates)",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "hw/HW 1.html#extra-question",
+    "href": "hw/HW 1.html#extra-question",
+    "title": "HW 1",
+    "section": "Extra Question",
+    "text": "Extra Question\nFollow the example we had in the classroom, find the \\(E(X)\\) and \\(Var(X)\\) based on (i) equations (2.1) and (2.2), and (ii) simulation for the following cases. Does (i) and (ii) give you the same result?\n(a) \\(X\\sim\\chi^2(\\nu=N+1)\\), where \\(N\\sim Poisson(\\lambda)\\).\n(b) (Only for Graduate Students) \\(X\\sim Binomial(n=Y, p=P)\\), where \\(Y\\sim Poisson(\\lambda)\\) and \\(P\\sim Beta(\\alpha, \\beta)\\).",
+    "crumbs": [
+      "HW",
+      "HW 1"
+    ]
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistical Methods",
+    "section": "",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nTue, Jan 14\nWhat is Statistics?\n💻Chapt 1-2\n\n\n\n\n\n\nThu, Jan 16\nBasics of Statistics\n💻Chapt 3\n\n\n\n\n\n\nFri, Jan 17\n\n\n\n\n📝 [HW 0] at 11:50 pm\n\n\n2\nTue, Jan 21\nBasics of Statistics cont.\nChapt 3 cont.\n\n\n\n\n\n\nThu, Jan 23\nProbability Basics\n💻Chapt 4A\n\n\n\n\n\n\nFri, Jan 24\n\n\n\n\n📝 [HW 1] at 11:50 pm\n\n\n3\nTue, Jan 28\nConditional Probability & Bayes Theorem\nChatp 4A cont.\n\n\n\n\n\n\nThu, Jan 30\nDiscrete Random Variables (Binomial, Poisson)\nChapt 4A cont.\n\n\n\n\n\n\nFri, Jan 31\n\n\n\n\n📝 [HW 2] at 11:50 pm",
+    "crumbs": [
+      "Course information",
+      "Schedule"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
+  },
+  {
     "objectID": "course-links.html",
     "href": "course-links.html",
     "title": "Useful links",
@@ -8,28 +59,6 @@
     "crumbs": [
       "Course information",
       "Useful links"
-    ]
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "Course overview",
-    "section": "",
-    "text": "This is the homepage for MATH 4720 (MSSC 5720) - Statistical Methods by Dr. Mehdi Maadooliat in Spring 2025 at Marquette University. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
-    "crumbs": [
-      "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#class-meetings",
-    "href": "course-overview.html#class-meetings",
-    "title": "Course overview",
-    "section": "Class meetings",
-    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nCU 351\nTue & Thur 11:00 am - 12:15 pm\n\n\nOffice Hours\nCU 351\nTue & Thur 12:25 - 1:55 pm",
-    "crumbs": [
-      "Course information",
-      "Overview"
     ]
   },
   {
@@ -114,7 +143,7 @@
     "href": "course-syllabus.html#grading-breakdown",
     "title": "Syllabus - Statistical Methods",
     "section": "Grading Breakdown",
-    "text": "Grading Breakdown\n\nHomework: 15%\nExaminations: 25% each (2 exams)\nFinal Exam: 30%\nBest Exam: 5% (for\n\nFor students in MSSC 5720, there will be extra questions in Homework and/or Exam\nYou will NOT be allowed any extra credit projects to compensate for a poor average. The final grade is based on the following scale:\n\nGrading Scale\n\n\n\nGrade\nRange\n\n\n\n\nA\n93.5 - 100\n\n\nA-\n90.0 - 93.5\n\n\nB+\n86.5 - 90.0\n\n\nB\n83.5 - 86.5\n\n\nB-\n80.0 - 83.5\n\n\nC+\n76.5 - 80.0\n\n\nC\n73.5 - 76.5\n\n\nC-\n70.0 - 73.5\n\n\nD+\n66.5 - 70.0\n\n\nD\n63.5 - 66.5\n\n\nD-\n60.0 - 63.5\n\n\nF\nbelow 60.0\n\n\n\nNote: No late homework will be accepted, and no make-up work will be allowed unless in the case of an emergency. Submit incomplete work if necessary, but ensure scanned PDFs are legible before submission.",
+    "text": "Grading Breakdown\n\nHomework: 15%\nExaminations: 25% each (2 exams)\nFinal Exam: 30%\nBest Exam: 5%\n\nFor students in MSSC 5720, there will be extra questions in Homework and/or Exam\nYou will NOT be allowed any extra credit projects to compensate for a poor average. The final grade is based on the following scale:\n\nGrading Scale\n\n\n\nGrade\nRange\n\n\n\n\nA\n93.5 - 100\n\n\nA-\n90.0 - 93.5\n\n\nB+\n86.5 - 90.0\n\n\nB\n83.5 - 86.5\n\n\nB-\n80.0 - 83.5\n\n\nC+\n76.5 - 80.0\n\n\nC\n73.5 - 76.5\n\n\nC-\n70.0 - 73.5\n\n\nD+\n66.5 - 70.0\n\n\nD\n63.5 - 66.5\n\n\nD-\n60.0 - 63.5\n\n\nF\nbelow 60.0\n\n\n\nNote: No late homework will be accepted, and no make-up work will be allowed unless in the case of an emergency. Submit incomplete work if necessary, but ensure scanned PDFs are legible before submission.",
     "crumbs": [
       "Course information",
       "Syllabus"
@@ -187,6 +216,28 @@
     ]
   },
   {
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "Course overview",
+    "section": "",
+    "text": "This is the homepage for MATH 4720 (MSSC 5720) - Statistical Methods by Dr. Mehdi Maadooliat in Spring 2025 at Marquette University. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "course-overview.html#class-meetings",
+    "href": "course-overview.html#class-meetings",
+    "title": "Course overview",
+    "section": "Class meetings",
+    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nCU 351\nTue & Thur 11:00 am - 12:15 pm\n\n\nOffice Hours\nCU 351\nTue & Thur 12:25 - 1:55 pm",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
     "objectID": "computing/computing-cheatsheets.html",
     "href": "computing/computing-cheatsheets.html",
     "title": "R cheatsheets",
@@ -196,56 +247,5 @@
       "Computing",
       "Cheatsheets"
     ]
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Statistical Methods",
-    "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nTue, Jan 14\nWhat is Statistics?\n💻Chapt 1-2\n\n\n\n\n\n\nThu, Jan 16\nBasics of Statistics\n💻Chapt 3\n\n\n\n\n\n\nFri, Jan 17\n\n\n\n\n📝 [HW 0] at 11:50 pm\n\n\n2\nTue, Jan 21\nBasics of Statistics cont.\nChapt 3 cont.\n\n\n\n\n\n\nThu, Jan 23\nProbability Basics\n💻Chapt 4A\n\n\n\n\n\n\nFri, Jan 24\n\n\n\n\n📝 [HW 1] at 11:50 pm\n\n\n3\nTue, Jan 28\nConditional Probability & Bayes Theorem\nChatp 4A cont.\n\n\n\n\n\n\nThu, Jan 30\nDiscrete Random Variables (Binomial, Poisson)\nChapt 4A cont.\n\n\n\n\n\n\nFri, Jan 31\n\n\n\n\n📝 [HW 2] at 11:50 pm",
-    "crumbs": [
-      "Course information",
-      "Schedule"
-    ]
-  },
-  {
-    "objectID": "hw/HW 1.html",
-    "href": "hw/HW 1.html",
-    "title": "HW 1",
-    "section": "",
-    "text": "Questions 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, and 1.8\n\n7 out of 8 Question (for Undergraduates)\nAll Questions (for Graduates)",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "hw/HW 1.html#from-the-textbook",
-    "href": "hw/HW 1.html#from-the-textbook",
-    "title": "HW 1",
-    "section": "",
-    "text": "Questions 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, and 1.8\n\n7 out of 8 Question (for Undergraduates)\nAll Questions (for Graduates)",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "hw/HW 1.html#extra-question",
-    "href": "hw/HW 1.html#extra-question",
-    "title": "HW 1",
-    "section": "Extra Question",
-    "text": "Extra Question\nFollow the example we had in the classroom, find the \\(E(X)\\) and \\(Var(X)\\) based on (i) equations (2.1) and (2.2), and (ii) simulation for the following cases. Does (i) and (ii) give you the same result?\n(a) \\(X\\sim\\chi^2(\\nu=N+1)\\), where \\(N\\sim Poisson(\\lambda)\\).\n(b) (Only for Graduate Students) \\(X\\sim Binomial(n=Y, p=P)\\), where \\(Y\\sim Poisson(\\lambda)\\) and \\(P\\sim Beta(\\alpha, \\beta)\\).",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
   }
 ]
