@@ -11,65 +11,14 @@
     ]
   },
   {
-    "objectID": "hw/HW 1.html",
-    "href": "hw/HW 1.html",
-    "title": "HW 1",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Statistical Methods",
     "section": "",
-    "text": "Questions 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, and 1.8\n\n7 out of 8 Question (for Undergraduates)\nAll Questions (for Graduates)",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "hw/HW 1.html#from-the-textbook",
-    "href": "hw/HW 1.html#from-the-textbook",
-    "title": "HW 1",
-    "section": "",
-    "text": "Questions 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, and 1.8\n\n7 out of 8 Question (for Undergraduates)\nAll Questions (for Graduates)",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "hw/HW 1.html#extra-question",
-    "href": "hw/HW 1.html#extra-question",
-    "title": "HW 1",
-    "section": "Extra Question",
-    "text": "Extra Question\nFollow the example we had in the classroom, find the \\(E(X)\\) and \\(Var(X)\\) based on (i) equations (2.1) and (2.2), and (ii) simulation for the following cases. Does (i) and (ii) give you the same result?\n(a) \\(X\\sim\\chi^2(\\nu=N+1)\\), where \\(N\\sim Poisson(\\lambda)\\).\n(b) (Only for Graduate Students) \\(X\\sim Binomial(n=Y, p=P)\\), where \\(Y\\sim Poisson(\\lambda)\\) and \\(P\\sim Beta(\\alpha, \\beta)\\).",
-    "crumbs": [
-      "HW",
-      "HW 1"
-    ]
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site"
-  },
-  {
-    "objectID": "course-overview.html",
-    "href": "course-overview.html",
-    "title": "Course overview",
-    "section": "",
-    "text": "This is the homepage for MATH 4720 (MSSC 5720) - Statistical Methods by Dr. Mehdi Maadooliat in Spring 2025 at Marquette University. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
+    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nTue, Jan 14\nWhat is Statistics?\n💻Chapt 1-2\n\n\n\n\n\n\nThu, Jan 16\nBasics of Statistics\n💻Chapt 3\n\n\n\n\n\n\nFri, Jan 17\n\n\n\n\n\n\n\n\n2\nTue, Jan 21\nBasics of Statistics cont.\nChapt 3 cont.\n\n\n\n\n\n\nThu, Jan 23\nProbability Basics\n💻Chapt 4A\n\n\n\n\n\n\nFri, Jan 24\n\n\n\n\n📝 HW 1 at 11:50 pm\n\n\n3\nTue, Jan 28\nConditional Probability & Bayes Theorem\nChatp 4A cont.\n\n\n\n\n\n\nThu, Jan 30\nDiscrete Random Variables (Binomial, Poisson)\nChapt 4A cont.\n\n\n\n\n\n\nFri, Jan 31\n\n\n\n\n📝 HW 2 at 11:50 pm\n\n\n4\nTue, Feb 4\nContinous Random Variable (Normal)\n💻Chapt 4B\n\n\n\n\n\n\nThu, Feb 6\nSampling distribution (CLT)  Confidence Interval\nChapt 4B cont.  💻Chapt 5A\n\n\n\n\n\n\nFri, Feb 7\n\n\n\n\n📝 HW 3 at 11:50 pm\n\n\n5\nTue, Feb 11\nReview for Exam\n\n\n\n\n\n\n\n\nThu, Feb 13\n\n\n📑 Exam 1\n\n\n\n\n6\nTue, Feb 18\nReturn Exam and Start Hypothesis Testing\n\n\n\n\n\n\n\n\nThu, Feb 20\nHypothesis Testing\n💻Chapt 5B\n\n\n\n\n\n\nFri, Feb 21\n\n\n\n\n📝 HW 4 at 11:50 pm\n\n\n7\nTue, Feb 25\np-value? Test for mean with unknown σ\n💻Chapt 5C\n\n\n\n\n\n\nThu, Feb 27\nTest for mean, two independent population\n💻Chapt 6A\n\n\n\n\n\n\nFri, Feb 28\n\n\n\n\n📝 HW 5 at 11:50 pm\n\n\n8\nTue, Mar 4\nTest for mean, two dependent population  Power Analysis\n💻Chapt 6B\n\n\n\n\n\n\nThu, Mar 6\nNonparametric Tests\n💻Chapt 6C\n\n\n\n\n\n\nFri, Mar 7\n\n\n\n\n📝 HW 6 at 11:50 pm\n\n\n\n\nTue, Mar 11\n🌴 Spring Break\n\n\n\n\n\n\n\n\nThu, Mar 13\n🌴 Spring Break\n\n\n\n\n\n\n9\nTue, Mar 18\nTest for Variance\n💻Chatp 7\n\n\n\n\n\n\nThu, Mar 20\nANOVA\n💻Chapt 8A\n\n\n\n\n\n\nFri, Mar 21\n\n\n\n\n📝 HW 7 at 11:50 pm\n\n\n10\nTue, Mar 25\nReview for Exam\n\n\n\n\n\n\n\n\nThu, Mar 27\n\n\n📑 Exam 2\n\n\n\n\n11\nTue, Apr 1\nReturn Exam and start ANOVA\n\n\n\n\n\n\n\n\nThu, Apr 3\nANOVA cont.\n💻Chapt 8B\n\n\n\n\n\n\nFri, Apr 4\n\n\n\n\n📝 HW 8 at 11:50 pm\n\n\n12\nTue, Apr 8\nMultiple Testing\n💻Chapt 9\n\n\n\n\n\n\nThu, Apr 10\nTest for Proportion\n💻Chapt 10A\n\n\n\n\n\n\nFri, Apr 11\n\n\n\n\n📝 HW 9 at 11:50 pm\n\n\n13\nTue, Apr 15\nGoodness of Fit Test\n💻Chapt 10B\n\n\n\n\n\n\nThu, Apr 17\n🌴 Easter Break\n\n\n\n\n\n\n14\nTue, Apr 22\nRegression Analysis\n💻Chapt 11\n\n\n\n\n\n\nThu, Apr 24\nRegression Analysis cont.\nChapt 11 cont.\n\n\n\n\n\n\nFri, Apr 25\n\n\n\n\n📝 HW 10 at 11:50 pm\n\n\n15\nTue, Apr 29\nReview for Final\n\n\n\n\n\n\n\n\nThu, May 1\nReview for Final cont.\n\n\n📝 HW 11 at 11:00 am\n\n\n16\nFri, May 9\n\n\n📑 Final Exam : 3:30pm - 5:30 pm",
     "crumbs": [
       "Course information",
-      "Overview"
-    ]
-  },
-  {
-    "objectID": "course-overview.html#class-meetings",
-    "href": "course-overview.html#class-meetings",
-    "title": "Course overview",
-    "section": "Class meetings",
-    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nCU 351\nTue & Thur 11:00 am - 12:15 pm\n\n\nOffice Hours\nCU 351\nTue & Thur 12:25 - 1:55 pm",
-    "crumbs": [
-      "Course information",
-      "Overview"
+      "Schedule"
     ]
   },
   {
@@ -77,7 +26,7 @@
     "href": "course-syllabus.html",
     "title": "Syllabus - Statistical Methods",
     "section": "",
-    "text": "Course Title: MATH 4720/MSSC 5720: Statistical Methods\nMeeting Time: TuTh 11:00am - 12:15pm\nLocation: Cudahy Hall 145 (Microsoft Teams)",
+    "text": "Course Title: MATH 4720/MSSC 5720: Statistical Methods\nMeeting Time: TuTh 11:00am - 12:15pm\nLocation: Olin Engineering 278 (Microsoft Teams)",
     "crumbs": [
       "Course information",
       "Syllabus"
@@ -88,7 +37,7 @@
     "href": "course-syllabus.html#course-information",
     "title": "Syllabus - Statistical Methods",
     "section": "",
-    "text": "Course Title: MATH 4720/MSSC 5720: Statistical Methods\nMeeting Time: TuTh 11:00am - 12:15pm\nLocation: Cudahy Hall 145 (Microsoft Teams)",
+    "text": "Course Title: MATH 4720/MSSC 5720: Statistical Methods\nMeeting Time: TuTh 11:00am - 12:15pm\nLocation: Olin Engineering 278 (Microsoft Teams)",
     "crumbs": [
       "Course information",
       "Syllabus"
@@ -227,15 +176,33 @@
     ]
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Statistical Methods",
+    "objectID": "course-overview.html",
+    "href": "course-overview.html",
+    "title": "Course overview",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the semester. Note that this schedule will be updated as the semester progresses and the timeline of topics and assignments might be updated throughout the semester.\n\n\n\n\n\n\n\n\n\nWEEK\nDATE\nTOPIC\nMATERIALS\nDUE\n\n\n\n\n1\nTue, Jan 14\nWhat is Statistics?\n💻Chapt 1-2\n\n\n\n\n\n\nThu, Jan 16\nBasics of Statistics\n💻Chapt 3\n\n\n\n\n\n\nFri, Jan 17\n\n\n\n\n📝 [HW 0] at 11:50 pm\n\n\n2\nTue, Jan 21\nBasics of Statistics cont.\nChapt 3 cont.\n\n\n\n\n\n\nThu, Jan 23\nProbability Basics\n💻Chapt 4A\n\n\n\n\n\n\nFri, Jan 24\n\n\n\n\n📝 [HW 1] at 11:50 pm\n\n\n3\nTue, Jan 28\nConditional Probability & Bayes Theorem\nChatp 4A cont.\n\n\n\n\n\n\nThu, Jan 30\nDiscrete Random Variables (Binomial, Poisson)\nChapt 4A cont.\n\n\n\n\n\n\nFri, Jan 31\n\n\n\n\n📝 [HW 2] at 11:50 pm\n\n\n4\nTue, Feb 4\nContinous Random Variable (Normal)\n💻Chapt 4B\n\n\n\n\n\n\nThu, Feb 6\nSampling distribution (CLT)  Confidence Interval\nChapt 4B cont.  💻Chapt 5A\n\n\n\n\n\n\nFri, Feb 7\n\n\n\n\n📝 [HW 3] at 11:50 pm\n\n\n5\nTue, Feb 11\nReview for Exam\n\n\n\n\n\n\n\n\nThu, Feb 13\n\n\n📑 Exam 1\n\n\n\n\n6\nTue, Feb 18\nReturn Exam and Start Hypothesis Testing\n\n\n\n\n\n\n\n\nThu, Feb 20\nHypothesis Testing\n💻Chapt 5B\n\n\n\n\n\n\nFri, Feb 21\n\n\n\n\n📝 [HW 4] at 11:50 pm\n\n\n7\nTue, Feb 25\np-value? Test for mean with unknown σ\n💻Chapt 5C\n\n\n\n\n\n\nThu, Feb 27\nTest for mean, two independent population\n💻Chapt 6A\n\n\n\n\n\n\nFri, Feb 28\n\n\n\n\n📝 [HW 5] at 11:50 pm\n\n\n8\nTue, Mar 4\nTest for mean, two dependent population  Power Analysis\n💻Chapt 6B\n\n\n\n\n\n\nThu, Mar 6\nNonparametric Tests\n💻Chapt 6C\n\n\n\n\n\n\nFri, Mar 7\n\n\n\n\n📝 [HW 6] at 11:50 pm\n\n\n\n\nTue, Mar 11\n🌴 Spring Break\n\n\n\n\n\n\n\n\nThu, Mar 13\n🌴 Spring Break\n\n\n\n\n\n\n9\nTue, Mar 18\nTest for Variance\n💻Chatp 7\n\n\n\n\n\n\nThu, Mar 20\nANOVA\n💻Chapt 8A\n\n\n\n\n\n\nFri, Mar 21\n\n\n\n\n📝 [HW 7] at 11:50 pm\n\n\n10\nTue, Mar 25\nReview for Exam\n\n\n\n\n\n\n\n\nThu, Mar 27\n\n\n📑 Exam 2\n\n\n\n\n11\nTue, Apr 1\nReturn Exam and start ANOVA\n\n\n\n\n\n\n\n\nThu, Apr 3\nANOVA cont.\n💻Chapt 8B\n\n\n\n\n\n\nFri, Apr 4\n\n\n\n\n📝 [HW 8] at 11:50 pm\n\n\n12\nTue, Apr 8\nMultiple Testing\n💻Chapt 9\n\n\n\n\n\n\nThu, Apr 10\nTest for Proportion\n💻Chapt 10A\n\n\n\n\n\n\nFri, Apr 11\n\n\n\n\n📝 [HW 9] at 11:50 pm\n\n\n13\nTue, Apr 15\nGoodness of Fit Test\n💻Chapt 10B\n\n\n\n\n\n\nThu, Apr 17\n🌴 Easter Break\n\n\n\n\n\n\n14\nTue, Apr 22\nRegression Analysis\n💻Chapt 11\n\n\n\n\n\n\nThu, Apr 24\nRegression Analysis cont.\nChapt 11 cont.\n\n\n\n\n\n\nFri, Apr 25\n\n\n\n\n📝 [HW 10] at 11:50 pm\n\n\n15\nTue, Apr 29\nReview for Final\n\n\n\n\n\n\n\n\nThu, May 1\nReview for Final cont.\n\n\n📝 [HW 11] at 11:00 am\n\n\n16\nFri, May 9\n\n\n📑 Final Exam : 3:30pm - 5:30 pm",
+    "text": "This is the homepage for MATH 4720 (MSSC 5720) - Statistical Methods by Dr. Mehdi Maadooliat in Spring 2025 at Marquette University. All course materials will be posted on this site.\nYou can find the course syllabus here and the course schedule here.",
     "crumbs": [
       "Course information",
-      "Schedule"
+      "Overview"
     ]
+  },
+  {
+    "objectID": "course-overview.html#class-meetings",
+    "href": "course-overview.html#class-meetings",
+    "title": "Course overview",
+    "section": "Class meetings",
+    "text": "Class meetings\n\n\n\nMeeting\nLocation\nTime\n\n\n\n\nLecture\nOlin Engineering 278\nTue & Thur 11:00 am - 12:15 pm\n\n\nOffice Hours\nCU 351\nTue & Thur 12:25 - 1:55 pm",
+    "crumbs": [
+      "Course information",
+      "Overview"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site"
   },
   {
     "objectID": "computing/computing-cheatsheets.html",
