@@ -9,7 +9,7 @@ format:
 
 **Course Title:** MATH 4720/MSSC 5720: Statistical Methods\
 **Meeting Time:** TuTh 11:00am - 12:15pm\
-**Location:** Cudahy Hall 145 (Microsoft Teams)
+**Location:** Olin Engineering 278 (Microsoft Teams)
 
 ## Instructor Details
 
