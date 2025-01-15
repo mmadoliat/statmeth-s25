@@ -10,12 +10,14 @@ format:
 **Course Title:** MATH 4720/MSSC 5720: Statistical Methods\
 **Meeting Time:** TuTh 11:00am - 12:15pm\
 **Location:** Olin Engineering 278 (Microsoft Teams)
+**Website:** [http://tinyurl.com/Stat-Meth](http://tinyurl.com/Stat-Meth)
 
 ## Instructor Details
 
 -   **Name:** Mehdi Maadooliat, Ph.D.
 -   **Office:** CU 351
 -   **Office Hours:** TuTh 12:25 - 1:55pm in CU 351 or by e-mail
+
 
 ## Course Description
 
@@ -96,6 +98,8 @@ Marquette University Honor Code:\
 -   **Tuesday, January 21:** Drop/add ends
 -   **Saturday - Sunday, March 8 - 16**: Spring Break
 -   **Friday, April 11:** Last day to withdraw with W
+-   **Thursday - Monday, April 17 - 21**: Easter Break
+-   **Marquette University Presidential Inauguration: April 29, 9:30am-12:30pm (no class)
 -   **Saturday, May 3**: Classes end
 -   **Friday, May 9, 3:30 pm - 5:30 pm**: Final Exam
 
