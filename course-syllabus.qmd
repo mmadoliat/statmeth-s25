@@ -1,5 +1,5 @@
 ---
-title: "Syllabus - Statistical Methods"
+title: "Syllabus - Statistical Methods - Spring 2025"
 format: 
   html: default
   pdf: default
@@ -10,14 +10,13 @@ format:
 **Course Title:** MATH 4720/MSSC 5720: Statistical Methods\
 **Meeting Time:** TuTh 11:00am - 12:15pm\
 **Location:** Olin Engineering 278 (Microsoft Teams)\
-**Website:** [http://tinyurl.com/Stat-Meth](http://tinyurl.com/Stat-Meth)
+**Website:** <http://tinyurl.com/Stat-Meth>
 
 ## Instructor Details
 
 -   **Name:** Mehdi Maadooliat, Ph.D.
 -   **Office:** CU 351
 -   **Office Hours:** TuTh 12:25 - 1:55pm in CU 351 or by e-mail
-
 
 ## Course Description
 

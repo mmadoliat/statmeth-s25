@@ -101,18 +101,24 @@
 \item Confidence interval for $\mu$ is:
 \subitem $\bar{x} \pm t_{\alpha/2}\dfrac{s}{\sqrt{n}}$ with $df=n-1$
 \end{itemize}
-\vspace{-4.5cm}
+\vspace{-4cm}
 \begin{figure}[h]
 \hspace{2cm}\includegraphics[width=.7\textwidth,right]{HT_3.jpg}
 \end{figure}
 \vspace{-5.5cm}
 \begin{itemize}
+\vspace{-0.25cm}
 \item \textbf{Power analysis} (2 Independent Samples):
 \subitem for ($H_a:\mu_1>\mu_2$ or $H_a:\mu_1<\mu_2$ ): 
 \subsubitem $n=\dfrac{2\sigma^2(z_\alpha+z_\beta)^2}{\Delta^2}$
 \subitem for ($H_a:\mu_1 \neq \mu_2$): 
 \subsubitem $n=\dfrac{2\sigma^2(z_{\alpha/2}+z_\beta)^2}{\Delta^2}$
-\vspace{.5cm}
+\item \textbf{Power analysis} (Paired Samples):
+\subitem for ($H_a:\mu_1>\mu_2$ or $H_a:\mu_1<\mu_2$ ): 
+\subsubitem $n=\dfrac{\sigma_d^2(z_\alpha+z_\beta)^2}{\Delta^2}$
+\subitem for ($H_a:\mu_1 \neq \mu_2$): 
+\subsubitem $n=\dfrac{\sigma_d^2(z_{\alpha/2}+z_\beta)^2}{\Delta^2}$
+\vspace{.25cm}
 \item \textbf{NON-PARAMETRIC TESTS:} For the population median: use SIGN TEST. For TWO Independent Samples: use WILCOXON RANK-SUM TEST. For TWO Dependent Samples: use WILCOXON SIGNED-RANK TEST
 \end{itemize}
 \end{document}

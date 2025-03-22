@@ -1,5 +1,5 @@
 ---
-title: "Statistical Methods"
+title: "Statistical Methods - Spring 2025"
 execute: 
   freeze: false
 ---
